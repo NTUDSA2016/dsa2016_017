@@ -22,34 +22,24 @@ void in()
 
 void cal()
 {
-	char use[201];
-	for(int i=0;i<n;++i)
-		use[i]=-1;
-
 	for(int i=0;i<n;++i)
 	{
-		int st=0;
-		for(st=0;st<n;++st)
-			if( use[st]==-1 && std::fabs(q[st][i]) > 1e-7)
-				break;
-		if(st==n)
-			puts("error");// debug
-		use[st]=i;
-
+		if(std::fabs(q[i][i])<1e-7)
+			puts("error");
 		for(int j=0;j<n;++j)
-			if(st!=j)
+			if(i!=j)
 			{
-				double r = q[j][i] / q[st][i];
+				double r = q[j][i] / q[i][i];
 				for(int k=i;k<n;++k) // it doesnot need to from 0
-					q[j][k] -= q[st][k]*r;
+					q[j][k] -= q[i][k]*r;
 				for(int k=0;k<n;++k)
-					ans[j][k] -= ans[st][k]*r;
+					ans[j][k] -= ans[i][k]*r;
 
 			}
 	}
 	for(int i=0;i<n;++i)
 	{
-		double k=q[i][ use[i] ];
+		double k=q[i][ i ];
 		for(int j=0;j<n;++j)
 			ans[i][j] /= k ;
 	}
@@ -93,6 +83,6 @@ int main()
 	cal();
 	double d = geterror();
 	cout << d << endl;
-	printans();
+//	printans();
 	return 0;
 }
