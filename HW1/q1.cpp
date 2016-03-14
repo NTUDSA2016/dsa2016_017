@@ -24,8 +24,8 @@ void cal()
 {
 	for(int i=0;i<n;++i)
 	{
-		if(std::fabs(q[i][i])<1e-7)
-			puts("error");
+//		if(std::fabs(q[i][i])<1e-7)
+//			puts("error");
 		for(int j=0;j<n;++j)
 			if(i!=j)
 			{
@@ -65,11 +65,12 @@ double printans()
 	{
 		for(int j=0;j<n;++j)
 		{
-			std::cout.precision(5);
-			if(j)
-				std::cout.width(11);
+//			std::cout.precision(5);
+//			if(j)
+//				std::cout.width(11);
 //			printf("%lf ",ans[i][j]);
 			cout << ans[i][j] ; 
+			cout << " ";
 		}
 		puts("");
 	}
@@ -83,6 +84,6 @@ int main()
 	cal();
 	double d = geterror();
 	cout << d << endl;
-//	printans();
+	printans();
 	return 0;
 }
