@@ -117,43 +117,46 @@ int mydata::accept(int&u, int&i, int &t)
 
 VI mydata::items(int &u1,int& u2)
 {
+	std::set<int> set;
 	rowdata here{u1,0,0,0} ;
-	auto s1 = std::lower_bound(sortu.begin(),sortu.end(),&here,compu);
-	here.user=u2;
-	auto s2 = std::lower_bound(sortu.begin(),sortu.end(),&here,compu);
+	auto s = std::lower_bound(sortu.begin(),sortu.end(),&here,compu);
 	
+	while( s<sortu.end() && (*s)->user == u1)
+		set.insert( (*s++)->item );
+
 	VI ans;
-
-	while( s1<sortu.end() && s2<sortu.end() &&(*s1)->user ==u1 && (*s2)->user == u2)
-		if((*s1)->item < (*s2)->item)
-			++s1;
-		else if((*s1)->item > (*s2)->item)
-			++s2;
-		else
+	here.user=u2;
+	s = std::lower_bound(sortu.begin(),sortu.end(),&here,compu);
+	
+	while( s<sortu.end() && (*s)->user == u2)
+	{
+		if (set.count( (*s)->item ))
 		{
-			ans.push_back((*s1)->item);
-			++s1;++s2;
+			ans.push_back((*s)->item);
+			set.erase( (*s)->item);
 		}
+		++s;
+	}
 
+	std::sort(ans.begin(),ans.end());
 	return ans;
 }
 
 
 VI mydata::users(int &i1,int &i2,int &t1,int &t2)
 {
-	VI ans;
 	std::set<int> set;
-	
 	rowdata here{0,i1,t1,0};
 	auto s = std::lower_bound(sorti.begin(),sorti.end(),&here,compit);
 	here.time = t2+1;
-	while(s<sorti.end() && compu(*s,&here))
+	while(s<sorti.end() && compit(*s,&here))
 		set.insert((*s++)->user);
 	
+	VI ans;
 	here={0,i2,t1,0};
 	s = std::lower_bound(sorti.begin(),sorti.end(),&here,compit);
 	here.time = t2+1;
-	while(s<sorti.end() && compu(*s,&here))
+	while(s<sorti.end() && compit(*s,&here))
 	{
 		if(set.count((*s)->user))
 		{
@@ -218,13 +221,32 @@ VI mydata::findtime_item(int& it,VI& us)
 }
 
 
+void display(VI ans)
+{
+	for(int i:ans)
+		printf("%d ",i);
+	if(!ans.size())
+		printf("EMPTY");
+	puts("");
+}
+
+
 int main()
 {
 	mydata my;
 //	mydata my("/tmp2/KDDCUP2012/track1/rec_log_train.txt");
-	int mode;
-	while( ~scanf("%d",&mode) )
+	int all;
+	string s[5]={"accept","items","users","ratio","findtime_item"};
+	while( ~scanf("%d",&all) )
 	{
+		while(all--){
+			string ins;std::cin>>ins;
+			int mode;
+			for(mode=0;mode<5;++mode)
+				if(s[mode]==ins)
+					break;
+			if(mode==5)//my input 0,1,2,3,4
+				mode = ins[0] - '0' ;
 		switch(mode)
 		{
 			case 0:
@@ -240,10 +262,7 @@ int main()
 				int u1,u2;
 				puts("items");
 				scanf("%d%d",&u1,&u2);
-				VI ans = my.items(u1,u2);
-				for(int i:ans)
-					printf("%d ",i);
-				puts("");
+				display( my.items(u1,u2) );
 				break;
 			}
 			case 2:
@@ -251,10 +270,7 @@ int main()
 				int i1,i2,t1,t2;
 				puts("users");
 				scanf("%d%d%d%d",&i1,&i2,&t1,&t2);
-				VI ans = my.users(i1,i2,t1,t2);
-				for(int i:ans)
-					printf("%d ",i);
-				puts("");
+				display( my.users(i1,i2,t1,t2) );
 				break;
 			}
 			case 3:
@@ -268,23 +284,21 @@ int main()
 			}
 			case 4:
 			{
-				int i,u2;
+				int i;
 				puts("findtime_items");
-				int n;
-				scanf("%d%d",&i,&n);
 				VI us;
-				for(int i=0;i<n;++i)
-				{
-					int x;scanf("%d",&x);
+				scanf("%d",&i);
+				string s;
+				getline(cin,s); // read a line of interger
+				std::istringstream iss(s);
+				int x;
+				while(iss>>x)
 					us.push_back(x);
-				}
 					
-				VI ans = my.findtime_item(i,us);
-				for(int i:ans)
-					printf("%d ",i);
-				puts("");
+				display( my.findtime_item(i,us) );
 				break;
 			}
+		}
 		}
 	}
 	return 0;
