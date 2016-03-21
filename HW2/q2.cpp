@@ -20,14 +20,17 @@ struct rowdata
 #define VI std::vector<int> 
 //#define M 73209277
 #define M 20000
+
 class mydata
 {
 private:
 	rowdata* vrowdata;
-	std::vector<rowdata*> sortu ,sorti;// user item time 
+	std::vector<rowdata*> sortu ,sorti, sortiu;// user item time 
 	std::set<int> issortu;
+	std::map<int,std::vector<std::tuple<int,int,int>>> iscalr;
 	
 	void filein(string &s);
+	void exploid();// it is test
 
 public:
 	
@@ -83,12 +86,14 @@ void mydata::filein(string &s)
 #define mybind(a) std::bind(&a,this,std::placeholders::_1,std::placeholders::_2)
 mydata::mydata(string s="data.txt") 
 {
-	issortu= std::set<int>();
+	issortu.clear();
+	iscalr.clear();
 	filein(s);
 	printf("%f file ok\n",((float)clock()/CLOCKS_PER_SEC));
 
 	sortu.resize(M);
 	sorti.resize(M);
+	sortiu.resize(M);
 	for(int i=0;i<M;++i)
 		sortu[i] = sorti[i] = vrowdata+i;
 
@@ -97,6 +102,24 @@ mydata::mydata(string s="data.txt")
 	printf("%f u ok\n",((float)clock()/CLOCKS_PER_SEC));
 	std::stable_sort(sorti.begin(),sorti.end(),compi);
 	printf("%f i ok\n",((float)clock()/CLOCKS_PER_SEC));
+	for(int i=0;i<M;++i)
+		sortiu[i] = sorti[i];
+	printf("%f iu ok\n",((float)clock()/CLOCKS_PER_SEC));
+//	exploid();
+//	printf("%f exploid ok\n",((float)clock()/CLOCKS_PER_SEC));
+}
+
+void mydata::exploid()
+{
+	VI v;
+	int it=-1;
+	for(int i=0;i<M;++i)
+		if( sorti[i]->item != it )
+		{
+			it = sorti[i]->item;
+			ratio(it,i);
+			findtime_item(it,v);
+		}
 }
 
 
@@ -170,29 +193,54 @@ VI mydata::users(int &i1,int &i2,int &t1,int &t2)
 	return ans;
 }
 
+#define tget(a,b) (std::get<b>(a))
 VI mydata::ratio(int &it,int &hold)
 {
-	std::map<int,int> map;
-	std::set<int> set;
-	rowdata here{0,it,0,0};
-	auto s = std::lower_bound(sorti.begin(),sorti.end(),&here,compi);
-	while(s<sorti.end() && (*s)->item == it)
-	{
-		++map[ (*s)->user ]  ;
-		if( (*s)->result == 1)//accept
-			set.insert((*s)->user);
-		++s;
-	}
-
 	VI ans(2);
 	ans[0]=ans[1]=0;
-	for( auto &i : map)
-		if(i.second>hold)
+	std::vector< std::tuple<int,int,int> > &vt = iscalr[it] ;
+	
+	if( !vt.size() )// is calulate
+	{
+		std::map<int, std::tuple<int,int> > map;
+		rowdata here{0,it,0,0};
+		auto s = std::lower_bound(sorti.begin(),sorti.end(),&here,compi);
+		while(s<sorti.end() && (*s)->item == it)
 		{
-			++ans[1];
-			if( set.count(i.first))
-				++ans[0];
+			auto& now = map[ (*s)->user ]  ;
+			++tget(now,0);
+			if( (*s)->result == 1)//accept
+				tget(now,1)=1;
+			++s;
 		}
+
+		for(auto &i:map)
+			vt.push_back( std::make_tuple( tget(i.second,0) , tget(i.second,1) , 1 ));
+		std::sort(vt.rbegin(),vt.rend());//decreaing
+
+		int now=1;
+		for(int i=1;i<vt.size();++i)
+			if( tget(vt[i],0) == tget(vt[now],0) )//same hold
+			{
+				tget(vt[now],1) += tget(vt[i],1);
+				tget(vt[now],2) += tget(vt[i],2);
+			}
+			else //sum
+			{
+				tget(vt[now],1) += tget(vt[now-1],1);
+				tget(vt[now],2) += tget(vt[now-1],2);
+				++now;
+			}
+		vt.resize(now);
+
+	}
+	// decreasing
+	auto s = std::lower_bound(vt.rbegin(),vt.rend(),std::make_tuple(hold,0,0));
+	if(s != vt.rend() )
+	{
+		ans[0] =  tget(*s,1) ;
+		ans[1] =  tget(*s,2) ;
+	}
 	return ans;
 }
 
@@ -201,8 +249,8 @@ VI mydata::findtime_item(int& it,VI& us)
 {
 	std::set<int> set;
 	rowdata here{0,it,0,0};
-	auto is = std::lower_bound(sorti.begin(),sorti.end(),&here,compi),
-		 ie = std::upper_bound(sorti.begin(),sorti.end(),&here,compi);
+	auto is = std::lower_bound(sortiu.begin(),sortiu.end(),&here,compi),
+		 ie = std::upper_bound(sortiu.begin(),sortiu.end(),&here,compi);
 	
 	if(!issortu.count(it)){ // is sorted ?
 		std::stable_sort(is,ie,compu);
@@ -223,7 +271,7 @@ VI mydata::findtime_item(int& it,VI& us)
 
 void display(VI ans)
 {
-	for(int i:ans)
+	for(int& i:ans)
 		printf("%d ",i);
 	if(!ans.size())
 		printf("EMPTY");
@@ -276,7 +324,7 @@ int main()
 			case 3:
 			{
 				int i,h;
-				puts("radio");
+				puts("ratio");
 				scanf("%d%d",&i,&h);
 				VI ans = my.ratio(i,h);
 				printf("%d/%d\n",ans[0],ans[1]);
@@ -285,7 +333,7 @@ int main()
 			case 4:
 			{
 				int i;
-				puts("findtime_items");
+				puts("findtime_item");
 				VI us;
 				scanf("%d",&i);
 				string s;

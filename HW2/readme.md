@@ -3,12 +3,14 @@
 
 A big array ( vrowdata ) for store the original data
 Two sorted array , one sorted by user , one sorted by items
+A copy array from item-sort
+Two map for store the query
 
-It will cause about 4n + 2nlogn (stable sort)
+It will cause about 5n + 2nlogn (stable sort)
 
 Beacuse the original data is sorted by time , so my two array will sorted by time too.
 
-On the workstation
+On the workstation (2:00 linux9)
 
 * 43.231873 for read the file
 * 110.082512 for a array sorted by user
@@ -33,6 +35,7 @@ and sort the array
 The max of Q is 14458
 
 3. users 
+
 Use item-sorted array
 Binary search by item and time, and get every items . (2log n)
 the same operation as items
@@ -40,14 +43,22 @@ the same operation as items
 The max of Q is 8375857
 
 4. ratio
+
 Use item-sorted array
+if it is store in the map
+just binary search by hold and get the answer (logQ)
+if not
 Binary search by item , and get every user. (log n)
-Use map to store user and recommand times and a set to store accepted time (2QlogQ)
-and linear search the user over the thershold . If it does , we find it in the set . THus we will get radio  (Q+QlogQ)
+Use map to store user and recommand times accepted time (QlogQ)
+And sort it by recommand times (QlogQ)
+elimliate same recommadn times and get postsum (Q)
+and binary search  (log Q)
+
 The max of Q is 8375857
 
 5. findtime_items
-Use item-sorted array
+
+Use item-sorted(the copy one) array
 Binary search by item and we will get interval(2log n)
 and use the map to record if the interval is sorted by user .(log T )(T small than 6000)
 (if not  ,sort it (QlogQ))
