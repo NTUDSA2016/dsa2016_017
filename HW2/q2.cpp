@@ -32,7 +32,7 @@ private:
 	
 	std::map< int, VI > isaccept;
 	std::map<int,int> userhold;
-	std::vector< std::pair<int,int> > hold;
+	VI hold;
 	void finduserhold();
 	
 	void filein(string &s);
@@ -161,7 +161,7 @@ mydata::mydata(string s="data.txt")
 //	printf("%f u ok\n",((float)clock()/CLOCKS_PER_SEC));
 	isaccept.clear();
 	userhold.clear();
-	hold.clear();
+	hold.resize(M);
 	finduserhold();
 	printf("%f hold ok\n",((float)clock()/CLOCKS_PER_SEC));
 
@@ -176,30 +176,15 @@ void mydata::finduserhold()
 		if ( sortui[i]->user != sortui[i+1]->user )	
 		{
 			userhold[ sortui[i]->user ]= chold;
-			hold.push_back( std::make_pair(chold,1) );
+			hold.push_back( chold );
 			chold=1;
 		}
 		else if( compuit(sortui[i] ,sortui[i+1]) )// prevent repeat
 			++chold;
 	userhold[ sortui[m]->user]=chold;
-	hold.push_back( std::make_pair(chold,1) );
+	hold.push_back( chold );
 
-	std::sort(hold.rbegin(),hold.rend());//decreasing
-
-	m = hold.size();
-	int now=0;
-	for(int i=1;i<m;++i)
-		if( hold[now].first == hold[i].first )
-			hold[now].second += hold[i].second;
-		else
-		{
-			if(now)
-				hold[now].second += hold[now-1].second;
-			++now;
-		}
-	if(now)//the last one
-		hold[now].second += hold[now-1].second;
-	hold.resize(now+1);
+	std::sort(hold.begin(),hold.end());//increasing
 
 }
 
@@ -288,33 +273,27 @@ VI mydata::ratio(int &it,int &thold)
 
 	if(!vt.size())
 	{
+		std::set<int> set;
 		rowdata here{0,it,0,0};
 		auto s = std::lower_bound(sorti.begin(),sorti.end(),&here,compi);
 		while( s<sorti.end() && (*s)->item == it)
 		{
 			if( (*s)->result == 1 )
-			   vt.push_back( (*s)->user );
+			   set.insert( (*s)->user );
 			++s;
 		}
-		if(!vt.size())
-			vt.push_back(0);	//at least 1
-		std::sort(vt.begin(),vt.end());//prevent repeat
-		int now=0,n=vt.size()-1;
-		for(int i=0;i<n;++i)
-			if(vt[i] != vt[i+1])
-				vt[now++] = userhold[ vt[i] ] ;
-		vt[now++] = userhold[ vt[n] ] ;
-		vt.resize(now);
+		vt.resize( set.size() );
+		int j=0;
+		for(int i:set)
+			vt[j++] = userhold[i];
 		std::sort(vt.begin(),vt.end());//increase
+
+		if(!vt.size())vt.push_back(0);//at least one
 	}
 
-
-	if(thold == INT_MAX)//prevent overflow
-		--thold;
 	VI ans(2);
-
-	ans[0]= vt.end()-std::upper_bound(vt.begin(),vt.end(),thold);
-	ans[1]= std::lower_bound(hold.rbegin(),hold.rend(),std::make_pair(thold+1,0))->second;
+	ans[0]= vt  .end()-std::upper_bound(vt  .begin(),vt  .end(),thold);
+	ans[1]= hold.end()-std::upper_bound(hold.begin(),hold.end(),thold);
 	return ans;
 }
 
