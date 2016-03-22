@@ -2,36 +2,40 @@
 ##my data struct
 
 A big array ( vrowdata ) for store the original data
-Two sorted array , one sorted by user , one sorted by items
+Two sorted array , one sorted by user and item , one sorted by items
 A copy array from item-sort
-Two map for store the query
 
-It will cause about 5n + 2nlogn (stable sort)
+A map for calculate the time of users recommad by system
+A array for sort recommand time 
+
+A map for store weather the item-sort array is sorted by user
+A map for store the vector of how many people accept the item
+
+It will cause about n + nlogn (stable sort)
 
 Beacuse the original data is sorted by time , so my two array will sorted by time too.
 
 On the workstation (2:00 linux9)
 
-* 43.231873 for read the file
-* 110.082512 for a array sorted by user
-* 202.039383 for a array sorted by item 
+about
+* 17 sec for read the file
+* 102 sec for a array sorted by user and item
+* 195 sec for a array sorted by item 
+* 203 sec for calculate ratio
 
 ## 5 operation
 
 1. accept
-Use user-sorted array
-Binary search by user and time , and linear search for item . (log n + Q)
-The max of Q will cause 120  times to find
+
+Use user-item-sorted array
+Binary search by user ,item and time ( logn)
 
 2. items
-Use user-sorted array
+
+Use user-item-sorted array
 Binary search by user, and get every  items . (2log n)
-Use set to store items and an array to store both items 
-Every time I find the same items than I will  delete the item in set for not repeatily getting same items
-( 2QlogQ ) 
-( Beacuse set can delete depulicated item and easy to find the item)
-and sort the array 
-( QlogQ ) 
+beacaseu the item is sorted , we can get every item just by comparsion (2Q)
+
 The max of Q is 14458
 
 3. users 
@@ -44,16 +48,13 @@ The max of Q is 8375857
 
 4. ratio
 
-Use item-sorted array
-if it is store in the map
-just binary search by hold and get the answer (logQ)
-if not
-Binary search by item , and get every user. (log n)
-Use map to store user and recommand times accepted time (QlogQ)
-And sort it by recommand times (QlogQ)
-elimliate same recommadn times and get postsum (Q)
-and binary search  (log Q)
+Binary search the threshold in array
 
+if the map doesn't have this item
+than  binary search the item-sorted array and get every this
+store the accept user in an array
+ask the map if the accept user is over theshold
+	
 The max of Q is 8375857
 
 5. findtime_items
