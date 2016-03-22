@@ -17,11 +17,20 @@ Beacuse the original data is sorted by time , so my two array will sorted by tim
 
 On the workstation (2:00 linux9)
 
-about
+about (add up)
 * 17 sec for read the file
 * 102 sec for a array sorted by user and item
 * 195 sec for a array sorted by item 
 * 203 sec for calculate ratio
+* 294 sec for get every map be expanded (map for radio and map for findtimeitem)
+
+Using O3
+about (add up)
+* 8  sec for read the file
+* 26 sec for a array sorted by user and item
+* 79 sec for a array sorted by item 
+* 81 sec for calculate ratio
+* 135 sec for get every map be expanded (map for radio and map for findtimeitem)
 
 ## 5 operation
 

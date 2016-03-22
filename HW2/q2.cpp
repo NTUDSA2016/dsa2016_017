@@ -9,6 +9,8 @@
 // max 120 avg 29 per time
 // max 14456 avg 52 per user
 // max 8375857 avg 15543.370913 per item
+// item 4710 max accept 271318 
+//
 using std::string;
 using std::cout;using std::cin;
 
@@ -270,7 +272,7 @@ VI mydata::users(int &i1,int &i2,int &t1,int &t2)
 		if(set.count((*s)->user))
 		{
 			ans.push_back((*s)->user);
-			set.erase((*s)->user);// repeat user
+			set.erase((*s)->user);//prevent repeat user
 		}
 		++s;
 	}
@@ -289,23 +291,30 @@ VI mydata::ratio(int &it,int &thold)
 		rowdata here{0,it,0,0};
 		auto s = std::lower_bound(sorti.begin(),sorti.end(),&here,compi);
 		while( s<sorti.end() && (*s)->item == it)
+		{
 			if( (*s)->result == 1 )
 			   vt.push_back( (*s)->user );
+			++s;
+		}
 		if(!vt.size())
 			vt.push_back(0);	//at least 1
 		std::sort(vt.begin(),vt.end());//prevent repeat
-		vt.resize( std::unique(vt.begin(),vt.end()) - vt.begin() ) ;
+		int now=0,n=vt.size()-1;
+		for(int i=0;i<n;++i)
+			if(vt[i] != vt[i+1])
+				vt[now++] = userhold[ vt[i] ] ;
+		vt[now++] = userhold[ vt[n] ] ;
+		vt.resize(now);
+		std::sort(vt.begin(),vt.end());//increase
 	}
 
 
 	if(thold == INT_MAX)//prevent overflow
 		--thold;
 	VI ans(2);
+
+	ans[0]= vt.end()-std::upper_bound(vt.begin(),vt.end(),thold);
 	ans[1]= std::lower_bound(hold.rbegin(),hold.rend(),std::make_pair(thold+1,0))->second;
-	ans[0]=0;
-	for(int &i:vt)
-		if( userhold[i] > thold )
-			++ans[0];
 	return ans;
 }
 
