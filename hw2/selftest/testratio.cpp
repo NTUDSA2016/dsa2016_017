@@ -20,8 +20,8 @@ struct rowdata
 };
 
 #define VI std::vector<int> 
-//#define M 73209277
-#define M 10000
+#define M 73209277
+//#define M 10000
 
 class mydata
 {
@@ -150,11 +150,11 @@ mydata::mydata(string s="data.txt")
 	// to my data
 	std::stable_sort(sortui.begin(),sortui.end(),compui);
 	printf("%f u ok\n",((float)clock()/CLOCKS_PER_SEC));
-	std::stable_sort(sorti.begin(),sorti.end(),compi);
-	printf("%f i ok\n",((float)clock()/CLOCKS_PER_SEC));
+//	std::stable_sort(sorti.begin(),sorti.end(),compi);
+//	printf("%f i ok\n",((float)clock()/CLOCKS_PER_SEC));
 
-	std::copy(sorti.begin(),sorti.end(),sortiu.begin());
-	printf("%f iu ok\n",((float)clock()/CLOCKS_PER_SEC));
+//	std::copy(sorti.begin(),sorti.end(),sortiu.begin());
+//	printf("%f iu ok\n",((float)clock()/CLOCKS_PER_SEC));
 // it doesn't quicker
 //	std::copy(sorti.begin(),sorti.end(),sortui.begin());
 //	std::stable_sort(sortui.begin(),sortui.end(),compu);
@@ -165,8 +165,8 @@ mydata::mydata(string s="data.txt")
 	finduserhold();
 	printf("%f hold ok\n",((float)clock()/CLOCKS_PER_SEC));
 
-//	exploid();
-//	printf("%f exploid ok\n",((float)clock()/CLOCKS_PER_SEC));
+	exploid();
+	printf("%f exploid ok\n",((float)clock()/CLOCKS_PER_SEC));
 }
 
 void mydata::finduserhold()
@@ -188,20 +188,75 @@ void mydata::finduserhold()
 
 }
 
+bool com(rowdata a,rowdata b)
+{
+	if(a.time != b.time)
+		return a.time < b.time;
+	if(a.user != b.user)
+		return a.user < b.user;
+	if(a.item != b.item)
+		return a.item < b.item;
+	return a.result < b.result;
+}
+
+bool yes(VI ans,VI set)
+{
+	int k=1;
+	if( ans.size() != set.size())
+		k=0;
+	for(int i=0;k && i<ans.size();++i)
+		if(ans[i]!=set[i])
+			k=0;
+	if(!k)
+	{
+		printf("%d %d",ans.size(),set.size());
+		for(int &i:ans)
+			printf("%d ",i);
+		puts("");
+		for(int &i:set)
+			printf("%d ",i);
+		puts("");
+		return 0;
+	}
+	return 1;
+}
+
 
 void mydata::exploid()
 {
-	VI v;
-	int it=-1;
-	for(int i=0;i<M;++i)
-		if( sorti[i]->item != it )
+	std::sort(vrowdata,vrowdata+M,com);
+	int n = std::unique(vrowdata,vrowdata+M,com) - vrowdata;
+	for(int i=0;i<n;++i)
+		sortui[i] = vrowdata+i;
+	std::sort(sortui.begin(),sortui.end(),sortui);
+	
+	VI tmp;
+	std::map<int,int> map;
+	int chold=1,m=n-1;
+	for(int i=0;i<m;++i)
+		if ( sortui[i]->user != sortui[i+1]->user )	
 		{
-			it = sorti[i]->item;
-			ratio(it,i);
-			findtime_item(it,v);
+			map[ sortui[i]->user ]= chold;
+			tmp.push_back( chold );
+			chold=1;
 		}
-}
+		else 
+			++chold;
+	map[ sortui[m]->user]=chold;
+	tmp.push_back( chold );
+	std::sort(tmp.begin(),tmp.end());//increasing
 
+	puts("user");
+	yes(tmp,hold);
+	puts("map");
+	
+	for(auto i=userhold.begin(),j=map.begin();i!=userhold.end() && j!=map.end() ; ++i,++j)
+		if( i->first != j->first)
+			puts("wrong");
+		else if( i->second != j->second)
+			puts("wrong");
+
+}
 
 int mydata::accept(int&u, int&i, int &t)// if the value are correct
 {
@@ -338,73 +393,7 @@ void display(VI ans)
 
 int main()
 {
-	mydata my;
-//	mydata my("/tmp2/KDDCUP2012/track1/rec_log_train.txt");
-	int all;
-	string s[5]={"accept","items","users","ratio","findtime_item"};
-	while( ~scanf("%d",&all) )
-	{
-		while(all--){
-			string ins;std::cin>>ins;
-			int mode;
-			for(mode=0;mode<5;++mode)
-				if(s[mode]==ins)
-					break;
-			if(mode==5)//my input 0,1,2,3,4
-				mode = ins[0] - '0' ;
-		switch(mode)
-		{
-			case 0:
-			{
-				int u,i,t;
-				puts("accept");
-				scanf("%d%d%d",&u,&i,&t);
-				printf("%d\n",my.accept(u,i,t));
-				break;
-			}
-			case 1:
-			{
-				int u1,u2;
-				puts("items");
-				scanf("%d%d",&u1,&u2);
-				display( my.items(u1,u2) );
-				break;
-			}
-			case 2:
-			{
-				int i1,i2,t1,t2;
-				puts("users");
-				scanf("%d%d%d%d",&i1,&i2,&t1,&t2);
-				display( my.users(i1,i2,t1,t2) );
-				break;
-			}
-			case 3:
-			{
-				int i,h;
-				puts("ratio");
-				scanf("%d%d",&i,&h);
-				VI ans = my.ratio(i,h);
-				printf("%d/%d\n",ans[0],ans[1]);
-				break;
-			}
-			case 4:
-			{
-				int i;
-				puts("findtime_item");
-				VI us;
-				scanf("%d",&i);
-				string s;
-				getline(cin,s); // read a line of interger
-				std::istringstream iss(s);
-				int x;
-				while(iss>>x)
-					us.push_back(x);
-					
-				display( my.findtime_item(i,us) );
-				break;
-			}
-		}
-		}
-	}
+//	mydata my;
+	mydata my("/tmp2/KDDCUP2012/track1/rec_log_train.txt");
 	return 0;
 }
