@@ -161,7 +161,7 @@ mydata::mydata(string s="data.txt")
 //	printf("%f u ok\n",((float)clock()/CLOCKS_PER_SEC));
 	isaccept.clear();
 	userhold.clear();
-	hold.resize(M);
+	hold.clear();
 	finduserhold();
 	printf("%f hold ok\n",((float)clock()/CLOCKS_PER_SEC));
 
