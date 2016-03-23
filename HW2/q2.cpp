@@ -28,10 +28,10 @@ class mydata
 private:
 	rowdata* vrowdata;
 	std::vector<rowdata*> sortui ,sorti, sortiu;// user item time 
-	std::set<int> issortu;
+	std::unordered_set<int> issortu;
 	
-	std::map< int, VI > isaccept;
-	std::map<int,int> userhold;
+	std::unordered_map< int, VI > isaccept;
+	std::unordered_map<int,int> userhold;
 	VI hold;
 	void finduserhold();
 	
@@ -241,7 +241,7 @@ VI mydata::items(int &u1,int& u2)
 VI mydata::users(int &i1,int &i2,int &t1,int &t2)
 {
 	if(t2==INT_MAX)--t2;//prevent overflow
-	std::set<int> set;
+	std::unordered_set<int> set;
 	rowdata here{0,i1,t1,0};
 	auto s = std::lower_bound(sorti.begin(),sorti.end(),&here,compit);
 	here.time = t2+1;
@@ -273,7 +273,7 @@ VI mydata::ratio(int &it,int &thold)
 
 	if(!vt.size())
 	{
-		std::set<int> set;
+		std::unordered_set<int> set;
 		rowdata here{0,it,0,0};
 		auto s = std::lower_bound(sorti.begin(),sorti.end(),&here,compi);
 		while( s<sorti.end() && (*s)->item == it)
@@ -302,7 +302,7 @@ VI mydata::ratio(int &it,int &thold)
 
 VI mydata::findtime_item(int& it,VI& us)
 {
-	std::set<int> set;
+	std::unordered_set<int> set;
 	rowdata here{0,it,0,0};
 	auto is = std::lower_bound(sortiu.begin(),sortiu.end(),&here,compi),
 		 ie = std::upper_bound(sortiu.begin(),sortiu.end(),&here,compi);
@@ -320,7 +320,9 @@ VI mydata::findtime_item(int& it,VI& us)
 			set.insert( (*s++)->time );
 	}
 
-	return VI(set.begin(),set.end());
+	VI ans(set.begin(),set.end());
+	std::sort(ans.begin(),ans.end());
+	return ans;
 }
 
 
