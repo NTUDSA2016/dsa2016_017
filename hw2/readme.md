@@ -1,4 +1,9 @@
 #HW2
+## how to use
+if you type `make` , it will compile it with O3
+if you don't want and want to use O0 , type `make normal`
+and type `make run` to run the program
+
 ##my data struct
 
 A big array ( vrowdata ) for store the original data
@@ -82,6 +87,28 @@ Use set to store it and linear output to an array (Q + QlogQ)
 ## That's All
 thanks 2016/3/21 2:05
 
+
+###somme tset data and time
+
+//normal mode testdata.mix.in
+real    4m22.621s
+user    4m20.080s
+sys     0m1.907s
+
+//o3 mode testdata.mix.in
+real    1m50.989s
+user    1m48.673s
+sys     0m1.363s
+
+//normal mode de.in (the example on the spec)
+real    3m22.422s
+user    3m20.703s
+sys     0m1.433s
+
+//o3 mode de.in (the example on the spec)
+real    1m25.734s
+user    1m24.243s
+sys     0m1.233s
 
 
 
