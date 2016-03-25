@@ -24,18 +24,18 @@ On the workstation (2:00 linux9)
 
 about (add up)
 * 17 sec for read the file
-* 102 sec for a array sorted by user and item
-* 195 sec for a array sorted by item 
-* 203 sec for calculate ratio
-* 294 sec for get every map be expanded (map for radio and map for findtimeitem)
+* 74 sec for a array sorted by user and item
+* 128 sec for a array sorted by item 
+* 132 sec for calculate ratio
+* 180 sec for get every map be expanded (map for radio and map for findtimeitem)
 
 Using O3
 about (add up)
 * 8  sec for read the file
-* 26 sec for a array sorted by user and item
-* 79 sec for a array sorted by item 
-* 81 sec for calculate ratio
-* 135 sec for get every map be expanded (map for radio and map for findtimeitem)
+* 19 sec for a array sorted by user and item
+* 29 sec for a array sorted by item 
+* 30 sec for calculate ratio
+* 41 sec for get every map be expanded (map for radio and map for findtimeitem)
 
 ## 5 operation
 
@@ -90,25 +90,18 @@ thanks 2016/3/21 2:05
 
 ###somme tset data and time
 
-//normal mode testdata.mix.in
-real    4m22.621s
-user    4m20.080s
-sys     0m1.907s
+normal mode testdata.mix.in
+real    3m32.082s
+user    3m28.943s
+sys     0m1.560s
 
-//o3 mode testdata.mix.in
-real    1m50.989s
-user    1m48.673s
-sys     0m1.363s
+o3 mode testdata.mix.in
+real    0m42.793s
+user    0m40.167s
+sys     0m1.617s
 
-//normal mode de.in (the example on the spec)
-real    3m22.422s
-user    3m20.703s
-sys     0m1.433s
 
-//o3 mode de.in (the example on the spec)
-real    1m25.734s
-user    1m24.243s
-sys     0m1.233s
+
 
 
 

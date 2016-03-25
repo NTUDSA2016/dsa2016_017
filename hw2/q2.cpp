@@ -1,33 +1,56 @@
 #include<bits/stdc++.h>
-//46sec for linear
-//time is increasing
-//94 for one sort
-//218 for four sort
-//145 for two sort
-// 560 for uit sort
-// 160 for stable rowdata 1 sort
-// max 120 avg 29 per time
-// max 14456 avg 52 per user
-// max 8375857 avg 15543.370913 per item
-// item 4710 max accept 271318 
-//
 using std::string;
 using std::cout;using std::cin;
 
 struct rowdata
 {
 	int user,item,time,result;
+
 };
+bool compu(const  rowdata &a,const rowdata &b)
+{
+	return a.user < b.user;
+}
+bool compi(const  rowdata &a,const rowdata &b)
+{
+	return a.item < b.item;
+}
+bool compiu(const  rowdata &a,const rowdata &b)
+{
+	if( a.user != b.user)
+		return a.user < b.user;
+	return a.time < b.time;
+}
+bool compit(const  rowdata &a,const rowdata &b)
+{
+	if( a.item !=  b.item)
+		return a.item < b.item;
+	return a.time < b.time;
+}
+bool compui(const  rowdata &a,const rowdata &b)
+{
+	if( a.user != b.user)
+		return a.user < b.user;
+	return a.item < b.item;
+}
+bool compuit(const  rowdata &a,const rowdata &b)
+{
+	if( a.user != b.user)
+		return a.user < b.user;
+	if( a.item != b.item)
+		return a.item < b.item;
+	return a.time < b.time;
+}
 
 #define VI std::vector<int> 
 #define M 73209277
-//#define M 10000
 
 class mydata
 {
 private:
 	rowdata* vrowdata;
-	std::vector<rowdata*> sortui ,sorti, sortiu;// user item time 
+	//i don't use pointer because it's slower 
+	std::vector<rowdata> sortui ,sorti, sortiu;// user item time 
 	std::unordered_set<int> issortu;
 	
 	std::unordered_map< int, VI > isaccept;
@@ -38,7 +61,6 @@ private:
 	void filein(string &s);
 	void quickin(rowdata*,char *);
 	void exploid();// it is test
-
 public:
 	
 	//init
@@ -53,40 +75,6 @@ public:
 
 };
 
-inline bool compu( rowdata *a, rowdata *b)
-{
-	return a->user < b->user;
-}
-inline bool compi( rowdata *a, rowdata *b)
-{
-	return a->item < b->item;
-}
-inline bool comput( rowdata *a, rowdata *b)
-{
-	if( a->user != b->user)
-		return a->user < b->user;
-	return a->time < b->time;
-}
-inline bool compit( rowdata *a, rowdata *b)
-{
-	if( a->item !=  b->item)
-		return a->item < b->item;
-	return a->time < b->time;
-}
-inline bool compui( rowdata *a, rowdata *b)
-{
-	if( a->user != b->user)
-		return a->user < b->user;
-	return a->item < b->item;
-}
-inline bool compuit( rowdata *a, rowdata *b)
-{
-	if( a->user != b->user)
-		return a->user < b->user;
-	if( a->item != b->item)
-		return a->item < b->item;
-	return a->time < b->time;
-}
 
 void mydata::quickin(rowdata *d,char *ch)
 {
@@ -137,28 +125,24 @@ void mydata::filein(string &s)
 #define mybind(a) std::bind(&a,this,std::placeholders::_1,std::placeholders::_2)
 mydata::mydata(string s="data.txt") 
 {
-	issortu.clear();
 	filein(s);
 //	printf("%f file ok\n",((float)clock()/CLOCKS_PER_SEC));
 
 	sortui.resize(M);
-	sorti.resize(M);
-	sortiu.resize(M);
-	for(int i=0;i<M;++i)
-		sortui[i] = sorti[i] = vrowdata+i;
-
-	// to my data
+	std::copy(vrowdata,vrowdata+M,sortui.begin());
 	std::stable_sort(sortui.begin(),sortui.end(),compui);
-//	printf("%f u ok\n",((float)clock()/CLOCKS_PER_SEC));
+//	printf("%f ui ok\n",((float)clock()/CLOCKS_PER_SEC));
+	
+	sorti.resize(M);
+	std::copy(vrowdata,vrowdata+M,sorti.begin());
 	std::stable_sort(sorti.begin(),sorti.end(),compi);
 //	printf("%f i ok\n",((float)clock()/CLOCKS_PER_SEC));
-
+	
+	issortu.clear();
+	sortiu.resize(M);
 	std::copy(sorti.begin(),sorti.end(),sortiu.begin());
 //	printf("%f iu ok\n",((float)clock()/CLOCKS_PER_SEC));
-// it doesn't quicker
-//	std::copy(sorti.begin(),sorti.end(),sortui.begin());
-//	std::stable_sort(sortui.begin(),sortui.end(),compu);
-//	printf("%f u ok\n",((float)clock()/CLOCKS_PER_SEC));
+	
 	isaccept.clear();
 	userhold.clear();
 	hold.clear();
@@ -173,30 +157,29 @@ void mydata::finduserhold()
 {
 	int chold=1,m=M-1;
 	for(int i=0;i<m;++i)
-		if ( sortui[i]->user != sortui[i+1]->user )	
+		if ( sortui[i].user != sortui[i+1].user )	
 		{
-			userhold[ sortui[i]->user ]= chold;
+			userhold[ sortui[i].user ]= chold;
 			hold.push_back( chold );
 			chold=1;
 		}
 		else if( compuit(sortui[i] ,sortui[i+1]) )// prevent repeat
 			++chold;
-	userhold[ sortui[m]->user]=chold;
+	userhold[ sortui[m].user]=chold;
 	hold.push_back( chold );
 
 	std::sort(hold.begin(),hold.end());//increasing
 
 }
 
-
 void mydata::exploid()
 {
 	VI v;
 	int it=-1;
 	for(int i=0;i<M;++i)
-		if( sorti[i]->item != it )
+		if( sorti[i].item != it )
 		{
-			it = sorti[i]->item;
+			it = sorti[i].item;
 			ratio(it,i);
 			findtime_item(it,v);
 		}
@@ -206,61 +189,60 @@ void mydata::exploid()
 int mydata::accept(int&u, int&i, int &t)// if the value are correct
 {
 	rowdata here{u,i,t,0} ;
-	auto s = std::lower_bound(sortui.begin(),sortui.end(),&here,compuit);
-	if( s==sortui.end() || compuit(&here,*s) )
+	auto s = std::lower_bound(sortui.begin(),sortui.end(),here,compuit);
+	if( s==sortui.end() || compuit(here,*s) )
 		return 0;
 	else
-		return (*s)->result;
+		return (s)->result;
 }
 
 VI mydata::items(int &u1,int& u2)
 {
 	rowdata here{u1,0,0,0} ;
-	auto s1 = std::lower_bound(sortui.begin(),sortui.end(),&here,compui);
+	auto s1 = std::lower_bound(sortui.begin(),sortui.end(),here,compui);
 	here.user = u2;
-	auto s2 = std::lower_bound(sortui.begin(),sortui.end(),&here,compui);
+	auto s2 = std::lower_bound(sortui.begin(),sortui.end(),here,compui);
 	
 	VI ans;
 	int re=-1;// for repeat item
 	// beacuse item is sorted
-	while( s1<sortui.end() && (*s1)->user == u1 && s2<sortui.end() && (*s2)->user == u2)
-		if( (*s1)->item ==re )
+	while( s1<sortui.end() && (s1)->user == u1 && s2<sortui.end() && (s2)->user == u2)
+		if( (s1)->item ==re )
 			++s1;
-		else if( (*s2)->item ==re )
+		else if( (s2)->item ==re )
 			++s2;
-		else if( (*s1)->item < (*s2)->item )
+		else if( (s1)->item < (s2)->item )
 			++s1;
-		else if( (*s1)->item > (*s2)->item )
+		else if( (s1)->item > (s2)->item )
 			++s2;
 		else
 		{
-			ans.push_back(re = (*s1)->item);
+			ans.push_back(re = (s1)->item);
 			++s1;++s2;
 		}
 	return ans;
 }
-
 
 VI mydata::users(int &i1,int &i2,int &t1,int &t2)
 {
 	if(t2==INT_MAX)--t2;//prevent overflow
 	std::unordered_set<int> set;
 	rowdata here{0,i1,t1,0};
-	auto s = std::lower_bound(sorti.begin(),sorti.end(),&here,compit);
+	auto s = std::lower_bound(sorti.begin(),sorti.end(),here,compit);
 	here.time = t2+1;
-	while(s<sorti.end() && compit(*s,&here))
-		set.insert((*s++)->user);
+	while(s<sorti.end() && compit(*s,here))
+		set.insert((s++)->user);
 	
 	VI ans;
 	here={0,i2,t1,0};
-	s = std::lower_bound(sorti.begin(),sorti.end(),&here,compit);
+	s = std::lower_bound(sorti.begin(),sorti.end(),here,compit);
 	here.time = t2+1;
-	while(s<sorti.end() && compit(*s,&here))
+	while(s<sorti.end() && compit(*s,here))
 	{
-		if(set.count((*s)->user))
+		if(set.count((s)->user))
 		{
-			ans.push_back((*s)->user);
-			set.erase((*s)->user);//prevent repeat user
+			ans.push_back((s)->user);
+			set.erase((s)->user);//prevent repeat user
 		}
 		++s;
 	}
@@ -269,7 +251,6 @@ VI mydata::users(int &i1,int &i2,int &t1,int &t2)
 	return ans;
 }
 
-#define tget(a,b) (std::get<b>(a))
 VI mydata::ratio(int &it,int &thold)
 {
 	VI &vt = isaccept[it];
@@ -278,11 +259,11 @@ VI mydata::ratio(int &it,int &thold)
 	{
 		std::unordered_set<int> set;
 		rowdata here{0,it,0,0};
-		auto s = std::lower_bound(sorti.begin(),sorti.end(),&here,compi);
-		while( s<sorti.end() && (*s)->item == it)
+		auto s = std::lower_bound(sorti.begin(),sorti.end(),here,compi);
+		while( s<sorti.end() && (s)->item == it)
 		{
-			if( (*s)->result == 1 )
-			   set.insert( (*s)->user );
+			if( (s)->result == 1 )
+			   set.insert( (s)->user );
 			++s;
 		}
 		vt.resize( set.size() );
@@ -307,8 +288,8 @@ VI mydata::findtime_item(int& it,VI& us)
 {
 	std::unordered_set<int> set;
 	rowdata here{0,it,0,0};
-	auto is = std::lower_bound(sortiu.begin(),sortiu.end(),&here,compi),
-		 ie = std::upper_bound(sortiu.begin(),sortiu.end(),&here,compi);
+	auto is = std::lower_bound(sortiu.begin(),sortiu.end(),here,compi),
+		 ie = std::upper_bound(sortiu.begin(),sortiu.end(),here,compi);
 	
 	if(!issortu.count(it)){ // is sorted ?
 		std::stable_sort(is,ie,compu);
@@ -318,16 +299,15 @@ VI mydata::findtime_item(int& it,VI& us)
 	for(int &i:us)
 	{
 		here.user = i ;
-		auto s = std::lower_bound(is,ie,&here,compu);
-		while(s<ie && (*s)->user==i )
-			set.insert( (*s++)->time );
+		auto s = std::lower_bound(is,ie,here,compu);
+		while(s<ie && (s)->user==i )
+			set.insert( (s++)->time );
 	}
 
 	VI ans(set.begin(),set.end());
 	std::sort(ans.begin(),ans.end());
 	return ans;
 }
-
 
 void display(VI ans)
 {
@@ -395,6 +375,7 @@ int main()
 //				puts("findtime_item");
 				VI us;
 				scanf("%d",&i);
+				// it can be quickker but i don't want
 				string s;
 				getline(cin,s); // read a line of interger
 				std::istringstream iss(s);
