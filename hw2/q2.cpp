@@ -79,7 +79,7 @@ public:
 void mydata::quickin(rowdata *d,char *ch)
 {
 	int t=0,now=0;
-	for(int i=0;;++i)
+	for(int i=0;ch[i];++i)
 		switch(ch[i])
 		{
 			case '0': case '1': case '2': case '3': case '4': case '5': case '6': case '7': case '8': case '9':
@@ -87,7 +87,6 @@ void mydata::quickin(rowdata *d,char *ch)
 				break;
 			case '-':
 				t=-1;++i;break;
-			case 0:break;
 			default:
 			{
 				switch(now)
@@ -296,12 +295,18 @@ VI mydata::findtime_item(int& it,VI& us)
 		issortu.insert(it);
 	}
 
+	std::sort(us.begin(),us.end());// remove depulicated
+	int bef=-1;
 	for(int &i:us)
 	{
-		here.user = i ;
-		auto s = std::lower_bound(is,ie,here,compu);
-		while(s<ie && (s)->user==i )
-			set.insert( (s++)->time );
+		if(i==bef)
+			continue;
+		bef  = here.user = i ;
+		is = std::lower_bound(is,ie,here,compu);
+		while(is<ie && (is)->user==i )
+			set.insert( (is++)->time );
+		if(is == ie)
+			break;
 	}
 
 	VI ans(set.begin(),set.end());
@@ -316,6 +321,30 @@ void display(VI ans)
 	if(!ans.size())
 		puts("EMPTY");
 }
+
+VI myline()
+{
+	VI ans;
+	string ch; 
+	getline(std::cin,ch);
+	ch.push_back(' ');// for the last one
+	int t=0,n=ch.size();
+	for(int i=0;i<n;++i)
+		switch(ch[i])
+		{
+			case '0': case '1': case '2': case '3': case '4': case '5': case '6': case '7': case '8': case '9':
+				t = t*10 + ch[i]-'0';
+				break;
+			default:
+			{
+				if(t)//because t must be correct
+					ans.push_back(t);
+				t=0;
+			}
+		}
+	return ans;
+}
+
 
 
 int main()
@@ -373,16 +402,8 @@ int main()
 			{
 				int i;
 //				puts("findtime_item");
-				VI us;
 				scanf("%d",&i);
-				// it can be quickker but i don't want
-				string s;
-				getline(cin,s); // read a line of interger
-				std::istringstream iss(s);
-				int x;
-				while(iss>>x)
-					us.push_back(x);
-					
+				VI us = myline();
 				display( my.findtime_item(i,us) );
 				break;
 			}
