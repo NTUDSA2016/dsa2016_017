@@ -296,17 +296,19 @@ VI mydata::findtime_item(int& it,VI& us)
 	}
 
 	std::sort(us.begin(),us.end());// remove depulicated
-	int bef=-1;
 	for(int &i:us)
 	{
-		if(i==bef)
+		if( is == ie)
+			break;
+		else if((is)->user>i)
 			continue;
-		bef  = here.user = i ;
-		is = std::lower_bound(is,ie,here,compu);
+		else if((is)->user < i)//!=
+		{
+			here.user = i ;
+			is = std::lower_bound(is,ie,here,compu);
+		}
 		while(is<ie && (is)->user==i )
 			set.insert( (is++)->time );
-		if(is == ie)
-			break;
 	}
 
 	VI ans(set.begin(),set.end());

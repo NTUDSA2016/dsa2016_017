@@ -1,7 +1,7 @@
 #HW2
 ## how to use
 if you type `make` , it will compile it with O3
-if you don't want and want to use O0 , type `make normal`
+if you don't want and want to use O3 , type `make normal`
 and type `make run` to run the program
 
 ##my data struct
@@ -81,8 +81,9 @@ and use the map to record if the interval is sorted by user .(log T )(T small th
 The max of Q is 8375857
 
 In the interval
+sort for input user (Us log Us)
 Binary search by user and we will get all times(US log Q)
-Use set to store it and linear output to an array (Q + QlogQ)
+Use set to store it and linear output to an array and sort it (Q + QlogQ)
 
 ## That's All
 thanks 2016/3/21 2:05
