@@ -2,7 +2,16 @@
 
 #define MM 120
 #define VI std::vector<int>
+#define VII std::vector< std::pair<int,int> >
 using std::string;
+
+int *st_arr ,st_wh[MM],st_m;
+VII stat[2];
+VI st_lim;
+
+void to_statical();
+bool canput();
+void must(int);
 
 struct nono
 {
@@ -14,13 +23,8 @@ struct nono
 	void limit_input();
 	void OUTPUT();
 
-#define VII std::vector< std::pair<int,int> >
 
 	void law();
-	void to_statical(int*, VII*);
-	bool canput(VII*, VI&);
-	void mustare(int*, VII*, VI&);
-	void mustnot(int*, VII*, VI&);
 
 }gram[2];
 
@@ -60,89 +64,122 @@ void nono::OUTPUT()
 
 void nono::law()
 {
-	VII v[2];// 0 -> can put  1-> is put , [first,second) 
 	for(int i=0;i<n;++i)
 	{
-		int *arr = map[i];
-		to_statical(arr,v);
-//			mustare(arr,v,row[i]);
-//			mustnot(arr,v,row[i]);
+		st_arr = map[i];
+		st_lim = row[i];// copy no very good
+		st_m   = m ;
+		must(1);
+		must(-1);
 	}
 }
 
-void nono::to_statical(int *arr, VII *v)
+void to_statical()
 {
-	v[0].clear();v[1].clear();// 0 1 no -1
-	int bef=-1;
-	for(int i=0;i<m;++i)
+	stat[0].clear();stat[1].clear();// 0 1 no -1
+	int wh = 0,
+		bef=-1;
+	for(int i=0;i<st_m;++i)
 	{
-		if( bef < arr[i])
-		{
-			v[ arr[i] ].push_back( std::make_pair(i,i) );
-			if(bef == -arr[i] )
-				v[0].push_back( std::make_pair(i,i) );
-		}
+		int &now = st_arr[i];
+		if( now==-1 && bef!=-1)
+			++wh;
+		else if( bef < now)
+			for(int j=bef+1;j<=now;++j)
+				stat[ j ].push_back( std::make_pair(i,i) );
 
-		for(int j=0;j<=arr[i];++j)
-			v[j].back().second=i;
-		bef = arr[i];
+		for(int j=0;j<=now;++j)
+			stat[j].back().second=i;
+		bef = now;
+		st_wh[i] = wh ;
 	}
 
-	for(auto &i:v[0])
+	for(auto &i:stat[0])
 		++i.second;
-	for(auto &i:v[1])
+	for(auto &i:stat[1])
 		++i.second;
 }
 
-bool nono::dfs_pair(VII *v,VI &lim,int v0,int v1,int l1,int now)
+bool putleft(int l,int& now)
+{
+	if(now >= stat[0].back().second)
+		return 0;// no way to placed
+	int v0 = st_wh[now]; // v0 must < stat[0].size()
+	if( now < stat[0][v0].first )
+		now = stat[0][v0].first ;
+	while(stat[0][v0].second - now < l )
+	{
+		++v0;
+		if(v0 == stat[0].size() )
+			return 0;//end 
+		now = stat[0][v0].first;
+	}
+	now += l+1 ;
+	return 1;
+}
+
+#define MAXX(a,b,c) std::max(std::max(a,b),c)
+bool dfs_pair(int v1,int l1,int now)
 {
 	//pair is over
-	if(v1==v[1].size())
+	if(v1==stat[1].size())
 	{
 		// make sure all the limit can be placed
-		for(l1;l1<lim.size();++l1)
-		{
-			if(v0 == v[0].size() )
+		for(l1;l1<st_lim.size();++l1)
+			if ( !putleft(st_lim[l1],now) )
 				return 0;
-			while(v[0][v0].second - now < lim[l1] )
-			{
-				++v0;
-				if(v0 == v[0].size() )
-					return 0;
-				now = v[0][v0].first;
-			}
-			now += lim[i]+1 ;
-		}
 		return 1;
 	}
 
 	//start 
-	for(l1;l1<lim.size();++l1)
+	int v0 = st_wh[ stat[1][v1].first ];
+	std::pair<int,int> &v = stat[0][v0];
+	for(l1;l1<st_lim.size();++l1)
 	{
 		//start pair
-		if( lim[l1] >= v[1][v1].second - v[1][v1].first)
+		int &lim = st_lim[l1];
+		for(int i=v1;i<stat[1].size() && 
+				st_wh[ stat[1][i].first ]==v0 &&  // a group
+				stat[1][i].second - stat[1][v1].first <= lim ;// small than limit
+				++i)
 		{
-//			int s = std::max( v[1][v1].second - lim[l1] , v[0][v0]);
+			int here = MAXX(now,v.first,stat[1][i].second-lim);
+			if(here+lim>v.second)  // to big 
+				break;
+			if( i+1 < stat[1].size() && here+lim >= stat[1][i+1].first )
+				continue; //cover another 
+			if( dfs_pair(i+1,l1+1,here+lim+1) ) // recursive
+				return 1;
 		}
-		else // not pair
-		{
-		}
+
+		// not pair
+		if(!putleft(lim,now))   
+			return 0;
+		if( now > stat[1][v1].first ) // not touch to v1
+			return 0; 
 	}
 	
-		
+	return 0;
 }
-		// be sure the all of the right of l1 can be placed
-
-bool nono::canput(VII *v,VI &lim)
+bool canput()
 {
-	return  dfs_pair(v,lim,0,0,0,0) ;
+	return  dfs_pair(0,0,0) ;
 }
 
-	
-		
+void must(int it)
+{
+	for(int i=0;i<st_m;++i)
+		if( st_arr[i] == 0)
+		{
+			st_arr[i] = -it;
+			to_statical();
+			if( !canput() )
+				st_arr[i] = it;
+			else
+				st_arr[i] = 0;
+		}
+}
 
-//	void mustare(int* arr, VII *v)
-//	{
 		
 
 void INPUT()
@@ -159,16 +196,29 @@ void INPUT()
 
 void test()
 {
-	VII v[2];int c[1000],n;
+/*
+	int n;
 	scanf("%d",&n);
-	gram[0].m = n;
-	for(int i=0;i<n;++i)scanf("%d",c+i);
-	gram[0].to_statical(c,v);
-	for( auto i:v[0])
+	st_arr = new int [n];
+	for(int i=0;i<n;++i)scanf("%d",st_arr+i);
+	to_statical(n);
+	for( auto i:stat[0])
 		printf("%d %d\n",i.first,i.second);
 	puts("");
-	for( auto i:v[1])
+	for( auto i:stat[1])
 		printf("%d %d\n",i.first,i.second);
+	for(int i=0;i<n;++i)
+		printf("%d ",st_wh[i]);
+	puts("");
+
+	int m,now=0;
+	while(~scanf("%d",&m) )
+	{
+		printf("%d ", putleft(m,now) );
+		printf("%d\n",now);
+	}
+*/
+
 	exit(0);
 }
 
