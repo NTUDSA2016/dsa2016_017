@@ -12,15 +12,18 @@ VI st_lim;
 void to_statical();
 bool canput();
 void must(int);
+void smart_solve();
 
 struct nono
 {
 	int map[MM][MM];
 	int n,m;
+	bool en[MM];
 	VI row[MM];
 
 	void init(int &,int &);
 	void limit_input();
+	bool copymap(nono&); 
 	void OUTPUT();
 
 
@@ -34,6 +37,8 @@ void nono::init(int &_n,int &_m)
 	for(int i=0;i<n;++i)
 		for(int j=0;j<m;++j)
 			map[i][j] = 0 ;
+	for(int i=0;i<n;++i)
+		en[i]=true;
 }
 
 void nono::limit_input()
@@ -48,6 +53,21 @@ void nono::limit_input()
 		while( iss >> t)
 			row[i].push_back(t);
 	}
+}
+
+bool nono::copymap(nono &o)
+{
+	for(int i=0;i<n;++i)
+		for(int j=0;j<m;++j)
+			if( map[i][j] != o.map[j][i])
+			{
+				map[i][j] = o.map[j][i] ;
+				en[i]=true;
+			}
+	for(int i=0;i<n;++i)
+		if( en[i] )
+			return 1;
+	return 0;//no change
 }
 
 void nono::OUTPUT()
@@ -65,13 +85,15 @@ void nono::OUTPUT()
 void nono::law()
 {
 	for(int i=0;i<n;++i)
-	{
-		st_arr = map[i];
-		st_lim = row[i];// copy no very good
-		st_m   = m ;
-		must(1);
-		must(-1);
-	}
+		if(en[i])
+		{
+			st_arr = map[i];
+			st_lim = row[i];// copy no very good
+			st_m   = m ;
+			must(1);
+			must(-1);
+			en[i]=false;
+		}
 }
 
 void to_statical()
@@ -196,37 +218,24 @@ void INPUT()
 
 void test()
 {
-/*
-	int n;
-	scanf("%d",&n);
-	st_arr = new int [n];
-	for(int i=0;i<n;++i)scanf("%d",st_arr+i);
-	to_statical(n);
-	for( auto i:stat[0])
-		printf("%d %d\n",i.first,i.second);
-	puts("");
-	for( auto i:stat[1])
-		printf("%d %d\n",i.first,i.second);
-	for(int i=0;i<n;++i)
-		printf("%d ",st_wh[i]);
-	puts("");
-
-	int m,now=0;
-	while(~scanf("%d",&m) )
-	{
-		printf("%d ", putleft(m,now) );
-		printf("%d\n",now);
-	}
-*/
-
 	exit(0);
 }
 
+void smart_solve()
+{
+	int now=1;
+	do
+	{
+		now = !now;
+		gram[now].law();
+	}while( gram[!now].copymap( gram[now] ) );
+	gram[0].copymap( gram[1] );
+}
 
 int main()
 {
 //	test();
 	INPUT();
-	gram[0].law();
+	smart_solve();
 	gram[0].OUTPUT();
 };
