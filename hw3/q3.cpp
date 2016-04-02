@@ -2,17 +2,17 @@
 
 #define MM 120
 #define VI std::vector<int>
-#define VII std::vector< std::pair<int,int> >
 using std::string;
 
 int *st_arr ,st_wh[MM],st_m;
-VII stat[2];
+std::vector< std::pair<int,int> > stat[2];
 VI st_lim;
 
 void to_statical();
 bool canput();
 void must(int);
 void smart_solve();
+bool iscorrect();
 
 struct nono
 {
@@ -23,8 +23,11 @@ struct nono
 
 	void init(int &,int &);
 	void limit_input();
+	void copyout(int&);
 	bool copymap(nono&); 
 	void OUTPUT();
+	bool check();
+	bool isdone();
 
 
 	void law();
@@ -70,6 +73,13 @@ bool nono::copymap(nono &o)
 	return 0;//no change
 }
 
+void nono::copyout(int &i)
+{
+	st_arr = map[i];
+	st_lim = row[i];// copy no very good
+	st_m   = m ;
+}
+
 void nono::OUTPUT()
 {
 	for(int i=0;i<n;++i,puts(""))
@@ -82,14 +92,36 @@ void nono::OUTPUT()
 			}
 }
 
+bool nono::check()
+{
+	for(int i=0;i<n;++i)
+	{
+		copyout(i);
+		to_statical();
+		if(st_lim.size() != stat[1].size() )
+			return 0;
+		for(int i=0;i<st_lim.size();++i)
+			if ( st_lim[i] != stat[1][i].second - stat[1][i].first)
+				return 0;
+	}
+	return 1;
+}
+
+bool nono::isdone()
+{
+	for(int i=0;i<n;++i)
+		for(int j=0;j<m;++j)
+			if(map[i][j] == 0)
+				return 0;
+	return 1;
+}
+
 void nono::law()
 {
 	for(int i=0;i<n;++i)
 		if(en[i])
 		{
-			st_arr = map[i];
-			st_lim = row[i];// copy no very good
-			st_m   = m ;
+			copyout(i);
 			must(1);
 			must(-1);
 			en[i]=false;
@@ -216,6 +248,16 @@ void INPUT()
 	gram[1].limit_input();
 }
 
+bool iscorrect()
+{
+	if( !gram[0].check() )
+		return 0;
+	gram[1].copymap(gram[0]);
+	if( !gram[1].check() )
+		return 0;
+	return 1;
+}
+
 void test()
 {
 	exit(0);
@@ -228,14 +270,87 @@ void smart_solve()
 	{
 		now = !now;
 		gram[now].law();
+//		gram[now].OUTPUT();
+//		puts("");
 	}while( gram[!now].copymap( gram[now] ) );
-	gram[0].copymap( gram[1] );
+	// gram 0 1  is the same
+}
+
+int dfs_n,dfs_m;
+bool dfs_nono(int x,int y)
+{
+	nono &g = gram[0];
+	int has=0;
+	int map[ dfs_n ][ dfs_m ];
+	while(1)
+	{
+		// find the 0 in the map
+		while(y>=dfs_m || x>=dfs_n || g.map[x][y]!=0)
+		{
+			++y;
+			if(y>=dfs_m)
+				++x,y=0;
+			if(x>=dfs_n)
+			{
+				if(has==0)
+					return 1;
+				else
+					return 0;
+			}
+		}
+		++has; // find one
+		// test is ok to put -1;
+		g.map[x][y] = -1 ;
+		g.copyout(x);
+		to_statical();
+		if(canput())
+		{
+			// copy one n*m
+			for(int i=0;i<dfs_n;++i) 
+				for(int j=0;j<dfs_m;++j)
+					map[i][j] = g.map[i][j];
+		
+			// why not just enable one , because when retraveal here the en is bad
+			for(int i=0;i<dfs_n;++i)
+				gram[0].en[i]=1;
+			for(int i=0;i<dfs_m;++i)
+				gram[1].en[i]=1;
+			smart_solve();
+			if( gram[0].isdone())
+				if( iscorrect() )
+					return 1;
+				else
+					return 0;
+			else if( dfs_nono(x,y+1) )
+				return 1;// correct
+			
+			// not correct restore the map
+			for(int i=0;i<dfs_n;++i) // 
+				for(int j=0;j<dfs_m;++j)
+					g.map[i][j] = map[i][j] ;
+		}
+		g.map[x][y++]=0;
+	}
+}
+
+
+bool solve()
+{
+	smart_solve();
+	dfs_n = gram[0].n;
+	dfs_m = gram[0].m;
+	if( !gram[0].isdone() )
+		if( !dfs_nono(0,0) )
+			return 0;
+	return iscorrect();
 }
 
 int main()
 {
 //	test();
 	INPUT();
-	smart_solve();
+	if ( !solve() )
+		puts("error");
 	gram[0].OUTPUT();
+
 };
