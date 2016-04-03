@@ -4,7 +4,7 @@
 #define VI std::vector<int>
 using std::string;
 
-char *st_arr ;
+char *st_arr; 
 int st_wh[MM],st_m;
 std::vector< std::pair<int,int> > stat[2];
 VI st_lim;
@@ -53,12 +53,11 @@ void nono::limit_input()
 	for(int i=0;i<n;++i)
 	{
 		row[i].clear();
-		std::string s;
-		getline(std::cin,s);
-		std::istringstream iss(s);
-		int t;
-		while( iss >> t)
-			row[i].push_back(t);
+		copyout(i);
+		to_statical();
+		for(int j=0;j<stat[1].size();++j)
+			row[i].push_back( stat[1][j].second - stat[1][j].first);
+
 	}
 }
 
@@ -240,14 +239,24 @@ void must(int it)
 
 void INPUT()
 {
-	int n,m;
-	scanf("%d%d",&n,&m);
-	std::cin.ignore(INT_MAX,'\n');//first newline
+	int n = rand()%50+1;
+	int m = rand()%50+1;
 
 	gram[0].init(n,m);
 	gram[1].init(m,n);
+
+	int k = rand()%(n*m);
+	while(k--)
+	{
+		int  x = rand()%n , y= rand()%m ;
+		gram[0].map[x][y] = 1;
+	}
 	gram[0].limit_input();
+	gram[1].copymap(gram[0]);
 	gram[1].limit_input();
+
+	gram[0].init(n,m);
+	gram[1].init(m,n);
 }
 
 bool iscorrect()
@@ -278,11 +287,35 @@ void smart_solve()
 	// gram 0 1  is the same
 }
 
+int late=0,wrong=0;
+void filein(int a)
+{
+	if(late>42 || wrong>42)
+		exit(0);
+	char c[100];
+	if(a==0)
+		sprintf(c,"late%d",late++);
+	else 
+		sprintf(c,"wrong%d",wrong++);
+	FILE *f = fopen(c,"w");
+	fprintf(f,"%d %d\n",gram[0].n,gram[0].m);
+	for(int k=0;k<2;++k)
+		for(int i=0;i<gram[k].n;++i,fprintf(f,"\n"))
+			for(int &j:gram[k].row[i])
+				fprintf(f,"%d ",j);
+	fclose(f);
+}
 
+float t =((float)clock()/CLOCKS_PER_SEC);
 bool dfs_nono(int x,int y)
 {
-	static int ti=0;
-	printf("%d\n",ti++);
+	if( ((float)clock()/CLOCKS_PER_SEC) - t > 2 )
+	{
+		filein(0);
+		return 1;
+	}
+//	static int ti=0;
+//	printf("%d\n",ti++);
 	nono &g = gram[0];
 	nono no;
 	while(1)
@@ -324,6 +357,7 @@ bool dfs_nono(int x,int y)
 	}
 }
 
+
 bool solve()
 {
 	smart_solve();
@@ -337,12 +371,23 @@ bool solve()
 	return iscorrect();
 }
 
+
 int main()
 {
 //	test();
-	INPUT();
-	if ( !solve() )
-		puts("error");
-	gram[0].OUTPUT();
+	srand(time(NULL));
 
+	int ti=0;
+
+	while(1)
+	{
+		INPUT();
+//		filein(2);
+		t =((float)clock()/CLOCKS_PER_SEC);
+		int k  = solve();
+//		gram[0].OUTPUT();
+		if( ((float)clock()/CLOCKS_PER_SEC) - t <= 2 && !k )
+			filein(1);
+		printf("%d\n",ti++);
+	}
 };

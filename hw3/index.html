@@ -1,0 +1,127 @@
+<script>
+function editfile() {
+        var keycode = event.keyCode;
+        if (keycode==120) {
+                document.location="editfile.asp?FileName=/jang/courses/dsa/homework/2016/hw03/index.asp"
+        }
+}
+</script>
+<script>document.onkeydown=editfile;</script>
+
+<script src="/jang/js/lib/utility4webClient.js"></script>
+
+<!-- For using MathJax?? -->
+<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<html>
+<head>
+	<title>DSA Homework 3</title>
+	<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=big5">
+	<style>
+		td {font-family: "標楷體", "helvetica,arial", "Tahoma"}
+		A:link {text-decoration: none}
+		A:hover {text-decoration: underline}
+	</style>
+</head>
+
+<body background="/jang/graphics/background/yellow.gif">
+<!font face="標楷體">
+
+<center>
+<h2><a href="/jang/courses/dsa">DSA</a> Homework 3</h2>
+<h3><a href="/jang">Roger Jang</a></h3>
+</center>
+
+<hr>
+<strong>Due date: <font color=red>20160417 23:59:59</font></strong>
+<hr>
+
+This homework include a hand-written part and a programming part. For the hand-written part, you can use any theorems in the textbook and any theorems on the class slides as the foundation of your proof. You cannot use any other theorems unless you prove them first. Here is the hand-written part:
+
+<ol>
+<li> (5%) (Exercise R-4.24 of the textbook) Show that if d(n) is O(f(n)) and e(n) is O(g(n)), then d(n)-e(n) is not necessarily O(f(n)-g(n)).
+<li> (5%) (Exercise C-4.8 of the textbook. Note that you need to prove it!) Give an example of a positive function f(n) such that f(n) is neither O(n) nor <font face=symbol>W</font>(n).
+<li> (5%) Prove or disapprove the following statement. “For non-negative functions f, g, h, if f(n) = O(g(n)), then f(n) + h(n) = O(g(n) + h(n)).”
+<li> (5%) (Exercise R-4.7 of the textbook) The number of operations executed by algorithms A and B is $8 n \log n$ and $2n^2$, respectively. Determine $n_0$ such that A is better than B for $n \geq n_0$.
+</ol>
+
+The following is the programming part, which accounts for 80% of the homework.
+
+<h3 align=center>Nonograms (Maze traversal)</h3>
+
+<h4><img src="/jang/graphics/dots/redball.gif">Problem definition</h4>
+<p>In this homework, you need to write a program to solve the game of nonogram.
+	More info about the game can be found at Wikipedia (<a href="https://en.wikipedia.org/wiki/Nonogram">English</a>, <a href="https://zh.wikipedia.org/wiki/Nonogram">Chinese</a>).
+	You can also google "nonogram" or "picross" to find interactive pages to play the game, such as <a target=_blank href="http://www.puzzle-nonograms.com/">this one</a>.
+<p>Write a program to output the map based on the input criteria.
+	The input has the following format:
+<xmp>
+m n ← The numbers of rows and columns of the bit map (matrix)
+a11 a12 . . . . . .  ← lengths of unbroken lines in row 1
+a21 a22 . . . . . .  ← lengths of unbroken lines in row 2
+.
+.
+.
+am1 am2 . . . . . .  ← lengths of unbroken lines in row m
+b11 b12 . . . . . .  ← lengths of unbroken lines in column 1
+b21 b22 . . . . . .  ← lengths of unbroken lines in column 2
+.
+.
+.
+bn1 bn2 . . . . . .  ← lengths of unbroken lines in column m
+</xmp>
+<p>The output format is as shown in the following test cases.
+
+<p>Here are some examples of nonograms:
+<script>showImage("http://twanvl.nl/image/nonogram/nonogram-lambda1.png", '', 100)</script>
+<script>showImage("http://en.japonskie.ru/pics/full/panda_3.gif", '', 100)</script>
+<script>showImage("http://en.japonskie.ru/pics/full/dzhek_vorobey.gif", '', 100)</script>
+
+<p>One way to solve the problem is shown <a href="http://www.twanvl.nl/blog/haskell/Nonograms">here</a>. You can find many different methods, from simple to complex ones, to solve the problem.
+
+<h4><img src="/jang/graphics/dots/redball.gif">Requirements & suggestions</h4>
+<ul>
+<li>To solve the problem, you can simply use the maze traversal technique covered in the class, which uses a stack for DFS (depth first search).
+<li>Since there is a time limit, brutal use of DFS may takes too long. So you should try the following strategies:
+	<ol type=a>
+	<li>Try to create an good initial guess of the map. Sometimes the initial guess can lead you to the answer directly. (Hint is <a href="">here</a>. Try it systematically for each row and each column repeatedly until the map converges. Try it over the tree example in the test cases to make sure you understand the process.)
+	<li>Start DFS if the initial guess does not lead to an answer. But remember to cut down as many infeasible braches as you can during DFS.
+	</ol>
+	If you are clueless about these strategies, please consult TAs ASAP.
+<li>You can safely assume that
+	<ol type=a>
+	<li>0 < m, n < 101.
+	<li>Each row and each column should have at least a black tile.
+	</ol>
+<li>Your program should take the input from the standard input and send the output to the standard output.
+<li>The output may not be unique. As long as the output fulfils the given input, it is counted as a correct answer.
+<li>TAs will use 10 test cases (with 5 out of the following 8 open test cases) to test the correctness of your program, with a time limit of 10 seconds for each case.
+</ul>
+
+<h4><img src="/jang/graphics/dots/redball.gif">Test cases</h4>
+<ol>
+<li>Simplest (3x2):		<a href="simplest_input.txt">input</a>, <a href="simplest_output.txt">output</a>			<script>showImage("simplest.png", '', 100)</script>		
+<li>Checker board (4x4):<a href="checkerBoard_input.txt">input</a>, <a href="checkerBoard_output.txt">output</a>	<script>showImage("checkerBoard.png", '', 100)</script>	
+<li>Tree (5x5):			<a href="tree_input.txt">input</a>, <a href="tree_output.txt">output</a>					<script>showImage("tree.png", '', 100)</script>
+<li>Pig face (14x13):	<a href="pigFace_input.txt">input</a>, <a href="pigFace_output.txt">output</a>				<script>showImage("pigFace.png", '', 100)</script>
+<li>Scorpion (20x20):	<a href="scorpion_input.txt">input</a>, <a href="scorpion_output.txt">output</a>			<script>showImage("scorpion.png", '', 100)</script>
+<li>Beckham (20x20):	<a href="beckham_input.txt">input</a>, <a href="beckham_output.txt">output</a>				<script>showImage("beckham.png", '', 100)</script>
+<li>Smoke (20x20):		<a href="smoke_input.txt">input</a>, <a href="smoke_output.txt">output</a>					<script>showImage("smoke.png", '', 100)</script>
+<li>Cat (25x25):		<a href="cat_input.txt">input</a>, <a href="cat_output.txt">output</a>						<script>showImage("cat.png", '', 100)</script>
+<!--
+<li>Mickey (60x75):		<a href="mickey_input.txt">input</a>, <a href="mickey_output.txt">output</a>				<script>showImage("mickey.png", '', 100)</script>
+-->
+</ol>
+
+
+<hr>
+
+<script language="JavaScript">
+document.write("Last updated on " + document.lastModified + ".")
+</script>
+
+<a href="/jang/sandbox/asp/lib/editfile.asp?FileName=/jang/courses/dsa/homework/2016/hw03/index.asp"><img align=right border=0 src="/jang/graphics/invisible.gif"></a>
+</font>
+</body>
+</html>
