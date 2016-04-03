@@ -1,13 +1,13 @@
 #include<bits/stdc++.h>
 
-#define MM 101
+#define MM 30
 #define VI std::vector<int>
 using std::string;
 
 char *st_arr ;
 int st_wh[MM],st_m;
+VI *st_lim;//use pointer
 std::vector< std::pair<int,int> > stat[2];
-VI st_lim;
 
 void INPUT();
 void to_statical();
@@ -80,7 +80,7 @@ bool nono::copymap(nono &o)
 void nono::copyout(int &i)
 {
 	st_arr = map[i];
-	st_lim = row[i];// copy no very good
+	st_lim = row+i ;// copy no very good
 	st_m   = m ;
 }
 
@@ -102,10 +102,10 @@ bool nono::check()
 	{
 		copyout(i);
 		to_statical();
-		if(st_lim.size() != stat[1].size() )
+		if(st_lim->size() != stat[1].size() )
 			return 0;
-		for(int i=0;i<st_lim.size();++i)
-			if ( st_lim[i] != stat[1][i].second - stat[1][i].first)
+		for(int i=0;i<st_lim->size();++i)
+			if ( (*st_lim)[i] != stat[1][i].second - stat[1][i].first)
 				return 0;
 	}
 	return 1;
@@ -143,11 +143,19 @@ void to_statical()
 		if( now==-1 && bef!=-1)
 			++wh;
 		else if( bef < now)
-			for(int j=bef+1;j<=now;++j)
-				stat[ j ].push_back( std::make_pair(i,i) );
+		{
+			if(now==1)
+				stat[ 1 ].push_back( std::make_pair(i,i) );
+			if(bef==-1)
+				stat[ 0 ].push_back( std::make_pair(i,i) );
+		}
 
-		for(int j=0;j<=now;++j)
-			stat[j].back().second=i;
+		if( now >= 0 )
+		{
+			if(now==1)
+				stat[1].back().second=i;
+			stat[0].back().second=i;
+		}
 		bef = now;
 		st_wh[i] = wh ;
 	}
@@ -177,14 +185,70 @@ bool putleft(int l,int& now)
 }
 
 #define MAXX(a,b,c) std::max(std::max(a,b),c)
+bool dfs_pair1(int v1,int l1,int now)
+{
+	//pair is over
+	if(v1==stat[1].size())
+	{
+		// make sure all the limit can be placed
+		for(l1;l1<st_lim->size();++l1)
+			if ( !putleft((*st_lim)[l1],now) )
+				return 0;
+		return 1;
+	}
+	if(l1==st_lim->size())// no one can pair
+		return 0;
+	
+	//init
+	int v0 = st_wh[ stat[1][v1].first ];
+	std::pair<int,int> &v = stat[0][v0];
+
+	// put to left as possible
+	std::stack<int> s;
+	for(l1;l1<st_lim->size();++l1)
+	 {
+		s.push( now ) ;
+		if(!putleft((*st_lim)[l1],now))   
+			break;
+		if( now > stat[1][v1].first ) // not touch to v1
+			break;
+	 }
+	if(l1 == st_lim->size())
+		--l1;// no pop because it end 
+	
+	// start recursive
+	while( s.size() )
+	{
+		now = s.top();
+		//start pair
+		int &lim = (*st_lim)[l1];
+		for(int i=v1;i<stat[1].size() && 
+				st_wh[ stat[1][i].first ]==v0 &&  // a group
+				stat[1][i].second - stat[1][v1].first <= lim ;// small than limit
+				++i)
+		{
+			int here = MAXX(now,v.first,stat[1][i].second-lim);
+			if(here+lim>v.second)  // to big 
+				break;
+			if( i+1 < stat[1].size() && here+lim >= stat[1][i+1].first )
+				continue; //cover another 
+			if( dfs_pair1(i+1,l1+1,here+lim+1) ) // recursive
+				return 1;
+		}
+		s.pop();
+		--l1;
+	}
+	return 0;
+}
+
 bool dfs_pair(int v1,int l1,int now)
 {
 	//pair is over
 	if(v1==stat[1].size())
 	{
 		// make sure all the limit can be placed
-		for(l1;l1<st_lim.size();++l1)
-			if ( !putleft(st_lim[l1],now) )
+		for(l1;l1<st_lim->size();++l1)
+			if ( !putleft((*st_lim)[l1],now) )
 				return 0;
 		return 1;
 	}
@@ -192,10 +256,10 @@ bool dfs_pair(int v1,int l1,int now)
 	//start 
 	int v0 = st_wh[ stat[1][v1].first ];
 	std::pair<int,int> &v = stat[0][v0];
-	for(l1;l1<st_lim.size();++l1)
+	for(l1;l1<st_lim->size();++l1)
 	{
 		//start pair
-		int &lim = st_lim[l1];
+		int &lim = (*st_lim)[l1];
 		for(int i=v1;i<stat[1].size() && 
 				st_wh[ stat[1][i].first ]==v0 &&  // a group
 				stat[1][i].second - stat[1][v1].first <= lim ;// small than limit
@@ -244,6 +308,8 @@ void INPUT()
 	scanf("%d%d",&n,&m);
 	std::cin.ignore(INT_MAX,'\n');//first newline
 
+	stat[0].reserve(MM);// don't change size
+	stat[1].reserve(MM);
 	gram[0].init(n,m);
 	gram[1].init(m,n);
 	gram[0].limit_input();
@@ -254,7 +320,7 @@ bool iscorrect()
 {
 	if( !gram[0].check() )
 		return 0;
-	gram[1].copymap(gram[0]);
+//	gram[1].copymap(gram[0]); // not must because we do smart solve before it
 	if( !gram[1].check() )
 		return 0;
 	return 1;
@@ -279,12 +345,14 @@ void smart_solve()
 }
 
 
+nono stack_no[MM*MM];int stack_size;
+
 bool dfs_nono(int x,int y)
 {
-	static int ti=0;
-	printf("%d\n",ti++);
+//	static int ti=0;
+//	printf("%d\n",ti++);
 	nono &g = gram[0];
-	nono no;
+	nono &no = stack_no[stack_size++];// this is quicker
 	while(1)
 	{
 		// find the 0 in the map
@@ -294,7 +362,7 @@ bool dfs_nono(int x,int y)
 			if(y>=g.m)
 				++x,y=0;
 			if(x>=g.n)
-				return 0;// because if it is not find 0 it is correct
+				{ --stack_size; return 0;}// because if it is not find 0 it is correct 
 		}
 		// test is ok to put 1;
 		g.en[x]=1;
@@ -306,10 +374,10 @@ bool dfs_nono(int x,int y)
 		if( g.isdone())
 		{
 			if( iscorrect() )
-				return 1;
+				{--stack_size;return 1;}
 		}
 		else if( dfs_nono(x,y+1) )
-			return 1;// correct
+			{ --stack_size; return 1;}// correct
 		
 		// not correct restore the map
 		g = no;
@@ -318,9 +386,9 @@ bool dfs_nono(int x,int y)
 		smart_solve();
 		if( g.isdone())
 			if( iscorrect())
-				return 1;
+				{--stack_size;return 1;}
 			else
-				return 0;// previous is wrong
+				{--stack_size;return 0;}// previous is wrong
 	}
 }
 
@@ -331,6 +399,7 @@ bool solve()
 	{
 //		gram[0].OUTPUT();
 //		puts("goDFS");
+		stack_size =0 ;
 		if( !dfs_nono(0,0) )
 			return 0;
 	}
