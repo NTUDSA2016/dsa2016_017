@@ -8,6 +8,7 @@ char *st_arr ;
 int st_wh[MM],st_m;
 VI *st_lim;//use pointer
 std::vector< std::pair<int,int> > stat[2];
+int now_i,*now_count;
 
 void INPUT();
 void to_statical();
@@ -23,7 +24,7 @@ bool iscorrect();
 struct nono
 {
 	char map[MM][MM];
-	int n,m;
+	int n,m,count;
 	bool en[MM];
 	VI row[MM];
 
@@ -36,11 +37,12 @@ struct nono
 	bool isdone();
 	void law();
 
-}gram[2];
+}gram[2],*g_o;
 
 void nono::init(int &_n,int &_m)
 {
 	n = _n ; m = _m;
+	count = n*m ;
 	for(int i=0;i<n;++i)
 		for(int j=0;j<m;++j)
 			map[i][j] = 0 ;
@@ -64,17 +66,16 @@ void nono::limit_input()
 
 bool nono::copymap(nono &o)
 {
+	int tmp = count;
 	for(int i=0;i<n;++i)
 		for(int j=0;j<m;++j)
 			if( map[i][j] != o.map[j][i])
 			{
 				map[i][j] = o.map[j][i] ;
+				--count;
 				en[i]=true;
 			}
-	for(int i=0;i<n;++i)
-		if( en[i] )
-			return 1;
-	return 0;//no change
+	return count != tmp;//no change
 }
 
 void nono::copyout(int &i)
@@ -82,6 +83,8 @@ void nono::copyout(int &i)
 	st_arr = map[i];
 	st_lim = row+i ;// copy no very good
 	st_m   = m ;
+	now_count = &count;
+	now_i  = i ;
 }
 
 void nono::OUTPUT()
@@ -96,28 +99,32 @@ void nono::OUTPUT()
 			}
 }
 
-bool nono::check()
+bool nono::check()// isdone must do first
 {
-	for(int i=0;i<n;++i)
+	for(int i=0;i<n;++i)// change to be quicker but not important QQ
 	{
-		copyout(i);
-		to_statical();
-		if(st_lim->size() != stat[1].size() )
-			return 0;
-		for(int i=0;i<st_lim->size();++i)
-			if ( (*st_lim)[i] != stat[1][i].second - stat[1][i].first)
-				return 0;
+		int k=0;
+		char* mymap = map[i];
+		for(int j=0;j<m;++j)
+		{
+			int c=0;
+			while(j<m && mymap[j]==-1)
+				++j;
+			while(j<m && mymap[j]==1)
+				++j,++c;
+			if(c)
+				if( k==row[i].size() || row[i][k]!=c  )
+					return 0;
+				else
+					++k;
+		}
 	}
 	return 1;
 }
 
 bool nono::isdone()
 {
-	for(int i=0;i<n;++i)
-		for(int j=0;j<m;++j)
-			if(map[i][j] == 0)
-				return 0;
-	return 1;
+	return count==0;
 }
 
 void nono::law()
@@ -296,7 +303,14 @@ void must(int it)
 			st_arr[i] = -it;
 			to_statical();
 			if( !canput() )
+			{
 				st_arr[i] = it;
+				--*now_count;
+				// sync
+				g_o->en[i]=1;
+				g_o->map[i][now_i]=it;
+				g_o->count--;
+			}
 			else
 				st_arr[i] = 0;
 		}
@@ -333,26 +347,31 @@ void test()
 
 void smart_solve()
 {
-	int now=1;
+	int now,t;
+	g_o = gram+1;
+	gram[now=0].law();
 	do
 	{
-		now = !now;
+		g_o = gram+now;
+		now= !now;
+		t = gram[now].count;
 		gram[now].law();
-//		gram[now].OUTPUT();
-//		puts("");
-	}while( gram[!now].copymap( gram[now] ) );
+	}while( t != gram[now].count );
 	// gram 0 1  is the same
 }
 
 
-nono stack_no[MM*MM];int stack_size;
+nono stack_no[2*MM*MM];int stack_size;
 
 bool dfs_nono(int x,int y)
 {
 //	static int ti=0;
 //	printf("%d\n",ti++);
-	nono &g = gram[0];
-	nono &no = stack_no[stack_size++];// this is quicker
+	nono &g  = gram[0],
+		 &g1 = gram[1],
+		 &no = stack_no[2*stack_size  ],// this is quicker
+		 &no1= stack_no[2*stack_size+1];
+	++stack_size;
 	while(1)
 	{
 		// find the 0 in the map
@@ -365,9 +384,14 @@ bool dfs_nono(int x,int y)
 				{ --stack_size; return 0;}// because if it is not find 0 it is correct 
 		}
 		// test is ok to put 1;
-		g.en[x]=1;
-		g.map[x][y] = 1 ;
-		no = g;// copy one
+		g .en[x]=
+		g1.en[y]=1;
+		g .map[x][y] =
+		g1.map[y][x] = 1 ;
+		g .count--;
+		g1.count--;
+		no = g ;// copy one
+		no1= g1;// copy because count is bad  
 	
 		// it will always canput while smart solve is correct
 		smart_solve();
@@ -380,9 +404,12 @@ bool dfs_nono(int x,int y)
 			{ --stack_size; return 1;}// correct
 		
 		// not correct restore the map
-		g = no;
+		g = no ;
+		g1= no1;
 
-		g.map[x][y++]=-1;// so it is -1
+		g .map[x][y]=
+		g1.map[y][x]=-1;// so it is -1
+		++y;
 		smart_solve();
 		if( g.isdone())
 			if( iscorrect())
