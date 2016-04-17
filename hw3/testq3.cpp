@@ -434,8 +434,8 @@ bool solve()
 
 void testINPUT()
 {
-	int n = rand()%30+1;
-	int m = rand()%30+1;
+	int n = MM;
+	int m = MM;
 
 	nono t[2];
 	   t[0].init(n,m);
@@ -443,11 +443,18 @@ void testINPUT()
 	   t[1].init(m,n);
 	gram[1].init(m,n);
 
-	int k = rand()%(n*m);
-	while(k--)
-	{
-		t[0].map[rand()%n][rand()%m] = 1;
-	}
+	int all=m*n , c = (int)floor(all*0.56);
+	
+	c = rand()%(all-c) + c;
+	int arr[all];
+	for(int i=0;i<all;++i)
+		arr[i]=i;
+	for(int i=3*all;i>=0;--i)
+		std::swap(arr[rand()%all],arr[rand()%all]);
+
+	for(int i=0;i<c;++i)
+		t[0].map[arr[i]/m][arr[i]%m] = 1;
+
 	t[1].copymap(t[0]);
 
 	for(int k=0;k<2;++k)
@@ -471,7 +478,8 @@ int main()
 while(1)
 {
 	testINPUT();
-	printf("%d\n",ti++);
+	if(ti++%100000==0)
+		printf("%d\n",ti-1);
 	t =((float)clock()/CLOCKS_PER_SEC);
 	int k  = solve();
 	if( ((float)clock()/CLOCKS_PER_SEC) - t <= 10 && !k )
