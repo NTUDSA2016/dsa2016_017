@@ -15,36 +15,30 @@ struct Stock
 	}
 };
 
-#define Vstock  std::vector<Stock>
 #define PQstock std::priority_queue<Stock>
-
-int bidid=0;
+int tranid=0;
 
 void calbid(Stock &a,Stock &b)//buy sell
 {
 	int c = std::min( a.count, b.count);
 	a.count -= c;
 	b.count -= c;
-	printf("%d %d %d %d %d\n",bidid++,a.client,b.client,std::abs(b.price),c);
+	printf("%d %d %d %d %d\n",tranid++,a.client,b.client,std::abs(b.price),c);
 }
-
 
 void bid()
 {
 	PQstock q1,q2;
 	Stock tmp;
 	std::unordered_set<int> cancel;
-	int pre[1000];
-	for(int i=0;i<1000;++i)pre[i]=-1;
 
 	while( tmp.in() )
 	{
 		if( tmp.action == 2)
 		{
-			cancel.insert( pre[ tmp.client ] );
+			cancel.insert( tmp.price );
 			continue;
 		}
-		pre[tmp.client ] = tmp.id;
 		if( tmp.count==0)
 			continue; // nothing
 		// find bid 
@@ -55,6 +49,7 @@ void bid()
 			{
 				if( cancel.count( q2.top().id ) )
 				{
+					cancel.erase( q2.top().id);
 					q2.pop();
 					continue;// is canceled
 				}
@@ -71,6 +66,7 @@ void bid()
 			{
 				if( cancel.count( q1.top().id ) )
 				{
+					cancel.erase( q1.top().id);
 					q1.pop();
 					continue;//is canceled
 				}
@@ -95,10 +91,9 @@ void bid()
 	}
 }
 
-
 int main()
 {
-	bidid=0;
+	tranid=0;
 	bid();
 
 	return 0;
