@@ -33,9 +33,19 @@ void bid()
 {
 	PQstock q1,q2;
 	Stock tmp;
+	std::unordered_set<int> cancel;
+	int pre[1000];
+	for(int i=0;i<1000;++i)pre[i]=-1;
+
 	while( tmp.in() )
 	{
-		if(tmp.action == 2 || tmp.count==0)
+		if( tmp.action == 2)
+		{
+			cancel.insert( pre[ tmp.client ] );
+			continue;
+		}
+		pre[tmp.client ] = tmp.id;
+		if( tmp.count==0)
 			continue; // nothing
 		// find bid 
 		
@@ -43,6 +53,11 @@ void bid()
 		{
 			while( tmp.count && q2.size() && -q2.top().price <= tmp.price )
 			{
+				if( cancel.count( q2.top().id ) )
+				{
+					q2.pop();
+					continue;// is canceled
+				}
 				Stock q = q2.top();q2.pop();
 				calbid(tmp,q);
 				if(q.count )// nozero
@@ -54,6 +69,11 @@ void bid()
 		{
 			while( tmp.count && q1.size() && q1.top().price >= tmp.price )
 			{
+				if( cancel.count( q1.top().id ) )
+				{
+					q1.pop();
+					continue;//is canceled
+				}
 				Stock q = q1.top();q1.pop();
 				calbid(q,tmp);
 				if(q.count)// nozero
@@ -69,7 +89,7 @@ void bid()
 			q1.push(tmp);
 		else if( tmp.action == 1)//sell
 		{
-			tmp.price *= -1;
+			tmp.price *= -1;// because priority is biggest one
 			q2.push(tmp);
 		}
 	}
