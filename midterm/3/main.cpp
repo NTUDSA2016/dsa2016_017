@@ -20,7 +20,7 @@ int N,pe;
 
 void compare(int tree,int po1,int po2)
 {
-	printf("%d %d %d\n",tree,po1,po2);
+//	printf("%d %d %d\n",tree,po1,po2);
 	if( po1 >= po2 || pe==N)
 		return ;
 	for(int i=po1;i<po2;++i)
@@ -42,11 +42,11 @@ int main()
 	N = pre.size();
 	pe = 0;
 
-	compare(1,1,N);
+	compare(1,0,N);
 
 	int n = map.rbegin()->first;
-	if(n%2==0)++n;
-	for(int i=1;i<n;++i)
+	printf("-1 ");
+	for(int i=1;i<=n;++i)
 	{
 		if( map.count(i))
 			printf("%d ",map[i]);

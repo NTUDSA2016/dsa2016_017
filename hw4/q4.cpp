@@ -15,6 +15,126 @@ struct Stock
 	}
 };
 
+
+#define type Stock
+struct heapdata
+{
+	int index;
+	type dat;
+};
+
+class heap
+{
+	private:
+		std::vector<heapdata*> v;
+		std::unordered_map<int,heapdata*> map;
+		void godown(int);
+		void goup(int);
+		void swap(int,int);
+		void removeback();
+	public:
+		heap();
+		void pop();
+		void push(type);
+		type& top();
+		void remove(int);//remove the special one
+		int size();
+
+		void cancel(int );
+
+};
+
+int heap::size()
+{
+	return v.size()-1;
+}
+
+void heap::cancel(int i)
+{
+	if(map.count(i))
+		remove( map[i]->index );
+}
+
+void heap::goup(int i)
+{
+	while(i>1 && v[i>>1]->dat < v[i]->dat )
+	{
+		swap( i>>1 , i);
+		i = i>>1;
+	}
+}
+
+void heap::godown(int i)
+{
+	while(i*2 < v.size())
+	{
+		int k = i<<1;
+		if( k+1 < v.size() && v[k]->dat < v[k+1]->dat)
+			 ++k;
+		if( v[i]->dat < v[k]->dat)
+		{
+			swap(i,k);
+			i = k;
+		}
+		else
+			return ;
+	}
+}
+
+
+void heap::swap(int a,int b)
+{
+	std::swap(v[a],v[b]);
+	v[a]->index = a;
+	v[b]->index = b;
+}
+
+void heap::removeback()
+{
+	map.erase( v.back()->dat.id); // only this is associate with type
+	delete v.back();
+	v.pop_back();
+}
+
+heap::heap()
+{
+	for(int i=1;i<v.size();++i)
+		delete v[i];
+	v.clear();
+	v.push_back(NULL);// 0 no use
+}
+
+void heap::pop()
+{
+	remove(1);
+}
+
+void heap::push(type a)
+{
+	v.push_back( new heapdata{(int)v.size(),a} );
+	map[a.id] = v.back();  // this assoicate with type
+	goup( v.size()-1 );
+}
+
+type& heap::top()// be careful
+{
+	return v[1]->dat;// from 1
+}
+
+void heap::remove(int i)
+{
+	if( !i ) // 0 no use map not found
+		return ;
+	if( i == v.size()-1)// last one
+	{
+		removeback();
+		return ;
+	}
+	swap(i,v.size()-1);
+	removeback();
+	godown(i);
+}
+
 #define PQstock std::priority_queue<Stock>
 int tranid=0;
 
@@ -28,15 +148,15 @@ void calbid(Stock &a,Stock &b)//buy sell
 
 void bid()
 {
-	PQstock q1,q2;
+	heap q1,q2;
 	Stock tmp;
-	std::unordered_set<int> cancel;
 
 	while( tmp.in() )
 	{
 		if( tmp.action == 2)
 		{
-			cancel.insert( tmp.price );
+			q1.cancel( tmp.price );
+			q2.cancel( tmp.price );
 			continue;
 		}
 		if( tmp.count==0)
@@ -47,16 +167,10 @@ void bid()
 		{
 			while( tmp.count && q2.size() && -q2.top().price <= tmp.price )
 			{
-				if( cancel.count( q2.top().id ) )
-				{
-					cancel.erase( q2.top().id);
-					q2.pop();
-					continue;// is canceled
-				}
-				Stock q = q2.top();q2.pop();
+				Stock& q = q2.top();
 				calbid(tmp,q);
-				if(q.count )// nozero
-					q2.push(q);
+				if(!q.count)// zero
+					q2.pop();
 			}
 		}
 		
@@ -64,16 +178,10 @@ void bid()
 		{
 			while( tmp.count && q1.size() && q1.top().price >= tmp.price )
 			{
-				if( cancel.count( q1.top().id ) )
-				{
-					cancel.erase( q1.top().id);
-					q1.pop();
-					continue;//is canceled
-				}
-				Stock q = q1.top();q1.pop();
+				Stock& q = q1.top();
 				calbid(q,tmp);
-				if(q.count)// nozero
-					q1.push(q);
+				if(!q.count)// zero
+					q1.pop();
 			}
 		}
 
