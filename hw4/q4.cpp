@@ -144,7 +144,7 @@ void calbid(Stock &a,Stock &b)//buy sell
 	int c = std::min( a.count, b.count);
 	a.count -= c;
 	b.count -= c;
-	printf("%d %d %d %d %d\n",tranid++,a.client,b.client,std::abs(b.price),c);
+	printf("%d\t%d\t%d\t%d\t%d\n",tranid++,a.client,b.client,std::abs(b.price),c);
 }
 
 void bid()
