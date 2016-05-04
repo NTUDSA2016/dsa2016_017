@@ -11,7 +11,9 @@ struct Stock
 	
 	bool operator < (const Stock &b) const
 	{
-		return price < b.price ;
+		if( price !=  b.price)
+			return price < b.price ;
+		return id > b.id;
 	}
 };
 
@@ -98,8 +100,6 @@ void heap::removeback()
 
 heap::heap()
 {
-	for(int i=1;i<v.size();++i)
-		delete v[i];
 	v.clear();
 	v.push_back(NULL);// 0 no use
 }
@@ -133,6 +133,7 @@ void heap::remove(int i)
 	swap(i,v.size()-1);
 	removeback();
 	godown(i);
+	goup(i);
 }
 
 #define PQstock std::priority_queue<Stock>

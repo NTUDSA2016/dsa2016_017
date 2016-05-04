@@ -107,6 +107,7 @@ void heap::remove(int i)
 	if( i == v.size()-1)
 		return ;
 	godown(i);
+	goup(i);  // it may be go up 
 }
 
 
