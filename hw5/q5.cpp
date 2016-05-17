@@ -47,10 +47,12 @@ void Filetohashtable(std::string dir="dict")
 				max=len;
 		}
 	}
-	printf("%d\n",max);
+//	printf("%d\n",max);
 	fclose(f);
 //	fclose(fout);
 }
+
+
 
 // DP
 int DP_ED[wordLen][wordLen];
@@ -94,7 +96,7 @@ int EditDistance(char *ca,char *cb)
 	return DP_ED[Lenb][Lena];
 }
 
-char v_candi[1000000][wordLen];
+char v_candi[50000][wordLen];
 int candi_size;
 
 void makeED(char *c)
@@ -171,11 +173,9 @@ bool mycomp(char *a,char *b)
 void find(char *c)
 {
 	printf("%s ==>",c);
-	char *ans;
 
 	//correct
-	ans = getfromhash(c);
-	if(ans)
+	if(getfromhash(c))
 	{
 		puts(" OK");
 		return ;
@@ -189,15 +189,19 @@ void find(char *c)
 	//ED2
 	int tmpsize = candi_size;
 	for(int i=0;i<tmpsize;++i)
-		makeED(v_candi[i]);
-	
-	for(int i=0;i<candi_size;++i)
 	{
-		char *ans = getfromhash( v_candi[i] );
-		if(ans)
-			v.push_back(ans);
+		candi_size = tmpsize; // conserve memory
+		makeED(v_candi[i]);
+		for(int j=tmpsize;j<candi_size;++j)
+		{
+			char *ans = getfromhash( v_candi[j] );
+			if(ans)
+				v.push_back(ans);
+		}
 	}
 
+
+	// output
 	if(v.size())
 	{
 		std::sort(v.begin(),v.end(),mycomp);
@@ -213,11 +217,17 @@ void find(char *c)
 
 int main()
 {
-	Filetohashtable();
-	char ca[wordLen];
-	while(std::cin>> ca )
+	Filetohashtable("/tmp2/dsa2016_hw5/cmudict-0.7b");
+	char c[1000];
+	while( fgets(c,1000,stdin) )
 	{
-		find(ca);
+		for(int i=0;c[i];++i)
+			if(c[i]==' ' || c[i]=='\t' || c[i]=='\n')
+			{
+				c[i]='\0';
+				break;
+			}
+		find(c);
 	}
 	return 0;
 }
