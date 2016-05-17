@@ -1,4 +1,4 @@
-want = hw3
+want = hw5
 make:
 	scp $(want)/*.cpp b04611017@linux1.csie.ntu.edu.tw:~/$(want)/
 all:
