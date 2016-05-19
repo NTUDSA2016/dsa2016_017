@@ -1,15 +1,18 @@
 #include<bits/stdc++.h>
 #define ll long long 
-#define wordLen 36
+#define wordLen 40
 using std::string;
 
 char *hashTable[100000000];
+
+#define Hash_mult 2328211
+#define Hash_mod 99999989
 
 ll Gohash(char *c)
 {
 	ll sum=0;
 	for(int i=0;c[i];++i)
-		sum = (sum*2328211+c[i])%99999989;
+		sum = (sum*Hash_mult+c[i])%Hash_mod;
 	return sum;
 }
 
@@ -97,25 +100,34 @@ int EditDistance(char *ca,char *cb)
 }
 
 char v_candi[50000][wordLen];
+int hash_candi[50000];
 int candi_size;
 
 void makeED(char *c)
 {
 	int len = strlen(c);
+	ll h; 
+	ll hm=1;
 	char tmp;
 //	candi_size=0;
 
 	// substitude
-	for(int i=0;i<len;++i)
+	hm=1;
+	h = Gohash(c);
+	for(int i=len-1;i>=0;--i)
 	{
 		tmp = c[i];
+		h = ((h-(ll)hm*tmp)%Hash_mod+Hash_mod)%Hash_mod;
 		for(char j='a';j<='z';++j)
 			if(tmp !=j)
 			{
 				c[i]=j;
+				hash_candi[candi_size] = (h+(ll)j*hm)%Hash_mod;
 				strcpy(v_candi[candi_size++],c);
 			}
 		c[i] = tmp;
+		h = (h+(ll)hm*tmp)%Hash_mod;
+		hm = hm * Hash_mult % Hash_mod;
 	}
 
 	// delete
@@ -123,6 +135,7 @@ void makeED(char *c)
 	for(int i=len-1;i>=0;--i)
 	{
 		std::swap(c[i],tmp);
+		hash_candi[candi_size] = Gohash(c);
 		strcpy(v_candi[candi_size++],c);
 	}
 	for(int i=len-1;i>=0;--i)
@@ -130,31 +143,41 @@ void makeED(char *c)
 	c[0]=tmp;
 
 	//add
+	hm=1;
 	for(int i=len;i>=0;--i)
 	{
 		c[i+1] = c[i];
+		c[i]=1;
+		h = Gohash(c);
 		for(char j='a';j<='z';++j)
 		{
 			c[i]=j;
+			hash_candi[candi_size] = (h+(ll)(j-1)*hm)%Hash_mod;
 			strcpy(v_candi[candi_size++],c);
 		}
+		hm = hm * Hash_mult % Hash_mod;
 	}
 	for(int i=0;i<=len;++i)
 		c[i] = c[i+1];
 
 	//transpose
-	for(int i=1;i<len;++i)
+	h = Gohash(c);
+	hm=1;
+	for(int i=len-1;i>0;--i)
 	{
+		hash_candi[candi_size] = ( ( h + 
+				(ll)(c[i]-c[i-1])*hm%Hash_mod*Hash_mult%Hash_mod + 
+				(ll)(c[i-1]-c[i])*hm%Hash_mod) %Hash_mod + Hash_mod)%Hash_mod;
 		std::swap(c[i-1],c[i]);
 		strcpy(v_candi[candi_size++],c);
 		std::swap(c[i-1],c[i]);
+		hm = hm * Hash_mult % Hash_mod;
 	}
 
 }
 
-char* getfromhash(char *c)
+char* getfromhash(char *c,int h)
 {
-	int h = Gohash(c);
 	if( hashTable[h] == NULL)
 		return NULL;
 	else if( strcmp(hashTable[h],c)==0 )
@@ -175,26 +198,40 @@ void find(char *c)
 	printf("%s ==>",c);
 
 	//correct
-	if(getfromhash(c))
+	if(getfromhash(c,Gohash(c)))
 	{
 		puts(" OK");
 		return ;
+	}
+
+	// too long will have bug
+	// the max length of word in dict is 34
+	if( strlen(c) >36)
+	{
+		puts(" NONE");
+		return;
 	}
 
 	//ED1
 	std::vector<char *> v;
 	candi_size = 0;
 	makeED(c);
+	int tmpsize = candi_size;
+	for(int i=0;i<tmpsize;++i)
+	{
+		char *ans = getfromhash( v_candi[i] , hash_candi[i]);
+		if(ans)
+			v.push_back(ans);
+	}
 
 	//ED2
-	int tmpsize = candi_size;
 	for(int i=0;i<tmpsize;++i)
 	{
 		candi_size = tmpsize; // conserve memory
 		makeED(v_candi[i]);
 		for(int j=tmpsize;j<candi_size;++j)
 		{
-			char *ans = getfromhash( v_candi[j] );
+			char *ans = getfromhash( v_candi[j] , hash_candi[j]);
 			if(ans)
 				v.push_back(ans);
 		}
