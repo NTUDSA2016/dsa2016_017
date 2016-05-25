@@ -1,4 +1,4 @@
-want =  hw6
+want = project
 make:
 	scp $(want)/*.cpp b04611017@linux15.csie.ntu.edu.tw:~/$(want)/
 all:
