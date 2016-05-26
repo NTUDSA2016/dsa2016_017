@@ -208,45 +208,15 @@ void makeED(Sepword &s,int ed)
 	if(ed==2)
 	{
 		s.put_to_answer();
-//		s.print();
+		s.print();
+		printf("%d\n",s.hash);
 		return ;
 	}
-	//substitude
-	int tmp = 9-ed;// don't use same memory
-	for(int i=s.n-1;i>=0;--i)
-	{
-		s.swap(i,tmp);
-		for(int j=0;j<questionN;++j)
-		{
-			s.candi_in(i,j);
-			s.hash = Gohash(s.h,s.n);// can be improved
-//			s.print();
-			makeED(s,ed+1);
-		}
-		s.swap(i,tmp);
-	}
-
-	//add
-	++s.n;
-	for(int i=s.n-1;i>=0;--i)
-	{
-		s.swap(i,i+1);
-		for(int j=0;j<questionN;++j)
-		{
-			s.candi_in(i,j);
-			s.hash = Gohash(s.h,s.n);// can be improved
-//			s.print();
-			makeED(s,ed+1);
-		}
-	}
-	for(int i=0;i<s.n;++i)
-		s.swap(i,i+1);
-	--s.n;
-
-	//delete
 	if(s.n==0)
 		return ;
+	int tmp = 9-ed;// don't use same memory
 
+	//delete
 	--s.n;
 	for(int i=s.n;i>=0;--i)
 	{
@@ -258,6 +228,51 @@ void makeED(Sepword &s,int ed)
 	for(int i=0;i<=s.n;++i)
 		s.swap(i,tmp);
 	++s.n;
+
+	//substitude
+	if(s.n>5)
+		return ;
+	ll hm = 1;
+	ll h  = Gohash(s.h,s.n);// improved
+	for(int i=s.n-1;i>=0;--i)
+	{
+		h = ((h-hm*s.h[i])%Hash_mod+Hash_mod)%Hash_mod;
+		s.swap(i,tmp);
+		for(int j=0;j<questionN;++j)
+		{
+			s.candi_in(i,j);
+			s.hash = (h+(ll)s.h[i]*hm)%Hash_mod;
+//			s.print();
+			makeED(s,ed+1);
+		}
+		s.swap(i,tmp);
+		h = (h+hm*s.h[i])%Hash_mod;
+		hm = hm * Hash_mult % Hash_mod;
+	}
+
+	//add
+	if(s.n>=5)
+		return ;
+	++s.n;
+	hm = 1;
+	for(int i=s.n-1;i>=0;--i)
+	{
+		s.swap(i,i+1);
+		s.h[i] =0 ; // warning !! it should be unused
+		h = Gohash(s.h,s.n);// partly improved
+		for(int j=0;j<questionN;++j)
+		{
+			s.candi_in(i,j);
+			s.hash = (h+(ll)s.h[i]*hm)%Hash_mod;
+//			s.print();
+			makeED(s,ed+1);
+		}
+		hm = hm * Hash_mult % Hash_mod;
+	}
+	for(int i=0;i<s.n;++i)
+		s.swap(i,i+1);
+	--s.n;
+
 //	s.print();
 }
 
@@ -274,7 +289,7 @@ void init_candihash()
 
 int main()
 {
-	Filetohashtable();
+//	Filetohashtable();
 //	puts("ok");
 
 	init_candihash();
@@ -291,7 +306,7 @@ int main()
 		std::sort(ans.begin(),ans.end(),wordcomp);
 		if(ans.size()==0)
 		{
-			puts("NONE");
+			puts("output: 0");
 			continue;
 		}
 		int n=1;

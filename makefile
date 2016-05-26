@@ -7,4 +7,4 @@ all:
 station = $(shell python3 get_station.py)
 con:
 	$(info $(station))
-	ssh b04611017@$(station).csie.ntu.edu.tw
+	ssh -X b04611017@$(station).csie.ntu.edu.tw

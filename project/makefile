@@ -1,7 +1,10 @@
-normal:
-	g++ -std=c++11 project.cpp -o out
+name = project.cpp
 all:
-	g++ -std=c++11 -O3 project.cpp -o out
+	g++ -std=c++11 $(name) -o out -O3
+normal:
+	g++ -std=c++11 $(name) -o out
+debug:
+	g++ -std=c++11 $(name) -o out -g -Wall
 run:
 	./out
 
