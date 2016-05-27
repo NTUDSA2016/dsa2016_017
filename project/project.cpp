@@ -100,7 +100,7 @@ void Filetohashtable()
 std::vector<word*> ans;
 bool wordcomp(word *a,word *b)
 {
-	return a->feq > b->feq;
+	return ( a->feq != b-> feq) ? a->feq > b->feq : a < b;
 }
 
 #define questionN 20
@@ -129,8 +129,9 @@ struct Sepword
 			printf("%s ",str[i]);
 		puts("");
 		for(int i=0;i<n;++i)
-			printf("%d ",h[i]);
+			printf("%d:",h[i]);
 		puts("");
+		printf("%d\n",hash);
 	}
 
 	inline void swap(int a,int b)
@@ -140,7 +141,7 @@ struct Sepword
 	}
 	inline void candi_in(int i,int c)
 	{
-		str[i] = candi[c];
+		str[i] = 	 candi[c];
 		  h[i] = hash_cadi[c];
 	}
 
@@ -156,7 +157,7 @@ struct Sepword
 			if(i!=n-1 && c[k++]!=' ')
 				return false;
 		}
-		return true;
+		return c[k]=='\0';
 	}
 
 	word* getfromhash()
@@ -169,13 +170,6 @@ struct Sepword
 			now = now->next;
 		}
 		return NULL;
-	}
-
-	void put_to_answer()// it can be impoved
-	{
-		word *str = getfromhash();
-		if(str)
-			ans.push_back(str);
 	}
 
 	void input_sep(char *c)
@@ -207,9 +201,10 @@ void makeED(Sepword &s,int ed)
 {
 	if(ed==2)
 	{
-		s.put_to_answer();
-		s.print();
-		printf("%d\n",s.hash);
+		word *str = s.getfromhash();
+		if(str)
+			ans.push_back(str);
+//		s.print();
 		return ;
 	}
 	if(s.n==0)
@@ -289,7 +284,7 @@ void init_candihash()
 
 int main()
 {
-//	Filetohashtable();
+	Filetohashtable();
 //	puts("ok");
 
 	init_candihash();
@@ -313,6 +308,8 @@ int main()
 		for(int i=1;i<ans.size();++i)
 			if( ans[i-1] != ans[i])
 				ans[n++] = ans[i];
+		if(n>10)
+			n=10;
 		printf("output: %d\n",n);
 		for(int i=0;i<n;++i)
 			printf("%s\t%d\n",ans[i]->str,ans[i]->feq);
