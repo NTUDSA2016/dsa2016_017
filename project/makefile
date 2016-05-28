@@ -1,6 +1,7 @@
-.PHONY: all normal debug run test
+.PHONY: all normal debug run test clean check
 name = project.cpp
-test_data_path = ~/htdocs/project
+test_data_path = demo
+special_judge = diff
 all:
 	g++ -std=c++11 $(name) -o out -O3
 normal:
@@ -11,15 +12,34 @@ run:
 	./out
 
 test_data_in = $(sort $(wildcard $(test_data_path)/*.in))
-test: all
-	$(foreach data_in,$(test_data_in), \
-		$(eval data_out = $(subst .in,.out,$(data_in))) \
-		$(info $(notdir $(data_in) ))\
-		$(info $(notdir $(data_out)))\
-		$(eval notdir_out = $(notdir $(data_out)))\
-		$(shell time make run --silent < $(data_in) > $(notdir_out))\
-		$(if $(wildcard $(data_out)),\
-		    $(eval wa = $(shell diff -q $(notdir_out) $(data_out))) \
-			$(if wa, \
-				$(info AC) $(shell rm   -f $(notdir_out)),\
-				$(info WA) $(shell diff  $(notdir_out) $(data_out)))))
+test_data_out= $(subst .in,.out,$(test_data_in))
+data_out = $(notdir $(test_data_out))
+data_diff= $(subst .out,.diff,$(data_out))
+
+%.diff:$(test_data_path)/%.in
+	$(info init)
+	$(shell echo $< > $@)
+
+%.out:$(test_data_path)/%.in %.diff
+	$(eval DIFF = $(word 2,$^))
+	$(info main)
+	$(shell /usr/bin/time -f "%Us" -o $(DIFF) -a make run --silent < $< > $@) 
+	$(info jduge)
+	$(eval result = $(special_judge) $@ $(test_data_path)/$@ )
+	$(if $(shell $(result)),\
+		 $(shell echo WA >> $(DIFF))\
+		 $(shell $(result) >> $(DIFF)),\
+		 $(shell echo AC >> $(DIFF)))
+
+clean:
+	$(info delete)
+	$(shell rm *.diff *.out -f)
+	
+.PRECIOUS: %.diff
+test:$(data_out)
+	cat $(data_diff)
+check:|test
+	$(foreach name,$(data_diff),\
+		$(if $(shell head -3 $(name) | tail -1 | grep AC),\
+			$(shell rm $(name) $(subst .diff,.out,$(name)) -f)))
+$(data_out):|all clean
