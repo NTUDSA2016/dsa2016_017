@@ -31,7 +31,7 @@ struct Sepword
 			if(i)putchar(' ');
 			printf("%s",str[i]);
 		}
-		printf("\t%d\n",hash);
+		printf("\n",hash);
 	}
 
 	inline void swap(int a,int b)
@@ -100,37 +100,43 @@ struct Sepword
 			else if( isdigit(c[i]) )
 				hash = hash*10 + c[i] - '0' ;
 	}
-}ori_data[5774000];
+}*ori_data;
 int ori_n;
 
 void Filetohashtable()
 {
 	// hashtable will be initized with 0
 	ori_n = 0;
-	FILE *f = fopen("5gm.txt","r");
-	char c[220];
-	while( fgets(c,220,f) )
+	ori_data = new Sepword [50000000];
+	char c[1000];
+	for(int i=2;i<=5;++i)
 	{
-		ori_data[ori_n++].input_sep(c);
+		sprintf(c,"/tmp2/dsa2016_project/%dgm.small.txt",i);
+		FILE *f = fopen(c,"r");
+		char c[220];
+		while( fgets(c,220,f) )
+		{
+			ori_data[ori_n++].input_sep(c);
+		}
+		fclose(f);
 	}
-	fclose(f);
 }
 
 
 std::vector<Sepword> ans;
 
-char the[100]={"the"};
-char hey[100]={"GG"};
+char the[100]={"XXXXGAY"};
+char hey[100]={"BOYO"};
 
 void makeED(Sepword &s,int ed)
 {
+	if(s.n==0)
+		return ;
 	if(ed==2)
 	{
 		ans.push_back(s);
 		return ;
 	}
-	if(s.n==0)
-		return ;
 	int tmp = 9-ed;// don't use same memory
 
 	//delete
@@ -138,7 +144,7 @@ void makeED(Sepword &s,int ed)
 	for(int i=s.n;i>=0;--i)
 	{
 		s.swap(i,tmp);
-		s.print();
+//		s.print();
 		makeED(s,ed+1);
 	}
 	for(int i=0;i<=s.n;++i)
@@ -173,22 +179,31 @@ void makeED(Sepword &s,int ed)
 //	s.print();
 }
 
+int myrand(int mod)
+{
+	return (int)( ((ll)rand()*rand()+rand())%mod);
+}
+
 int main()
 {
-//	Filetohashtable();
+	Filetohashtable();
 //	puts("ok");
 
+	srand(time(NULL));
 	char c[1000];
-	while( fgets(c,1000,stdin) )
+//	while( fgets(c,1000,stdin) )
+	for(int i=0;i<10000;++i)
 	{
-		printf("query: %s",c);
-		Sepword s;
-		s.input_sep(c);
+//		printf("query: %s",c);
+//		Sepword s;
+//		s.input_sep(c);
 		ans.clear();
-		makeED(s,0);
+		makeED(ori_data[myrand(ori_n)],0);
 		// answer
-		for(auto &i:ans)
-			i.print();
+		for(int j=0;j<5 && j<ans.size();++j)
+			ans[myrand(ans.size())].print();
+//		for(auto &i:ans)
+//			i.print();
 	}
 	return 0;
 }

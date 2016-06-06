@@ -4,17 +4,18 @@
 #define ll long long 
 using std::string;
 
+#define DataMax 50000000
 struct word
 {
 	char str[220];
 	int feq;
-}ori_data[5774000];
+}*ori_data = new word [DataMax];
 
 struct link
 {
 	word *str;
 	link *next;
-}*nextp,*hashTable[100000000];
+}*nextp =new link[DataMax],*hashTable[100000000];
 
 #define Hash_mult 2350001
 #define Hash_mod 99999989
@@ -69,30 +70,30 @@ int WordHash(char *c)
 	return Gohash(tmp_words);
 }
 
-void Filetohashtable()
+int len=0,max=0;
+void Filetohashtable(char *c)
 {
 	// hashtable will be initized with 0
-	nextp = new link[5774000];
-	FILE *f = fopen("5gm.txt","r");
-	int len=0;
-	while( fgets(ori_data[len].str,220,f) )
+	FILE *f = fopen(c,"r");
+	while( fgets(ori_data->str,220,f) )
 	{
-		char *c = ori_data[len].str;
+		++len;
+		char *c = ori_data->str;
 		int h = WordHash(c);
 
 		// modify the string
 		int dig=0,&i=tmp_end;
 		c[i]='\0';
+		max = std::max(max,(int)strlen(c));
 		for(;!isdigit(c[i]);++i);
 		for(;isdigit(c[i]);++i)
 			dig = dig*10 + c[i]-'0';
-		ori_data[len].feq = dig;
+		ori_data->feq = dig;
 
 		// put into hashtable
-		nextp->str  = ori_data+len;
+		nextp->str  = ori_data++;
 		nextp->next = hashTable[h];
 		hashTable[h]= nextp++ ;
-		++len;
 	}
 	fclose(f);
 }
@@ -284,12 +285,17 @@ void init_candihash()
 
 int main()
 {
-	Filetohashtable();
+	char c[1000];
+	for(int i=2;i<=5;++i)
+	{
+		sprintf(c,"/tmp2/dsa2016_project/%dgm.small.txt",i);
+		Filetohashtable(c);
+	}
+//	printf("%d %d\n",len,max);
 //	puts("ok");
 
 	init_candihash();
 
-	char c[1000];
 	while( fgets(c,1000,stdin) )
 	{
 		printf("query: %s",c);
