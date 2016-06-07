@@ -108,12 +108,14 @@ bool wordcomp(word *a,word *b)
 char candi[questionN][10]= {"of", "to", "in", "for", "with", "on", "at","by", "from", "up", "about", "than", "after", "before", "down", "between", "under", "since", "without", "near"};
 int hash_cadi[questionN];
 
+std::unordered_set<string> prepos;
+
 
 struct Sepword
 {
 	int n;
-	char *str[10];// easy for change
-	int h[10],hash;
+	char *str[8],preposet[8];// easy for change
+	int h[8],hash;
 	Sepword()
 	{
 		n=0;
@@ -139,11 +141,13 @@ struct Sepword
 	{
 		std::swap(str[a],str[b]);
 		std::swap(  h[a],  h[b]);
+		std::swap(preposet[a],preposet[b]);
 	}
 	inline void candi_in(int i,int c)
 	{
 		str[i] = 	 candi[c];
 		  h[i] = hash_cadi[c];
+		  preposet[i] =0;
 	}
 
 
@@ -194,32 +198,47 @@ struct Sepword
 		// hash 
 		hash = WordHash(c);
 		for(int i=0;i<n;++i)
+		{
 			h[i] = tmp_words[i];
+			preposet[i] = prepos.count(str[i]);
+		}
 	}
+
+	bool isprepos()
+	{
+		for(int i=0;i<n;++i)
+			if( preposet[i] )
+				return 1;
+		return 0;
+	}
+
 };
 
-void makeED(Sepword &s,int ed)
+void getans(Sepword &s)
 {
-	if(ed==2)
-	{
-		word *str = s.getfromhash();
-		if(str)
-			ans.push_back(str);
+	word *str = s.getfromhash();
+	if(str)
+		ans.push_back(str);
 //		s.print();
-		return ;
-	}
+}
+
+void makeED(Sepword &s)
+{
 	if(s.n==0)
 		return ;
-	int tmp = 9-ed;// don't use same memory
+	int tmp = 7;// don't use same memory
 
 	//delete
 	--s.n;
 	for(int i=s.n;i>=0;--i)
 	{
 		s.swap(i,tmp);
+		if( !s.preposet[tmp] )
+			continue;
 		s.hash = Gohash(s.h,s.n);// can be improved
 //		s.print();
-		makeED(s,ed+1);
+//		makeED(s,ed+1);
+		getans(s);
 	}
 	for(int i=0;i<=s.n;++i)
 		s.swap(i,tmp);
@@ -234,13 +253,15 @@ void makeED(Sepword &s,int ed)
 	{
 		h = ((h-hm*s.h[i])%Hash_mod+Hash_mod)%Hash_mod;
 		s.swap(i,tmp);
-		for(int j=0;j<questionN;++j)
-		{
-			s.candi_in(i,j);
-			s.hash = (h+(ll)s.h[i]*hm)%Hash_mod;
-//			s.print();
-			makeED(s,ed+1);
-		}
+		if( s.preposet[tmp] )
+			for(int j=0;j<questionN;++j)
+			{
+				s.candi_in(i,j);
+				s.hash = (h+(ll)s.h[i]*hm)%Hash_mod;
+	//			s.print();
+	//			makeED(s,ed+1);
+				getans(s);
+			}
 		s.swap(i,tmp);
 		h = (h+hm*s.h[i])%Hash_mod;
 		hm = hm * Hash_mult % Hash_mod;
@@ -256,13 +277,15 @@ void makeED(Sepword &s,int ed)
 		s.swap(i,i+1);
 		s.h[i] =0 ; // warning !! it should be unused
 		h = Gohash(s.h,s.n);// partly improved
-		for(int j=0;j<questionN;++j)
-		{
-			s.candi_in(i,j);
-			s.hash = (h+(ll)s.h[i]*hm)%Hash_mod;
-//			s.print();
-			makeED(s,ed+1);
-		}
+		if((i>0 && s.preposet[i-1]) || (i+1<s.n && s.preposet[i+1]))
+			for(int j=0;j<questionN;++j)
+			{
+				s.candi_in(i,j);
+				s.hash = (h+(ll)s.h[i]*hm)%Hash_mod;
+	//			s.print();
+	//			makeED(s,ed+1);
+				getans(s);
+			}
 		hm = hm * Hash_mult % Hash_mod;
 	}
 	for(int i=0;i<s.n;++i)
@@ -270,6 +293,33 @@ void makeED(Sepword &s,int ed)
 	--s.n;
 
 //	s.print();
+}
+
+void EDonlyADD(Sepword &s,int step=0)
+{
+	getans(s);
+	if(step==2)
+		return ;
+	if(s.n>=5)
+		return ;
+	++s.n;
+	ll hm = 1,h;
+	for(int i=s.n-1;i>=0;--i)
+	{
+		s.swap(i,i+1);
+		s.h[i] =0 ; // warning !! it should be unused
+		h = Gohash(s.h,s.n);// partly improved
+		for(int j=0;j<questionN;++j)
+		{
+			s.candi_in(i,j);
+			s.hash = (h+(ll)s.h[i]*hm)%Hash_mod;
+			EDonlyADD(s,step+1);
+		}
+		hm = hm * Hash_mult % Hash_mod;
+	}
+	for(int i=0;i<s.n;++i)
+		s.swap(i,i+1);
+	--s.n;
 }
 
 void init_candihash()
@@ -280,6 +330,7 @@ void init_candihash()
 		for(int j=0;candi[i][j];++j)
 			sum = (sum*Word_mult+candi[i][j])%Word_mod;
 		hash_cadi[i] = (int)sum;
+		prepos.insert(candi[i]);
 	}
 }
 
@@ -302,7 +353,11 @@ int main()
 		Sepword s;
 		s.input_sep(c);
 		ans.clear();
-		makeED(s,0);
+		if( s.isprepos() )
+			makeED(s);
+		else
+			EDonlyADD(s);
+
 		// answer
 		std::sort(ans.begin(),ans.end(),wordcomp);
 		if(ans.size()==0)
