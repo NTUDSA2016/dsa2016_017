@@ -1,381 +1,372 @@
 #include<bits/stdc++.h>
 
-#define wordLen 40
+#define DataMax 50000000
+#define HashMult 2350001
+#define HashMod 99999989
+#define WordMult 11261
+#define WordMod 46301
+
 #define ll long long 
 using std::string;
 
-#define DataMax 50000000
-struct word
+struct Sentence
 {
 	char str[220];
 	int feq;
-}*ori_data = new word [DataMax];
+}*ori_data = new Sentence [DataMax];
+int ori_n=0;
 
-struct link
+bool sentComp(Sentence *a,Sentence *b)
 {
-	word *str;
-	link *next;
-}*nextp =new link[DataMax],*hashTable[100000000];
-
-#define Hash_mult 2350001
-#define Hash_mod 99999989
-
-int Gohash(int *c)//end with -1
-{
-	ll sum=0;
-	for(int i=0;c[i]!=-1;++i)
-		sum = (sum*Hash_mult+c[i])%Hash_mod;
-	return (int)sum;
-}
-int Gohash(int *c,int n)//size n
-{
-	ll sum=0;
-	for(int i=0;i<n;++i)
-		sum = (sum*Hash_mult+c[i])%Hash_mod;
-	return (int)sum;
+	if( a->feq != b->feq)
+		return a->feq > b->feq;
+	else
+		return a < b;
 }
 
-#define Word_mult 11261
-#define Word_mod 46301
-// should not bigger than 46340
-
-
-//not good . put it outside
-int tmp_words[10];
-int tmp_end;
-int WordHash(char *c)
+struct Link
 {
-	int sum=0,len=0,start=-1;
-	
-	for(int i=0;c[i];++i)
+	Sentence *str;
+	Link *next;
+}*nextp =new Link[DataMax],*hash_table[100000000];
+
+int sentHash(char *&c)// modify origin string
+{
+	int i,sum=0;
+	ll all=0;
+
+	for(i=0;c[i]!='\t';++i)
 	{
-		if( isalpha(c[i]) )
+		if( c[i] != ' ' )
+			sum = (sum*WordMult+c[i])%WordMod;
+		else 
 		{
-			if( start==-1 )
-				start = i ;
-			sum = (sum*Word_mult+c[i])%Word_mod;
-		}
-		else if( start !=-1)
-		{
-//			for(int j=start;j<i;++j)
-//				printf("%c",c[j]);
-//			puts("");
-			tmp_words[len++] = sum;
+			all = (all*HashMult+sum )%HashMod;
 			sum = 0;
-			start=-1;
-			tmp_end = i ;
 		}
 	}
-	tmp_words[len++] = -1;
-	return Gohash(tmp_words);
+	all = (all*HashMult+sum )%HashMod;
+	c = c+i;
+	return (int)all;
 }
 
-int len=0,max=0;
-void Filetohashtable(char *c)
+void fileTohashtable()
 {
 	// hashtable will be initized with 0
-	FILE *f = fopen(c,"r");
-	while( fgets(ori_data->str,220,f) )
+	char filename[220];
+	for(int name=2;name<=5;++name)
 	{
-		++len;
-		char *c = ori_data->str;
-		int h = WordHash(c);
+		sprintf(filename,"/tmp2/dsa2016_project/%dgm.small.txt",name);
+		FILE *f = fopen(filename,"r");
+		while( fgets(ori_data->str,220,f) )
+		{
+			++ori_n;
+			char *c = ori_data->str;
+			int h = sentHash(c);
 
-		// modify the string
-		int dig=0,&i=tmp_end;
-		c[i]='\0';
-		max = std::max(max,(int)strlen(c));
-		for(;!isdigit(c[i]);++i);
-		for(;isdigit(c[i]);++i)
-			dig = dig*10 + c[i]-'0';
-		ori_data->feq = dig;
+			// get fre and modify
+			*(c++) = '\0';
+			int dig=0;
+			for(int i=0;c[i]!='\n';++i)
+				dig = dig*10 + c[i]-'0';
+			ori_data->feq = dig;
 
-		// put into hashtable
-		nextp->str  = ori_data++;
-		nextp->next = hashTable[h];
-		hashTable[h]= nextp++ ;
+			// put into hashtable
+			nextp->str  = ori_data++;
+			nextp->next = hash_table[h];
+			hash_table[h]= nextp++ ;
+		}
+		fclose(f);
 	}
-	fclose(f);
 }
 
-std::vector<word*> ans;
-bool wordcomp(word *a,word *b)
+const int prepos_n=20;
+std::unordered_set<std::string> prepos_s;
+//Word prepos_v[prepos_n]; i can't put it here QQ
+
+struct Word // this is use for shallow copy  be aware!!
 {
-	return ( a->feq != b-> feq) ? a->feq > b->feq : a < b;
+	char *str,isprepos;
+	int  hash;
+	int  len ;
+	Word():str(NULL){};
+	~Word()
+	{
+		if(str) 
+			delete[] str;
+	}
+
+	void wordNew(char *c,int l)
+	{
+		len = l;
+		hash=0;
+		
+		str = new char[len+1];
+		for(int i=0;i<len;++i)
+		{
+			hash = (hash*WordMult+c[i])%WordMod;
+			str[i] = c[i];
+		}
+		str[len]='\0';
+		isprepos = (char)prepos_s.count(str);
+	}
+};
+
+Word prepos_v[prepos_n];
+
+void wordSwap(Word &a,Word &b)
+{
+	Word c;
+	c=a;a=b;b=c;
+	c.str = NULL; //avoid unwanted deletion
 }
-
-#define questionN 20
-char candi[questionN][10]= {"of", "to", "in", "for", "with", "on", "at","by", "from", "up", "about", "than", "after", "before", "down", "between", "under", "since", "without", "near"};
-int hash_cadi[questionN];
-
-std::unordered_set<string> prepos;
-
 
 struct Sepword
 {
-	int n;
-	char *str[8],preposet[8];// easy for change
-	int h[8],hash;
-	Sepword()
+	Word word[8];
+	int  len,hash;
+	
+	void allPrint()
 	{
-		n=0;
-	}
-	~Sepword()
-	{
-		for(int i=0;i<n;++i)
-			delete[] str[i];
-	}
-
-	void print()
-	{
-		for(int i=0;i<n;++i)
-			printf("%s ",str[i]);
+		for(int i=0;i<len;++i)
+			printf("%s:",word[i].str);
 		puts("");
-		for(int i=0;i<n;++i)
-			printf("%d:",h[i]);
+//		for(int i=0;i<len;++i)
+//			printf("%d:",word[i].len);
+//		puts("");
+		for(int i=0;i<len;++i)
+			printf("%d:",word[i].hash);
 		puts("");
+//		for(int i=0;i<len;++i)
+//			printf("%d:",word[i].isprepos);
+//		puts("");
 		printf("%d\n",hash);
+		printf("%d\n",hashGet());
 	}
-
-	inline void swap(int a,int b)
+	
+	int hashGet()
 	{
-		std::swap(str[a],str[b]);
-		std::swap(  h[a],  h[b]);
-		std::swap(preposet[a],preposet[b]);
+		ll h=0;
+		for(int i=0;i<len;++i)
+			h = (h*HashMult+word[i].hash)%HashMod;
+		return hash = (int)h;
 	}
-	inline void candi_in(int i,int c)
+	
+	void inputSep(char *c)
 	{
-		str[i] = 	 candi[c];
-		  h[i] = hash_cadi[c];
-		  preposet[i] =0;
+		len=0;
+		int start=-1;
+		for(int i=0;c[i];++i)
+		{
+			if( !isalpha(c[i]) )
+				continue;
+			int start=i;
+			while( isalpha(c[i]) )
+				++i;
+			word[len++].wordNew(c+start,i-start);
+			if(!c[i])break;// be careful for last one
+		}
+		hashGet();
 	}
-
 
 	bool operator == (const char *c) const
 	{
 		int k=0;
-		for(int i=0;i<n;++i)
+		for(int i=0;i<len;++i)
 		{
-			for(int j=0;str[i][j];++j)
-				if(str[i][j]!=c[k++])
+			for(int j=0;word[i].str[j];++j)
+				if(word[i].str[j]!=c[k++])
 					return false;
-			if(i!=n-1 && c[k++]!=' ')
+			if(i!=len-1 && c[k++]!=' ')
 				return false;
 		}
 		return c[k]=='\0';
 	}
 
-	word* getfromhash()
-	{
-		link *now = hashTable[hash];
-		while( now )
-		{
-			if( *this == now->str->str)
-				return  now->str;
-			now = now->next;
-		}
-		return NULL;
-	}
-
-	void input_sep(char *c)
-	{
-		int j=0;
-		n=0;
-		for(int i=0;c[i];++i)
-			if(isalpha(c[i]))
-			{
-				if(j==0)
-					str[n] = new char [200];
-				str[n][j++] = c[i];
-			}
-			else if(j)
-			{
-				str[n++][j++]='\0';
-				j=0;
-			}
-		if(j)
-			str[n++][j++]='\0';
-		// hash 
-		hash = WordHash(c);
-		for(int i=0;i<n;++i)
-		{
-			h[i] = tmp_words[i];
-			preposet[i] = prepos.count(str[i]);
-		}
-	}
-
-	bool isprepos()
-	{
-		for(int i=0;i<n;++i)
-			if( preposet[i] )
-				return 1;
-		return 0;
-	}
-
 };
 
-void getans(Sepword &s)
+Sentence* findInhashtable(Sepword &s)
 {
-	word *str = s.getfromhash();
-	if(str)
-		ans.push_back(str);
-//		s.print();
+	Link *now = hash_table[s.hash];
+	while( now )
+	{
+		if( s == now->str->str)
+			return now->str;
+		now = now->next;
+	}
+	return NULL;
 }
 
-void makeED(Sepword &s)
+std::vector<Sentence*> ans;
+void findToans(Sepword &s)
 {
-	if(s.n==0)
-		return ;
-	int tmp = 7;// don't use same memory
+	Sentence* getsent = findInhashtable(s);
+	if( getsent)
+		ans.push_back(getsent);
+}
 
-	//delete
-	--s.n;
-	for(int i=s.n;i>=0;--i)
-	{
-		s.swap(i,tmp);
-		if( !s.preposet[tmp] )
-			continue;
-		s.hash = Gohash(s.h,s.n);// can be improved
-//		s.print();
-//		makeED(s,ed+1);
-		getans(s);
-	}
-	for(int i=0;i<=s.n;++i)
-		s.swap(i,tmp);
-	++s.n;
-
-	//substitude
-	if(s.n>5)
-		return ;
+void onlyAdd(Sepword &s,int dis=0)
+{
+	findToans(s);
+//	s.allPrint();
+	if(s.len==0 || dis==2) return ;
 	ll hm = 1;
-	ll h  = Gohash(s.h,s.n);// improved
-	for(int i=s.n-1;i>=0;--i)
-	{
-		h = ((h-hm*s.h[i])%Hash_mod+Hash_mod)%Hash_mod;
-		s.swap(i,tmp);
-		if( s.preposet[tmp] )
-			for(int j=0;j<questionN;++j)
-			{
-				s.candi_in(i,j);
-				s.hash = (h+(ll)s.h[i]*hm)%Hash_mod;
-	//			s.print();
-	//			makeED(s,ed+1);
-				getans(s);
-			}
-		s.swap(i,tmp);
-		h = (h+hm*s.h[i])%Hash_mod;
-		hm = hm * Hash_mult % Hash_mod;
-	}
+	ll h= s.hash;
 
 	//add
-	if(s.n>=5)
-		return ;
-	++s.n;
-	hm = 1;
-	for(int i=s.n-1;i>=0;--i)
+	if( s.len>=7)
+		return;
+	++s.len;
+	hm=1;
+	for(int i=s.len-1;i>=0;--i)
 	{
-		s.swap(i,i+1);
-		s.h[i] =0 ; // warning !! it should be unused
-		h = Gohash(s.h,s.n);// partly improved
-		if((i>0 && s.preposet[i-1]) || (i+1<s.n && s.preposet[i+1]))
-			for(int j=0;j<questionN;++j)
+		s.word[i+1] = s.word[i] ;
+		s.word[i].hash=0;
+		h = s.hashGet();
+//		if( (i && s.word[i-1].isprepos) || (i+1<s.len && s.word[i+1].isprepos))
+			for(int j=0;j<prepos_n;++j)
 			{
-				s.candi_in(i,j);
-				s.hash = (h+(ll)s.h[i]*hm)%Hash_mod;
-	//			s.print();
-	//			makeED(s,ed+1);
-				getans(s);
+				s.word[i] = prepos_v[j];
+				s.hash = (h+hm*s.word[i].hash)%HashMod;
+				onlyAdd(s,dis+1);
 			}
-		hm = hm * Hash_mult % Hash_mod;
+		hm = hm * HashMult % HashMod;
 	}
-	for(int i=0;i<s.n;++i)
-		s.swap(i,i+1);
-	--s.n;
-
-//	s.print();
+	for(int i=0;i<s.len;++i)
+		s.word[i] = s.word[i+1] ;
+	--s.len;
 }
 
-void EDonlyADD(Sepword &s,int step=0)
+void edMake(Sepword &s)
 {
-	getans(s);
-	if(step==2)
-		return ;
-	if(s.n>=5)
-		return ;
-	++s.n;
-	ll hm = 1,h;
-	for(int i=s.n-1;i>=0;--i)
+	findToans(s);
+//	s.allPrint();
+	if(s.len==0 ) return ;
+	Word tmp;
+	ll hm = 1;
+	ll h= s.hash;
+	
+	//delete
+	--s.len;
+	for(int i=s.len;i>=0;--i)
 	{
-		s.swap(i,i+1);
-		s.h[i] =0 ; // warning !! it should be unused
-		h = Gohash(s.h,s.n);// partly improved
-		for(int j=0;j<questionN;++j)
-		{
-			s.candi_in(i,j);
-			s.hash = (h+(ll)s.h[i]*hm)%Hash_mod;
-			EDonlyADD(s,step+1);
-		}
-		hm = hm * Hash_mult % Hash_mod;
+		wordSwap( tmp , s.word[i] );
+		s.hashGet();
+		if(tmp.isprepos)
+			findToans(s);
+//			edMake(s,dis+1);
 	}
-	for(int i=0;i<s.n;++i)
-		s.swap(i,i+1);
-	--s.n;
+	for(int i=0;i<=s.len;++i)
+		wordSwap( tmp , s.word[i] );
+	++s.len;
+
+	//substitude
+	for(int i=s.len-1;i>=0;--i)
+	{
+		h = ((h-hm*s.word[i].hash)%HashMod+HashMod)%HashMod;
+		tmp = s.word[i] ;
+		if(tmp.isprepos)
+			for(int j=0;j<prepos_n;++j)
+			{
+				s.word[i] = prepos_v[j];
+				s.hash = (h+(ll)s.word[i].hash*hm)%HashMod;
+				findToans(s);
+//				edMake(s,dis+1);
+			}
+		s.word[i] = tmp ;
+		h = (h+hm*s.word[i].hash)%HashMod;
+		hm = hm * HashMult % HashMod;
+	}
+	tmp.str = NULL; //avoid unwanted deletion
+
+	//add
+	if( s.len>=7)
+		return;
+	++s.len;
+	hm=1;
+	for(int i=s.len-1;i>=0;--i)
+	{
+		s.word[i+1] = s.word[i] ;
+		s.word[i].hash=0;
+		h = s.hashGet();
+		if( (i && s.word[i-1].isprepos) || (i+1<s.len && s.word[i+1].isprepos))
+			for(int j=0;j<prepos_n;++j)
+			{
+				s.word[i] = prepos_v[j];
+				s.hash = (h+hm*s.word[i].hash)%HashMod;
+				findToans(s);
+//				edMake(s,dis+1);
+			}
+		hm = hm * HashMult % HashMod;
+	}
+	for(int i=0;i<s.len;++i)
+		s.word[i] = s.word[i+1] ;
+	--s.len;
 }
 
-void init_candihash()
+void preposInit()
 {
-	for(int i=0;i<questionN;++i)
+	char prepos_c[prepos_n][10]= {
+		"of", "to", "in", "for", "with", 
+		"on", "at","by", "from", "up", 
+		"about", "than", "after", "before", "down", 
+		"between", "under", "since", "without", "near"};
+
+	for(int i=0;i<prepos_n;++i)
 	{
-		ll sum=0;
-		for(int j=0;candi[i][j];++j)
-			sum = (sum*Word_mult+candi[i][j])%Word_mod;
-		hash_cadi[i] = (int)sum;
-		prepos.insert(candi[i]);
+		prepos_v[i].wordNew(prepos_c[i],strlen(prepos_c[i]));
+		prepos_s.insert(prepos_c[i]);
 	}
 }
 
+void ansPrint()
+{
+	std::sort(ans.begin(),ans.end(),sentComp);
+	if(ans.size()==0)
+	{
+		puts("output: 0");
+		return ;
+	}
+	int n=1;
+	for(int i=1;i<ans.size() && n<10;++i)// clear the same item
+		if( ans[i-1] != ans[i])
+			ans[n++] = ans[i];
+	if(n>10)
+		n=10;
+	printf("output: %d\n",n);
+	for(int i=0;i<n;++i)
+		printf("%s\t%d\n",ans[i]->str,ans[i]->feq);
+}
+
+bool hasprepos(Sepword &s)
+{
+	for(int i=0;i<s.len;++i)
+		if(s.word[i].isprepos)
+			return 1;
+	return 0;
+}
+	
 int main()
 {
+	preposInit();
+	fileTohashtable();
 	char c[1000];
-	for(int i=2;i<=5;++i)
-	{
-		sprintf(c,"/tmp2/dsa2016_project/%dgm.small.txt",i);
-		Filetohashtable(c);
-	}
-//	printf("%d %d\n",len,max);
-//	puts("ok");
-
-	init_candihash();
-
-	while( fgets(c,1000,stdin) )
+	while( fgets(c,100,stdin) )
 	{
 		printf("query: %s",c);
 		Sepword s;
-		s.input_sep(c);
+		s.inputSep(c);
 		ans.clear();
-		if( s.isprepos() )
-			makeED(s);
-		else
-			EDonlyADD(s);
 
-		// answer
-		std::sort(ans.begin(),ans.end(),wordcomp);
-		if(ans.size()==0)
-		{
-			puts("output: 0");
-			continue;
-		}
-		int n=1;
-		for(int i=1;i<ans.size();++i)
-			if( ans[i-1] != ans[i])
-				ans[n++] = ans[i];
-		if(n>10)
-			n=10;
-		printf("output: %d\n",n);
-		for(int i=0;i<n;++i)
-			printf("%s\t%d\n",ans[i]->str,ans[i]->feq);
+		// check if it has prepos
+		if(hasprepos(s))
+			edMake(s);
+		else
+			onlyAdd(s,0);
+
+		ansPrint();
+		
 	}
 	return 0;
 }
-
 

@@ -69,14 +69,15 @@ struct Sepword
 //			printf("%d:",word[i].isprepos);
 //		puts("");
 		printf("%d\n",hash);
+		printf("%d\n",hashGet());
 	}
 	
 	int hashGet()
 	{
-		ll h;
+		ll h=0;
 		for(int i=0;i<len;++i)
 			h = (h*HashMult+word[i].hash)%HashMod;
-		hash = (int)h;
+		return hash = (int)h;
 	}
 	
 	void inputSep(char *c)
@@ -106,6 +107,8 @@ void edMake(Sepword &s,int dis=0)
 	s.allPrint();
 	if(dis==2) return ;
 	Word tmp;
+	ll hm = 1;
+	ll h= s.hash;
 	
 	//delete
 	--s.len;
@@ -113,7 +116,7 @@ void edMake(Sepword &s,int dis=0)
 	{
 		wordSwap( tmp , s.word[i] );
 		s.hashGet();
-		if(tmp.isprepos)
+//		if(tmp.isprepos)
 			edMake(s,dis+1);
 	}
 	for(int i=0;i<=s.len;++i)
@@ -123,15 +126,19 @@ void edMake(Sepword &s,int dis=0)
 	//substitude
 	for(int i=s.len-1;i>=0;--i)
 	{
+		h = ((h-hm*s.word[i].hash)%HashMod+HashMod)%HashMod;
 		tmp = s.word[i] ;
-		if(tmp.isprepos)
+//		if(tmp.isprepos)
 			for(int j=0;j<prepos_n;++j)
 			{
 				s.word[i] = prepos_v[j];
-				s.hashGet();
+				s.hash = (h+(ll)s.word[i].hash*hm)%HashMod;
+//				s.hashGet();
 				edMake(s,dis+1);
 			}
 		s.word[i] = tmp ;
+		h = (h+hm*s.word[i].hash)%HashMod;
+		hm = hm * HashMult % HashMod;
 	}
 	tmp.str = NULL; //avoid unwanted deletion
 
@@ -139,16 +146,21 @@ void edMake(Sepword &s,int dis=0)
 	if( s.len>=7)
 		return;
 	++s.len;
+	hm=1;
 	for(int i=s.len-1;i>=0;--i)
 	{
 		s.word[i+1] = s.word[i] ;
-		if( (i && s.word[i-1].isprepos) || (i+1<s.len && s.word[i+1].isprepos))
+		s.word[i].hash=0;
+		h = s.hashGet();
+//		if( (i && s.word[i-1].isprepos) || (i+1<s.len && s.word[i+1].isprepos))
 			for(int j=0;j<prepos_n;++j)
 			{
 				s.word[i] = prepos_v[j];
-				s.hashGet();
+				s.hash = (h+hm*s.word[i].hash)%HashMod;
+//				s.hashGet();
 				edMake(s,dis+1);
 			}
+		hm = hm * HashMult % HashMod;
 	}
 	for(int i=0;i<s.len;++i)
 		s.word[i] = s.word[i+1] ;
