@@ -1,0 +1,17 @@
+query: have difficulty finding
+output: 3
+have difficulty finding	30918
+have difficulty in finding	4636
+to have difficulty finding	1174
+query: angry at me
+output: 2
+angry with me	60929
+angry at me	24354
+query: pleased at me
+output: 3
+pleased me	40402
+pleased with me	10015
+pleased for me	1067
+query: worry for cancer
+output: 1
+worry about cancer	2120

@@ -63,14 +63,14 @@ void preposInit()
 struct Sentence
 {
 	char str[220];
-	int feq;
+	unsigned int feq;
 
 	int noprep_n,
 		noprep_num[6];
 	
 	int words_n,
-		words_pos[10],
-		words_len[10];
+		words_pos[11],
+		words_len[11];
 
 	void sentPrint()
 	{
@@ -85,7 +85,6 @@ struct Sentence
 
 
 }*ori_data = new Sentence [DataMax];
-int ori_n;
 
 bool sentEq(const Sentence *a,const Sentence *b)
 {
@@ -107,7 +106,9 @@ bool sentEq(const Sentence *a,const Sentence *b)
 
 bool sentComp(const Sentence *a,const Sentence *b)
 {
-	return a->feq > b->feq;
+	if( a->feq != b->feq )
+		return a->feq > b->feq;
+	return strcmp( a->str, b->str) < 0 ;
 }
 
 char stop='\t';
@@ -128,6 +129,8 @@ int sentDeal(Sentence *s)// modify origin string
 		{
 			s->words_pos[s->words_n  ]=  start;
 			s->words_len[s->words_n++]=i-start;
+			if( s->words_n >= 11) // the size should no more than 11
+				return -1;
 			start=-1;
 		}
 	s->words_pos[s->words_n  ]=  start;
@@ -140,11 +143,13 @@ int sentDeal(Sentence *s)// modify origin string
 	{
 		if( !preposCheck(c,s->words_len[i]) )
 		{
-			int sum=0;
+			unsigned int sum=0;
 			for(int j=0;j<s->words_len[i];++j)
 				sum = (sum*WordMult+c[j])%WordMod;
 			all = (all*HashMult+sum )%HashMod;
 			s->noprep_num[s->noprep_n++]= i;
+			if( s->noprep_n>= 6) // the size should no more than 6 
+				return -1;
 		}
 		c += s->words_len[i] + 1;
 	}
@@ -190,7 +195,6 @@ void fileTohashtable()
 		FILE *f = fopen(filename,"r");
 		while( fgets(ori_data->str,220,f) )
 		{
-			++ori_n;
 			int h = sentDeal(ori_data);
 			
 			// get feq
@@ -228,7 +232,24 @@ bool preposSame(Sentence *a,Sentence *b,int na,int nb)
 		a->str[ a->words_pos[na]+1 ] == b->str[ b->words_pos[nb]+1 ] ;
 }
 
-bool isEd2(Sentence *a,Sentence *b)// b is input
+int edDist(Sentence *a,Sentence *b,int &pa,int &pb,int &num)
+{
+	int lena = a->noprep_num[num] - pa ,
+		lenb = b->noprep_num[num] - pb ;
+	int dist[2][lenb+1]; //rolling
+	for(int j=0;j<=lenb;++j)
+		dist[0][j] = j ;
+	for(int i=0,now=1;i<lena;++i,now^=1)
+	{
+		dist[now][0] = i+1 ;
+		for(int j=0;j<lenb;++j)
+			dist[now][j+1]=std::min( 1+std::min(dist[!now][j+1],dist[ now][j])
+								   , !preposSame(a,b,pa+i,pb+j)+dist[!now][j]);
+	}
+	return dist[lena&1][lenb];
+}
+
+bool addEd2(Sentence *a,Sentence *b)// b is input
 {
 	if( a->words_n < b->words_n || a->words_n > b->words_n+2)
 		return 0;
@@ -257,17 +278,19 @@ bool isEd2(Sentence *a,Sentence *b)// b is input
 	return dis<=2 ;
 }
 
-bool canInsert(Sentence *a,Sentence *b)
+bool allEd1(Sentence *a,Sentence *b)
 {
-	int preva= -1, prevb= -1 ;
+	int preva= 0, prevb= 0 ;
 //	a->noprep_num[ a->noprep_n ]= a->words_n;  i add before
 	for(int num=0;num<=b->noprep_n;++num)
 	{
-		if(    prevb +1 == b->noprep_num[num] //no operator between
-			&& preva +1 != a->noprep_num[num] )
+		if(    prevb == b->noprep_num[num] //no operator between
+			&& preva != a->noprep_num[num] )
 				return 0;
-		preva= a->noprep_num[num];
-		prevb= b->noprep_num[num];
+		if( edDist(a,b,preva,prevb,num)>1 )
+			return 0;
+		preva= a->noprep_num[num]+1;
+		prevb= b->noprep_num[num]+1;
 	}
 	return 1;
 }
@@ -292,23 +315,28 @@ int main()
 	Sentence *s = new Sentence;
 	while( fgets(s->str,220,stdin) )
 	{
+		printf("query: %s",s->str);
 		int h = sentDeal(s);
+		if(h==-1)// for too big to array
+		{
+			printf("output: 0\n");
+			continue;
+		}
 		Linkhash *lkh = linkFind(h,s);
 		ans.clear();
 
 		if( s->words_n == s->noprep_n )//no prep  
-			sentFilt( lkh ,s ,isEd2	   );
+			sentFilt( lkh, s, addEd2);
 		else
-			sentFilt( lkh ,s ,canInsert);
+			sentFilt( lkh, s, allEd1);
 		
 		std::sort(ans.begin(),ans.end(),sentComp);
 		if(ans.size()>10)
 			ans.resize(10);
 		// query
-		printf("query: %s",s->str);
 		printf("output: %d\n",ans.size());
 		for(int i=0;i<ans.size();++i)
-			printf("%s\t%d\n",ans[i]->str,ans[i]->feq);
+			printf("%s\t%u\n",ans[i]->str,ans[i]->feq);
 	}
 	return 0;
 }

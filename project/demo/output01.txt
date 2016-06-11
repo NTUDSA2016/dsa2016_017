@@ -1,0 +1,5158 @@
+query: have ever been at
+output: 7
+have ever been	403127
+have ever been to	48081
+have ever been in	26917
+have ever been on	16491
+have ever been before	6953
+have ever been with	2957
+have ever been at	1809
+query: most of people enjoy
+output: 1
+most people enjoy	4441
+query: stop to a service
+output: 1
+stop a service	3113
+query: and so on
+output: 10
+and so	23641527
+and so on	6290893
+and so to	114387
+and so in	71085
+and so on to	39568
+and so for	35609
+and so on for	32815
+and so on in	29022
+and so by	28008
+and so with	23029
+query: you catch by yourself
+output: 1
+you catch yourself	9547
+query: things of the last
+output: 5
+things in the last	5893
+things at the last	2616
+things to the last	2556
+things the last	1704
+things for the last	1541
+query: depends from what we
+output: 1
+depends on what we	12811
+query: opportunity of to escape
+output: 1
+opportunity to escape	19936
+query: go in a world
+output: 1
+go on a world	1520
+query: so impressed the
+output: 3
+so impressed with the	51405
+so impressed by the	23448
+so impressed the	5187
+query: useful to you for
+output: 10
+useful to you	613068
+useful for you	60385
+useful you	20478
+useful to you in	12723
+useful for you to	12451
+useful for you in	11380
+useful than you	1891
+useful to you for	1766
+useful since you	1243
+useful to you to	1132
+query: you for the idea
+output: 5
+you the idea	21049
+you on the idea	1830
+you for the idea	1645
+you to the idea	1225
+you with the idea	1212
+query: idea i think
+output: 1
+idea i think	1724
+query: dance in the same
+output: 3
+dance at the same	2191
+dance the same	1620
+dance to the same	1117
+query: answer at your question
+output: 3
+answer your question	402783
+answer to your question	293756
+answer for your question	3145
+query: answered to your question
+output: 1
+answered your question	35765
+query: you for the great
+output: 8
+you for the great	47211
+you the great	10494
+you to the great	6075
+you about the great	1686
+you of the great	1641
+you with the great	1347
+you in the great	1178
+you on the great	1107
+query: success in the festival
+output: 1
+success of the festival	1616
+query: you for the success
+output: 1
+you the success	2247
+query: upset of how to
+output: 3
+upset about how	3010
+upset at how	2301
+upset with how	2116
+query: of about the festival
+output: 2
+of the festival	277174
+about the festival	22830
+query: you for the international
+output: 1
+you the international	1231
+query: angry about me for
+output: 4
+angry with me	60929
+angry at me	24354
+angry with me for	8715
+angry at me for	5265
+query: out on night or
+output: 1
+out at night or	1794
+query: in the staff you
+output: 2
+the staff you	6000
+of the staff you	1035
+query: you with the decision
+output: 4
+you of the decision	2525
+you the decision	2168
+you in the decision	1630
+you with the decision	1085
+query: decision of to make
+output: 1
+decision to make	191004
+query: going in the mountains
+output: 1
+going to the mountains	3421
+query: house built in
+output: 10
+house built	189451
+house built in	37838
+house built by	14010
+house built on	12402
+house built for	5340
+house built of	4134
+house built with	2151
+house built to	2150
+house built at	1989
+house built before	1244
+query: built in wood and
+output: 1
+built of wood and	2625
+query: needed to more space
+output: 1
+needed more space	6698
+query: saw on the advertisement
+output: 1
+saw the advertisement	3361
+query: festival at the end
+output: 1
+festival at the end	1751
+query: the widow who
+output: 1
+the widow who	3970
+query: thinking of what they
+output: 3
+thinking about what they	12206
+thinking what they	2724
+thinking of what they	1374
+query: cold in deep of
+output: 1
+cold deep	3954
+query: given for one person
+output: 1
+given to one person	1459
+query: one person
+output: 10
+one person	3969294
+than one person	348426
+one person to	279286
+for one person	260300
+one person in	190929
+by one person	158623
+of one person	157277
+to one person	130659
+from one person	125251
+one person at	107365
+query: walk with my dog
+output: 2
+walk my dog	8626
+walk with my dog	1232
+query: to this some
+output: 9
+this some	199624
+about this some	12130
+of this some	6019
+to this some	5601
+on this some	4730
+with this some	2553
+for this some	1628
+at this some	1353
+in this some	1027
+query: done at the open
+output: 1
+done in the open	3347
+query: part to the festival
+output: 2
+part of the festival	16862
+part in the festival	4239
+query: be in the centre
+output: 3
+be the centre	29897
+be at the centre	22141
+be in the centre	8107
+query: festival next year
+output: 1
+festival next year	2280
+query: by different sums
+output: 1
+different sums	2744
+query: idea for to do
+output: 1
+idea to do	63408
+query: people who took
+output: 5
+people who took	65663
+of people who took	7057
+from people who took	1381
+people who took to	1096
+by people who took	1019
+query: person who in
+output: 10
+person who	11130945
+person who in	20303
+person who by	12276
+person who at	11473
+person who for	7646
+person who on	4866
+person who without	3714
+person who under	3183
+person who with	2016
+person who after	1238
+query: lessons at the morning
+output: 1
+lessons in the morning	1707
+query: rules both at
+output: 1
+rules both	5836
+query: both at my home
+output: 1
+both my home	3161
+query: school i am
+output: 1
+school i am	1767
+query: money to your parents
+output: 1
+money from your parents	1146
+query: better is the
+output: 1
+better is the	34786
+query: gave to the people
+output: 2
+gave the people	12769
+gave to the people	2186
+query: help for changing the
+output: 1
+help changing the	1086
+query: year by this way
+output: 1
+year this way	1122
+query: year in the festival
+output: 3
+year the festival	7234
+year at the festival	1169
+year of the festival	1159
+query: be in home until
+output: 1
+be home until	7985
+query: to be at time
+output: 10
+be time	683308
+be on time	104553
+to be time	45349
+to be on time	38764
+be in time	25994
+be from time	8764
+to be in time	6942
+be about time	4312
+be at time	1766
+to be from time	1373
+query: very much about that
+output: 5
+very much that	63520
+very much for that	25347
+very much in that	2663
+very much of that	2232
+very much about that	1525
+query: affection about the people
+output: 2
+affection of the people	1368
+affection for the people	1355
+query: was sent by heaven
+output: 1
+was sent from heaven	1024
+query: it by the whole
+output: 6
+it the whole	35005
+it for the whole	13678
+it to the whole	10856
+it with the whole	4069
+it on the whole	3505
+it in the whole	3479
+query: from round the world
+output: 2
+round the world	211874
+from round the world	5529
+query: hope you will
+output: 1
+hope you will	961722
+query: to eat at class
+output: 1
+eat in class	1029
+query: music in anywhere at
+output: 3
+music anywhere	23280
+music anywhere in	3442
+music from anywhere	1582
+query: contact with me on
+output: 10
+contact me	5189467
+contact me at	566138
+contact me for	405644
+contact me with	207998
+contact me by	174014
+contact me to	115694
+contact me on	102988
+contact me before	98811
+contact me about	86538
+contact with me	78750
+query: cell phone cellphone
+output: 1
+cell phone cellphone	4432
+query: and for the end
+output: 10
+and the end	698284
+and at the end	468742
+and in the end	278396
+and by the end	179897
+and to the end	17051
+and before the end	13272
+and near the end	10133
+and after the end	6838
+and of the end	6337
+and from the end	3704
+query: the end our
+output: 10
+the end of our	220807
+at the end of our	67083
+to the end of our	18165
+by the end of our	8723
+the end our	8525
+near the end of our	5395
+of the end of our	3154
+in the end our	3048
+before the end of our	1997
+on the end of our	1473
+query: conclusion in the whole
+output: 1
+conclusion of the whole	4189
+query: for example my
+output: 2
+example my	20478
+for example my	8327
+query: music in the whole
+output: 2
+music for the whole	2094
+music the whole	1696
+query: stories in the world
+output: 7
+stories from the world	6254
+stories in the world	5581
+stories with the world	2346
+stories of the world	2315
+stories to the world	1639
+stories about the world	1567
+stories the world	1337
+query: find in your place
+output: 1
+find your place	18838
+query: problem to most of
+output: 10
+problem with most	31881
+problem for most	31296
+problem most	21673
+problem in most	13435
+problem with most of	6761
+problem for most of	4071
+problem most of	3519
+problem since most	1971
+problem of most	1752
+problem in most of	1637
+query: answer for your question
+output: 3
+answer your question	402783
+answer to your question	293756
+answer for your question	3145
+query: are at the first
+output: 7
+are the first	871556
+are in the first	34212
+are on the first	26653
+are for the first	14211
+are from the first	7422
+are of the first	4070
+are at the first	3279
+query: in a result of
+output: 10
+of a result	39445
+in a result	31541
+with a result	28071
+to a result	25463
+for a result	18577
+from a result	13258
+on a result	11492
+with a result of	7372
+of a result of	7260
+by a result	6172
+query: of this the
+output: 10
+this the	3018628
+to this the	163952
+of this the	107125
+on this the	43230
+in this the	35773
+about this the	28815
+for this the	25836
+with this the	25353
+after this the	25333
+from this the	21261
+query: to speak each
+output: 2
+speak each	5616
+to speak each	1736
+query: help to each other
+output: 3
+help each other	342676
+help to each other	2126
+help from each other	1399
+query: writing to response to
+output: 3
+writing in response	24601
+writing in response to	24084
+writing response	1845
+query: attending to the event
+output: 1
+attending the event	43528
+query: hearing from the next
+output: 2
+hearing at the next	2343
+hearing the next	2035
+query: effort of to get
+output: 1
+effort to get	271808
+query: impressed of the idea
+output: 2
+impressed with the idea	4059
+impressed by the idea	1472
+query: my comments on it
+output: 2
+my comments on it	1382
+my comments about it	1125
+query: come from a long
+output: 6
+come a long	440032
+come from a long	17655
+come on a long	2069
+come for a long	1634
+come with a long	1391
+come after a long	1163
+query: the festival
+output: 10
+the festival	1437793
+of the festival	277174
+at the festival	134706
+to the festival	86583
+the festival of	80034
+for the festival	75791
+in the festival	58733
+from the festival	55088
+on the festival	38694
+the festival in	26786
+query: impressed on all the
+output: 4
+impressed with all the	7683
+impressed by all the	4258
+impressed all the	1169
+impressed about all the	1019
+query: classroom in any time
+output: 1
+classroom at any time	1188
+query: go out the
+output: 10
+go out to the	171066
+go out in the	85739
+go out of the	83139
+go out on the	75800
+go out the	74722
+to go out to the	35824
+to go out in the	31173
+to go out of the	30443
+to go out on the	28266
+go out with the	21981
+query: classroom in any time
+output: 1
+classroom at any time	1188
+query: come back my
+output: 7
+come back to my	30292
+to come back to my	8238
+come back from my	4059
+come back with my	2405
+come back in my	2009
+come back for my	1677
+come back my	1553
+query: excellent because it
+output: 1
+excellent because it	3193
+query: reason of wearing in
+output: 1
+reason for wearing	2117
+query: wearing in white and
+output: 1
+wearing white and	1784
+query: arriving in time and
+output: 1
+arriving on time and	1120
+query: and talked everything
+output: 1
+and talked about everything	1461
+query: out in the weekend
+output: 5
+out for the weekend	8715
+out the weekend	6979
+out on the weekend	4752
+out at the weekend	2888
+out of the weekend	2670
+query: people coming the
+output: 5
+people coming to the	15218
+people coming from the	6307
+of people coming to the	2947
+people coming in the	1280
+people coming down the	1059
+query: festival in next year
+output: 1
+festival next year	2280
+query: kicked out from school
+output: 1
+kicked out of school	14017
+query: you for the excellent
+output: 3
+you for the excellent	20303
+you the excellent	11607
+you on the excellent	1419
+query: some news about you
+output: 2
+some news for you	8659
+some news you	2181
+query: reply at your question
+output: 1
+reply to your question	10925
+query: ask at my mum
+output: 1
+ask my mum	2082
+query: out by my friend
+output: 4
+out my friend	11141
+out with my friend	8156
+out to my friend	3329
+out of my friend	1446
+query: back at home on
+output: 10
+back home	2259357
+back to home	280671
+back home to	174893
+back home in	131868
+back at home	77450
+back home with	45242
+back home for	44090
+back home from	37324
+back home after	26182
+back home on	21125
+query: tell you my
+output: 8
+tell you my	71580
+tell you about my	55281
+to tell you about my	20639
+to tell you my	15649
+tell you of my	7109
+tell you from my	6419
+to tell you of my	2558
+tell you in my	2500
+query: come back at home
+output: 2
+come back home	83404
+come back to home	1350
+query: only on the small
+output: 5
+only the small	15407
+only in the small	2277
+only for the small	1254
+only to the small	1166
+only on the small	1006
+query: him as a human
+output: 1
+him as a human	6214
+query: to suggest you
+output: 2
+suggest you	1654972
+to suggest you	28265
+query: like to you to
+output: 10
+like you	9402924
+like you to	732144
+like for you	73959
+like you for	44585
+like you in	44289
+like for you to	44062
+like about you	18316
+like to you	16891
+like before you	14379
+like you with	13147
+query: the same as everyone
+output: 1
+the same as everyone	18521
+query: pay for the bills
+output: 1
+pay the bills	203452
+query: to hear my
+output: 2
+hear my	344142
+to hear my	85310
+query: go to shopping with
+output: 10
+go shopping	1274521
+go shopping for	44080
+go shopping in	20552
+go shopping with	20097
+go shopping at	12433
+go shopping on	5776
+go to shopping	3911
+go shopping to	3298
+go for shopping	1967
+go shopping without	1718
+query: angry to each other
+output: 2
+angry with each other	3510
+angry at each other	2635
+query: college in the end
+output: 1
+college at the end	1846
+query: customers by with technology
+output: 1
+customers with technology	1242
+query: time after women to
+output: 7
+time women	31611
+time for women	17325
+time for women to	10870
+time in women	3278
+time with women	1763
+time than women	1262
+time of women	1046
+query: good in almost all
+output: 1
+good in almost all	1039
+query: it on the camp
+output: 1
+it to the camp	1355
+query: looked to my watch
+output: 1
+looked at my watch	19304
+query: show in the best
+output: 1
+show the best	26857
+query: near of the stage
+output: 2
+of the stage	422562
+near the stage	15910
+query: order to prepare
+output: 1
+order to prepare	145566
+query: really like and
+output: 1
+really like and	24410
+query: students for their future
+output: 1
+students for their future	3735
+query: set off my
+output: 2
+set off my	4655
+set off on my	2478
+query: for golf by
+output: 10
+of golf	980955
+for golf	290554
+in golf	208105
+to golf	186385
+golf in	184380
+on golf	137643
+golf at	129014
+with golf	94746
+golf with	87523
+golf on	80623
+query: forward for hearing from
+output: 7
+forward to hearing	700870
+forward to hearing from	511003
+forward to hearing about	16345
+forward hearing	3340
+forward to hearing of	2711
+forward hearing from	2580
+forward in hearing	1111
+query: holiday that
+output: 4
+holiday that	74868
+holiday in that	1285
+on holiday that	1137
+holiday for that	1080
+query: travel would be
+output: 1
+travel would be	8306
+query: for the accommodation at
+output: 10
+the accommodation	596910
+of the accommodation	96535
+the accommodation of	62007
+for the accommodation	51083
+to the accommodation	37779
+in the accommodation	30516
+for the accommodation of	29758
+on the accommodation	20376
+from the accommodation	18026
+with the accommodation	12824
+query: according on the
+output: 4
+according to the	15976815
+according the	150671
+according with the	12868
+according of the	1144
+query: going to the trip
+output: 1
+going on the trip	6668
+query: go to the trip
+output: 1
+go on the trip	9518
+query: but in a few
+output: 6
+but a few	860920
+but after a few	64240
+but with a few	31549
+but in a few	24983
+but for a few	17863
+but on a few	1666
+query: enjoyed at the concert
+output: 1
+enjoyed the concert	3996
+query: enjoyed of an amazing
+output: 1
+enjoyed an amazing	1018
+query: answer to your questions
+output: 2
+answer your questions	852419
+answer to your questions	32831
+query: regarding to the activities
+output: 1
+regarding the activities	15180
+query: chance of to do
+output: 1
+chance to do	257074
+query: because the only
+output: 1
+because the only	118394
+query: exciting to me
+output: 3
+exciting for me	30216
+exciting to me	26009
+exciting me	3413
+query: me i am
+output: 4
+me i am	27208
+for me i am	2050
+to me i am	1693
+me i am in	1139
+query: meeting with the band
+output: 1
+meeting the band	1474
+query: part in a day
+output: 2
+part of a day	42425
+part in a day	1837
+query: come in the classroom
+output: 1
+come to the classroom	2695
+query: to pay my
+output: 2
+pay my	309883
+to pay my	121359
+query: this activity and
+output: 6
+this activity and	32452
+of this activity and	5293
+for this activity and	4691
+in this activity and	4106
+to this activity and	1462
+this activity and to	1127
+query: lunch to the restaurant
+output: 2
+lunch at the restaurant	2587
+lunch in the restaurant	1978
+query: very much about that
+output: 5
+very much that	63520
+very much for that	25347
+very much in that	2663
+very much of that	2232
+very much about that	1525
+query: up at a high
+output: 10
+at a high	614528
+up a high	29561
+up to a high	17453
+up with a high	7904
+up on a high	4663
+up in a high	4546
+up for a high	2049
+up of a high	1815
+in at a high	1635
+up at a high	1334
+query: you about this good
+output: 1
+you this good	1700
+query: answer to your question
+output: 3
+answer your question	402783
+answer to your question	293756
+answer for your question	3145
+query: came in the wrong
+output: 3
+came to the wrong	3331
+came at the wrong	1280
+came from the wrong	1026
+query: that at my place
+output: 1
+that my place	3513
+query: for the time that
+output: 10
+the time that	1526304
+at the time that	427754
+of the time that	91641
+by the time that	76487
+from the time that	65747
+to the time that	46757
+about the time that	37707
+in the time that	29213
+for the time that	27273
+with the time that	16027
+query: to travel it
+output: 2
+travel it	14145
+to travel it	2975
+query: me from this letter
+output: 1
+me this letter	3526
+query: go for the camp
+output: 1
+go to the camp	2771
+query: of new fashionable
+output: 1
+new fashionable	3174
+query: school on that time
+output: 1
+school at that time	4737
+query: to pay by myself
+output: 3
+pay myself	5252
+to pay myself	1810
+pay for myself	1750
+query: is in the same
+output: 10
+is the same	6388710
+is in the same	278598
+is about the same	175359
+is at the same	124159
+is on the same	119681
+is of the same	110008
+is from the same	27824
+is for the same	14313
+is under the same	7336
+is to the same	6962
+query: to buy for something
+output: 2
+buy something	328916
+to buy something	134646
+query: busy in my work
+output: 1
+busy with my work	1886
+query: that reason he
+output: 2
+that reason he	8697
+for that reason he	5370
+query: work in the farm
+output: 4
+work on the farm	14857
+work the farm	2943
+work of the farm	1935
+work at the farm	1299
+query: reply of your letter
+output: 1
+reply to your letter	6609
+query: and on the other
+output: 10
+and the other	6736806
+and on the other	407360
+and in the other	87860
+and to the other	44301
+and with the other	36601
+and of the other	32673
+and at the other	31183
+and for the other	23948
+and from the other	14762
+and down the other	13454
+query: and with the activities
+output: 7
+and the activities	144958
+and in the activities	2990
+and on the activities	2688
+and of the activities	2071
+and to the activities	1902
+and from the activities	1165
+and for the activities	1110
+query: good for sports and
+output: 1
+good sports and	2097
+query: well in these things
+output: 1
+well these things	1152
+query: popular by the students
+output: 1
+popular with the students	2988
+query: is about to suggest
+output: 1
+is to suggest	52397
+query: make a film
+output: 10
+make a film	91811
+to make a film	61508
+make a film about	22253
+to make a film about	17100
+make a film of	4815
+make a film with	3505
+make a film in	3280
+make a film on	3230
+to make a film of	3211
+to make a film on	2581
+query: game for to check
+output: 1
+game to check	2170
+query: do in the school
+output: 3
+do the school	3250
+do with the school	2208
+do in the school	1018
+query: played in this game
+output: 1
+played this game	59909
+query: pleasure of working with
+output: 9
+pleasure of working	39388
+pleasure working	33617
+pleasure working with	30614
+pleasure of working with	29288
+pleasure in working	2339
+pleasure of working on	1736
+pleasure of working for	1384
+pleasure of working in	1277
+pleasure in working with	1102
+query: look up a magazine
+output: 1
+look at a magazine	1495
+query: to spend of time
+output: 4
+spend time	1296516
+to spend time	649627
+than spend time	5317
+than to spend time	2369
+query: or anything without
+output: 10
+or anything	3511604
+or anything of	166172
+or anything in	66984
+or anything to	62955
+or anything about	20680
+or anything at	19179
+or anything for	16502
+or anything with	16491
+or anything on	14192
+or anything from	8526
+query: part in the daily
+output: 2
+part of the daily	35776
+part in the daily	2736
+query: taken in account in
+output: 9
+taken account	52363
+taken account of	48165
+taken in account	12713
+taken account of in	6234
+taken in to account	5188
+taken in account in	3721
+taken to account	3421
+taken to account for	1899
+taken on account	1001
+query: for other activities we
+output: 1
+other activities we	2449
+query: because in sometimes you
+output: 1
+because sometimes you	10015
+query: thing if you
+output: 1
+thing if you	56967
+query: longing for to hear
+output: 1
+longing to hear	4540
+query: month of this year
+output: 2
+month this year	61629
+month of this year	2872
+query: be available because
+output: 2
+be available because	10547
+be available because of	2079
+query: in june so
+output: 1
+june so	1001
+query: speak english so
+output: 1
+speak english so	1363
+query: for example if
+output: 2
+example if	403680
+for example if	143282
+query: give to him water
+output: 1
+give him water	3229
+query: applied to the job
+output: 3
+applied for the job	11851
+applied on the job	1140
+applied to the job	1119
+query: me between hundreds of
+output: 2
+me hundreds	8162
+me hundreds of	6873
+query: think you heard
+output: 1
+think you heard	5887
+query: ones in just
+output: 2
+ones just	31586
+ones with just	1087
+query: is in the weekend
+output: 2
+is the weekend	19472
+is on the weekend	1589
+query: it in the weekend
+output: 7
+it on the weekend	4520
+it for the weekend	3331
+it the weekend	2569
+it at the weekend	2387
+it to the weekend	2030
+it by the weekend	1211
+it before the weekend	1015
+query: answer to the questions
+output: 2
+answer the questions	354686
+answer to the questions	20367
+query: something new for me
+output: 2
+something new to me	5655
+something new for me	4806
+query: because of that is
+output: 2
+because that is	502826
+because of that is	1245
+query: off at work for
+output: 10
+off work	392596
+off from work	112078
+off to work	104204
+off of work	49510
+off work to	35122
+off work for	34135
+off from work to	17150
+off at work	15295
+off work at	12981
+off to work on	8718
+query: work for to go
+output: 1
+work to go	32917
+query: money to poor people
+output: 1
+money to poor people	1289
+query: think it was
+output: 10
+think it was	1841414
+to think it was	64793
+think it was in	36662
+think it was about	21420
+think it was on	15094
+think it was at	8541
+think it was for	8235
+think it was from	6918
+think it was to	6227
+think it was after	2820
+query: money for to survive
+output: 1
+money to survive	10905
+query: on the letter you
+output: 6
+the letter you	33404
+with the letter you	4027
+of the letter you	3246
+in the letter you	2230
+to the letter you	1986
+on the letter you	1732
+query: go the most
+output: 7
+go to the most	9873
+go for the most	5436
+to go to the most	2934
+go with the most	2882
+to go for the most	1870
+go the most	1297
+to go with the most	1074
+query: me in this month
+output: 1
+me this month	4760
+query: is in sale at
+output: 10
+is for sale	724836
+is on sale	127348
+is on sale at	17324
+is for sale at	15821
+is for sale by	12935
+is on sale for	12648
+is for sale in	9965
+is on sale in	6531
+is for sale on	6525
+is for sale for	6401
+query: and looking all
+output: 3
+and looking at all	7567
+and looking all	2514
+and looking for all	1613
+query: decide for the first
+output: 2
+decide in the first	1889
+decide the first	1414
+query: then discuss about it
+output: 1
+then discuss it	5840
+query: have in this time
+output: 3
+have at this time	15076
+have this time	9112
+have by this time	1862
+query: because on this time
+output: 3
+because this time	14180
+because at this time	5318
+because by this time	3138
+query: at the night of
+output: 10
+the night	11060617
+of the night	2122091
+the night before	1087611
+in the night	965419
+for the night	825746
+the night of	735975
+on the night	694860
+on the night of	293831
+the night in	288620
+the night with	210050
+query: climb up the mountain
+output: 2
+climb the mountain	18246
+climb up the mountain	3785
+query: kind for you to
+output: 6
+kind you	125736
+kind of you	56460
+kind of you to	22122
+kind to you	15864
+kind between you	1201
+kind for you	1088
+query: been on the top
+output: 6
+been the top	23014
+been at the top	19309
+been in the top	18141
+been on the top	5513
+been to the top	4851
+been near the top	2279
+query: am glad for it
+output: 2
+am glad it	24622
+am glad of it	6097
+query: me for my hobbies
+output: 1
+me about my hobbies	2206
+query: most of it
+output: 5
+most of it	889449
+most it	41189
+most about it	16943
+most from it	11059
+most for it	1482
+query: it was when
+output: 7
+it was when	304787
+than it was when	38133
+it was in when	9837
+of it was when	2590
+about it was when	2247
+it was on when	1422
+it was at when	1110
+query: drink in the most
+output: 1
+drink the most	4698
+query: really good in it
+output: 4
+really good at it	19111
+really good about it	4541
+really good it	2407
+really good in it	1343
+query: perhaps in the next
+output: 2
+perhaps the next	11425
+perhaps in the next	2565
+query: good on it on
+output: 10
+good it	393986
+good at it	294893
+good about it	85012
+good in it	26860
+good for it	24998
+good with it	14319
+good on it	10817
+good since it	7733
+good of it	7670
+good to it	2788
+query: free month since
+output: 2
+free month	91277
+free month of	30337
+query: you for some questions
+output: 1
+you some questions	39111
+query: of course it
+output: 2
+course it	1064330
+of course it	423059
+query: available from me to
+output: 10
+available to me	163378
+available for me	20757
+available for me to	9829
+available to me in	8551
+available to me at	6564
+available from me	5592
+available to me to	4500
+available to me for	4083
+available to me on	2486
+available to me by	1760
+query: good in swimming and
+output: 1
+good swimming and	1439
+query: time in such an
+output: 2
+time such an	8131
+time for such an	2988
+query: however i was
+output: 1
+however i was	2771
+query: close with nature and
+output: 1
+close to nature and	4730
+query: given to me
+output: 4
+given me	1215172
+given to me	313668
+given by me	16529
+given for me	1524
+query: me i just
+output: 2
+me i just	6942
+for me i just	1070
+query: is in a tent
+output: 1
+is a tent	4272
+query: good on it but
+output: 2
+good at it but	2828
+good about it but	1676
+query: do the technique
+output: 1
+do the technique	1173
+query: be on the right
+output: 9
+be the right	285232
+be on the right	102905
+be in the right	69804
+be at the right	14187
+be to the right	8904
+be of the right	3457
+be about the right	2654
+be with the right	1694
+be for the right	1603
+query: and protected to
+output: 10
+and protected	826381
+and protected by	188610
+and protected from	64376
+and protected in	28688
+and protected under	21559
+and protected with	14428
+and protected for	9005
+and protected to	4843
+and protected at	3487
+and protected on	2283
+query: came in
+output: 10
+came to	14658738
+came from	6233307
+came up	4115447
+came in	3921139
+came with	1747994
+came on	1232589
+came down	1221865
+came about	606904
+came under	461467
+came at	426850
+query: there were
+output: 10
+there were	18788626
+there were about	172449
+there were at	98131
+there were in	93233
+since there were	83682
+than there were	58766
+there were to	52045
+before there were	39828
+for there were	33145
+than there were in	13885
+query: part on this event
+output: 2
+part of this event	12015
+part in this event	9969
+query: go in the countryside
+output: 1
+go to the countryside	1934
+query: responsible about the security
+output: 1
+responsible for the security	34816
+query: surprised on the result
+output: 2
+surprised by the result	2167
+surprised at the result	1968
+query: part at a lot
+output: 3
+part of a lot	7143
+part a lot	1703
+part in a lot	1232
+query: your letter which
+output: 2
+your letter which	1881
+your letter in which	1541
+query: happy the first time
+output: 1
+happy for the first time	2777
+query: go for swimming and
+output: 1
+go swimming and	5496
+query: they go to shopping
+output: 1
+they go shopping	6024
+query: long way to home
+output: 2
+long way from home	23717
+long way home	20544
+query: thing from there that
+output: 1
+thing there that	1272
+query: best of the country
+output: 4
+best in the country	58534
+best for the country	11380
+best of the country	2351
+best the country	1317
+query: be on the summer
+output: 2
+be the summer	5659
+be in the summer	4246
+query: mainly on working for
+output: 4
+mainly working	12633
+mainly working on	3594
+mainly working in	1971
+mainly working with	1885
+query: working for all the
+output: 4
+working all the	20303
+working with all the	11707
+working on all the	5183
+working in all the	1629
+query: show at the end
+output: 3
+show at the end	9271
+show the end	3566
+show up at the end	2885
+query: the possibility choosing
+output: 1
+the possibility of choosing	5042
+query: there is as
+output: 2
+there is as	63282
+there is about as	1014
+query: as well the
+output: 10
+as well the	169015
+as well in the	75539
+as well for the	40885
+as well to the	34298
+as well on the	31879
+as well with the	27650
+as well at the	15767
+as well by the	13813
+as well from the	12557
+as well of the	11823
+query: is on one place
+output: 2
+is one place	48563
+is in one place	6929
+query: camp in this summer
+output: 1
+camp this summer	10789
+query: free in this time
+output: 2
+free this time	1528
+free at this time	1497
+query: will spend on
+output: 10
+will spend	939704
+will spend on	34597
+will spend about	17966
+will spend at	15025
+will spend in	9979
+will spend up	7417
+will spend with	3106
+will spend between	3092
+will spend to	2183
+will spend for	1451
+query: and as soon as
+output: 2
+and as soon as	297751
+up and as soon as	1064
+query: soon as you can
+output: 3
+soon as you can	144072
+soon as you can to	3460
+soon as you can after	2914
+query: you about this
+output: 10
+you this	1825459
+you on this	423655
+you in this	375361
+you for this	306922
+you with this	259713
+you to this	230807
+you about this	146731
+you at this	125351
+you of this	113958
+you from this	49609
+query: good in both of
+output: 10
+good for both	44095
+good both	15859
+good in both	15041
+good at both	11403
+good for both of	6714
+good on both	5629
+good of both	4061
+good both for	4023
+good with both	2606
+good both in	2422
+query: it about the sound
+output: 3
+it the sound	4140
+it with the sound	2391
+it to the sound	1442
+query: and in the end
+output: 10
+and the end	698284
+and at the end	468742
+and in the end	278396
+and by the end	179897
+and to the end	17051
+and before the end	13272
+and near the end	10133
+and after the end	6838
+and of the end	6337
+and from the end	3704
+query: according to the activities
+output: 1
+according to the activities	1719
+query: there for to start
+output: 1
+there to start	10972
+query: will suit to me
+output: 1
+will suit me	5768
+query: money for a new
+output: 4
+money for a new	19438
+money on a new	10958
+money with a new	1669
+money in a new	1654
+query: work on the back
+output: 3
+work on the back	3850
+work in the back	2896
+work the back	1381
+query: product for a certain
+output: 1
+product of a certain	1312
+query: for going camping
+output: 1
+going camping	19558
+query: you in reply
+output: 3
+you reply	152515
+you to reply	17834
+you for reply	2038
+query: reply for your letter
+output: 1
+reply to your letter	6609
+query: letter to tell
+output: 1
+letter to tell	4593
+query: to travel can
+output: 3
+travel can	42644
+of travel can	2928
+to travel can	1420
+query: experience in my life
+output: 2
+experience of my life	31807
+experience in my life	8225
+query: can you say
+output: 5
+can you say	302868
+can you say about	49732
+can you say to	11056
+can you say in	1374
+can you say for	1064
+query: to enter for competitions
+output: 2
+enter competitions	14264
+to enter competitions	5213
+query: happy for to stay
+output: 1
+happy to stay	23276
+query: answer to your questions
+output: 2
+answer your questions	852419
+answer to your questions	32831
+query: attend at this camp
+output: 1
+attend this camp	1352
+query: plus most of
+output: 2
+plus most	12608
+plus most of	5108
+query: concert of last month
+output: 1
+concert last month	1145
+query: part in the staff
+output: 1
+part of the staff	17509
+query: of the concert
+output: 10
+the concert	945534
+of the concert	128211
+to the concert	84614
+for the concert	71996
+at the concert	60595
+in the concert	45162
+after the concert	33743
+before the concert	30001
+from the concert	28345
+about the concert	22028
+query: and each us
+output: 2
+and each of us	30385
+and for each of us	1333
+query: kind with all of
+output: 6
+kind of all	15742
+kind to all	9470
+kind all	4963
+kind at all	4206
+kind in all	3184
+kind in all of	1032
+query: get on a bad
+output: 2
+get a bad	60122
+get in a bad	1400
+query: time in my life
+output: 3
+time in my life	267290
+time of my life	80151
+time my life	2061
+query: off from the stage
+output: 2
+off the stage	107687
+off of the stage	2590
+query: watch at the concert
+output: 1
+watch the concert	2126
+query: to go for shopping
+output: 6
+go shopping	1274521
+to go shopping	137249
+go to shopping	3911
+go for shopping	1967
+go on shopping	1521
+up to go shopping	1167
+query: winning in a competition
+output: 1
+winning a competition	2689
+query: basketball and at tennis
+output: 1
+basketball and tennis	10178
+query: plus for a big
+output: 1
+plus a big	4457
+query: solutions at this problem
+output: 3
+solutions to this problem	46091
+solutions for this problem	5250
+solutions of this problem	1305
+query: your computer you
+output: 10
+your computer you	41721
+on your computer you	26327
+your computer before you	24704
+on your computer before you	21121
+your computer after you	15710
+to your computer you	2911
+your computer for you	2483
+from your computer you	2268
+your computer with you	1685
+your computer without you	1673
+query: get in at any
+output: 2
+get in any	16117
+get at any	6773
+query: happy in to win
+output: 1
+happy to win	6038
+query: limit of your credit
+output: 1
+limit on your credit	1160
+query: exhausted in the end
+output: 2
+exhausted at the end	6385
+exhausted by the end	5185
+query: travel on the first
+output: 2
+travel in the first	1140
+travel for the first	1107
+query: time in the sales
+output: 1
+time the sales	1502
+query: concert for to help
+output: 1
+concert to help	2694
+query: help for the running
+output: 2
+help with the running	2806
+help in the running	1130
+query: difficulty in sleeping in
+output: 3
+difficulty sleeping	43094
+difficulty in sleeping	4087
+difficulty sleeping at	1464
+query: our library that
+output: 1
+our library that	1166
+query: already registered another
+output: 1
+already registered by another	28580
+query: starts in the end
+output: 2
+starts at the end	10930
+starts from the end	1161
+query: first prize at
+output: 10
+first prize	295244
+first prize of	61116
+first prize in	59724
+first prize at	18984
+first prize for	18668
+first prize to	2670
+first prize with	2545
+first prize from	1301
+first prize on	1296
+first prize by	1256
+query: will work the
+output: 10
+will work with the	307645
+will work on the	63784
+will work in the	59091
+will work the	39615
+will work for the	28940
+will work under the	16408
+will work at the	10742
+will work to the	4455
+will work from the	3944
+will work without the	1925
+query: holiday under the sun
+output: 1
+holiday in the sun	9133
+query: holiday in this year
+output: 1
+holiday this year	16512
+query: about the accommodation at
+output: 10
+the accommodation	596910
+of the accommodation	96535
+the accommodation of	62007
+for the accommodation	51083
+to the accommodation	37779
+in the accommodation	30516
+for the accommodation of	29758
+on the accommodation	20376
+from the accommodation	18026
+with the accommodation	12824
+query: reasons of this situation
+output: 1
+reasons for this situation	4375
+query: people of different countries
+output: 3
+people from different countries	19434
+people in different countries	5143
+people of different countries	2737
+query: about the information you
+output: 10
+the information you	3354350
+of the information you	263935
+with the information you	150046
+to the information you	85589
+for the information you	75863
+on the information you	44694
+from the information you	9309
+about the information you	8116
+in the information you	6800
+at the information you	2004
+query: but in this moment
+output: 2
+but at this moment	11022
+but this moment	1928
+query: teach to our children
+output: 1
+teach our children	62419
+query: winning of the competition
+output: 1
+winning the competition	7822
+query: because of it is
+output: 2
+because it is	5744830
+because of it is	3554
+query: good in it just
+output: 1
+good it just	1311
+query: depends of the teacher
+output: 1
+depends on the teacher	1847
+query: play on many instruments
+output: 1
+play many instruments	1038
+query: outside in the court
+output: 2
+outside the court	24301
+outside of the court	3470
+query: help to her to
+output: 10
+help her	931501
+help of her	54453
+help her to	42005
+help her with	40806
+help from her	25697
+help her in	20961
+help with her	20408
+help for her	10378
+help in her	8204
+help to her	7010
+query: place of the camp
+output: 1
+place in the camp	1119
+query: forward for your answers
+output: 1
+forward to your answers	1804
+query: was upset of it
+output: 1
+was upset about it	1921
+query: money to other people
+output: 2
+money from other people	1849
+money for other people	1436
+query: prize on the competition
+output: 1
+prize in the competition	1683
+query: tell you my
+output: 8
+tell you my	71580
+tell you about my	55281
+to tell you about my	20639
+to tell you my	15649
+tell you of my	7109
+tell you from my	6419
+to tell you of my	2558
+tell you in my	2500
+query: time of my life
+output: 3
+time in my life	267290
+time of my life	80151
+time my life	2061
+query: my last holiday in
+output: 1
+my last holiday	1138
+query: that for to have
+output: 1
+that to have	49998
+query: more enjoyable from shopping
+output: 1
+more enjoyable shopping	1137
+query: chance for to stay
+output: 1
+chance to stay	19446
+query: because i spent
+output: 1
+because i spent	1951
+query: opportunity for to play
+output: 1
+opportunity to play	184791
+query: to wear in there
+output: 1
+wear there	3700
+query: forward for your answers
+output: 1
+forward to your answers	1804
+query: because in these days
+output: 1
+because these days	6863
+query: enjoyed with the music
+output: 1
+enjoyed the music	15950
+query: month in this year
+output: 2
+month this year	61629
+month of this year	2872
+query: about the two activities
+output: 3
+the two activities	13890
+between the two activities	2405
+of the two activities	2066
+query: with for my holidays
+output: 1
+for my holidays	2062
+query: go for shopping in
+output: 10
+go shopping	1274521
+go shopping for	44080
+go shopping in	20552
+go shopping with	20097
+go shopping at	12433
+go shopping on	5776
+go to shopping	3911
+go shopping to	3298
+go for shopping	1967
+go shopping without	1718
+query: information of prices in
+output: 4
+information on prices	19311
+information about prices	9384
+information prices	2115
+information on prices at	1106
+query: surprised of to win
+output: 1
+surprised to win	1785
+query: worried of about not
+output: 1
+worried about not	11486
+query: studying to the university
+output: 1
+studying at the university	3291
+query: then by the end
+output: 6
+then at the end	38375
+then the end	19537
+then in the end	6716
+then by the end	3271
+then to the end	1564
+then near the end	1107
+query: after that in
+output: 10
+of that	35242145
+in that	29141151
+to that	22865902
+that in	21637493
+for that	21026827
+that of	19519424
+on that	13962955
+with that	12057264
+at that	11243284
+than that	9451375
+query: people on the story
+output: 2
+people in the story	5514
+people the story	1394
+query: reply about your questions
+output: 1
+reply to your questions	5189
+query: out from different shops
+output: 1
+out different shops	1063
+query: times in when you
+output: 1
+times when you	236761
+query: used on staying in
+output: 2
+used to staying	4297
+used to staying in	1530
+query: living at california
+output: 1
+living in california	1006
+query: california as
+output: 1
+california as	1599
+query: to sleep to
+output: 10
+to sleep	4454682
+of sleep	1061719
+sleep in	917244
+sleep with	595215
+sleep on	483100
+sleep at	420061
+to sleep in	323574
+sleep for	276931
+to sleep with	233401
+for sleep	203403
+query: forward from hearing from
+output: 7
+forward to hearing	700870
+forward to hearing from	511003
+forward to hearing about	16345
+forward hearing	3340
+forward to hearing of	2711
+forward hearing from	2580
+forward in hearing	1111
+query: up to the stairs
+output: 4
+up the stairs	400191
+to the stairs	44435
+up on the stairs	1170
+up to the stairs	1023
+query: students from different levels
+output: 3
+students at different levels	3076
+students with different levels	1228
+students of different levels	1100
+query: place for to hang
+output: 1
+place to hang	92361
+query: playing with this guitar
+output: 1
+playing this guitar	1137
+query: very much about that
+output: 5
+very much that	63520
+very much for that	25347
+very much in that	2663
+very much of that	2232
+very much about that	1525
+query: information from me and
+output: 3
+information about me and	9015
+information to me and	1430
+information on me and	1138
+query: that in the day
+output: 6
+that the day	145151
+that on the day	31907
+that in the day	7634
+that from the day	3329
+that of the day	1713
+that since the day	1361
+query: came for to train
+output: 1
+came to train	1091
+query: idea about going to
+output: 5
+idea of going	48731
+idea of going to	17613
+idea going	5266
+idea of going on	1770
+idea of going for	1053
+query: according with your
+output: 3
+according to your	735704
+according your	22363
+according with your	1010
+query: with your letter
+output: 10
+your letter	774720
+in your letter	104305
+of your letter	72900
+to your letter	59122
+for your letter	57957
+with your letter	18672
+from your letter	7481
+on your letter	6660
+by your letter	5418
+about your letter	1602
+query: is in this moment
+output: 3
+is at this moment	15282
+is this moment	5414
+is in this moment	1302
+query: entered in this competition
+output: 1
+entered this competition	1249
+query: thing of it is
+output: 4
+thing about it is	77089
+thing it is	53257
+thing of it is	5026
+thing in it is	1342
+query: as your questions
+output: 1
+as your questions	1481
+query: looking forward my
+output: 1
+looking forward to my	39108
+query: travel in this time
+output: 1
+travel at this time	1936
+query: have in this time
+output: 3
+have at this time	15076
+have this time	9112
+have by this time	1862
+query: time of year
+output: 3
+time of year	1544690
+time year	35447
+time in year	1464
+query: it mean the
+output: 5
+it mean the	13314
+it mean for the	12002
+it mean to the	4330
+it to mean the	3857
+it mean in the	1838
+query: price for food is
+output: 1
+price of food is	1114
+query: search of an appropriate
+output: 1
+search for an appropriate	4962
+query: happy for the news
+output: 1
+happy with the news	1620
+query: regarding of the accommodation
+output: 1
+regarding the accommodation	12325
+query: promised to myself that
+output: 1
+promised myself that	20827
+query: been in the states
+output: 1
+been in the states	1654
+query: me in the task
+output: 2
+me the task	2712
+me with the task	1058
+query: working in our local
+output: 1
+working with our local	1844
+query: offers for everything
+output: 1
+offers everything	115915
+query: everything you
+output: 10
+everything you	4490939
+with everything you	238325
+for everything you	151856
+of everything you	116578
+about everything you	76627
+everything for you	62056
+on everything you	56651
+to everything you	51750
+in everything you	44472
+everything about you	36850
+query: much of time and
+output: 2
+much time and	226268
+much of time and	2689
+query: a child and
+output: 10
+of a child and	39402
+between a child and	10577
+for a child and	10349
+with a child and	9985
+to a child and	9742
+by a child and	2665
+in a child and	2551
+on a child and	2388
+of a child and to	1402
+about a child and	1385
+query: so good in it
+output: 4
+so good it	39214
+so good at it	13561
+so good about it	6325
+so good in it	1075
+query: is not your
+output: 10
+is not your	813854
+is not in your	57941
+is not on your	29760
+is not to your	15891
+is not for your	6459
+is not about your	4500
+is not of your	3734
+is not up to your	2901
+is not under your	2609
+is not with your	2022
+query: is suitable to you
+output: 2
+is suitable for you	29055
+is suitable to you	1130
+query: get at home in
+output: 10
+get home	2540869
+get home from	89198
+get home to	51198
+get home in	19786
+get home at	16907
+get home before	12875
+get home for	11601
+get at home	10504
+get home after	9765
+get home on	7517
+query: to sit because
+output: 1
+sit because	3460
+query: them at the right
+output: 9
+them the right	94413
+them in the right	43248
+them to the right	20202
+them on the right	15721
+them with the right	13613
+them at the right	8453
+them of the right	3012
+them for the right	2102
+them from the right	1836
+query: usually do not
+output: 1
+usually do not	504501
+query: speaking together without
+output: 1
+speaking together	3853
+query: the teacher to
+output: 10
+the teacher	3449166
+the teacher to	142646
+the teacher in	69666
+the teacher of	63769
+the teacher for	27994
+the teacher with	21146
+the teacher at	14567
+the teacher on	14482
+the teacher from	10046
+the teacher about	9009
+query: will be the
+output: 10
+will be the	9344449
+will be in the	1171690
+will be on the	823021
+will be at the	652069
+will be for the	175189
+will be of the	84982
+will be to the	67428
+will be under the	62708
+will be from the	54467
+will be up to the	48704
+query: problems in my back
+output: 1
+problems with my back	1744
+query: lot of this experience
+output: 1
+lot from this experience	1329
+query: search in the internet
+output: 4
+search the internet	87267
+search on the internet	19804
+search of the internet	3166
+search from the internet	1603
+query: experiences in my life
+output: 2
+experiences of my life	31066
+experiences in my life	9037
+query: me for the prize
+output: 1
+me the prize	1216
+query: answer to your questions
+output: 2
+answer your questions	852419
+answer to your questions	32831
+query: forward for this holiday
+output: 1
+forward to this holiday	1015
+query: experience of the last
+output: 4
+experience of the last	13982
+experience in the last	6832
+experience the last	2117
+experience for the last	1342
+query: marks at the final
+output: 2
+marks the final	9931
+marks in the final	1153
+query: need to the trip
+output: 1
+need for the trip	1743
+query: be in an alternative
+output: 1
+be an alternative	84932
+query: shopping by the internet
+output: 1
+shopping on the internet	10461
+query: choose for not to
+output: 3
+choose not	929050
+choose not to	907281
+choose to not	52504
+query: at the rest of
+output: 10
+the rest	29413451
+the rest of	21370302
+for the rest	3123265
+for the rest of	2887582
+with the rest	1631105
+with the rest of	1446716
+to the rest	1444997
+to the rest of	1297283
+of the rest	1239384
+from the rest	1027224
+query: and think on this
+output: 3
+and think this	19097
+and think about this	10508
+and think of this	1980
+query: was at the army
+output: 3
+was in the army	21832
+was the army	5930
+was with the army	1419
+query: faces on the students
+output: 1
+faces of the students	1257
+query: me at one of
+output: 10
+me one	775644
+me one of	138225
+me of one	39889
+me in one	38693
+me for one	34252
+me to one	33030
+me with one	29805
+me of one of	27210
+me at one	21129
+me on one	15985
+query: people of other countries
+output: 4
+people from other countries	43177
+people in other countries	34248
+people of other countries	7161
+people to other countries	1561
+query: students of my class
+output: 1
+students in my class	10682
+query: prize of the competition
+output: 1
+prize in the competition	1683
+query: asked me in
+output: 10
+asked me	2801579
+asked me to	1004111
+asked me for	100772
+asked me about	95753
+asked me in	17472
+asked me on	6363
+asked me at	6111
+asked me before	4496
+asked me with	3171
+asked me after	2729
+query: reply for me as
+output: 2
+reply me as	1796
+reply to me as	1001
+query: concert in last week
+output: 1
+concert last week	2506
+query: of money but
+output: 6
+money but	345386
+of money but	35250
+for money but	14619
+with money but	2864
+in money but	2410
+about money but	2363
+query: not important for me
+output: 2
+not important to me	12897
+not important for me	2400
+query: helped for the staff
+output: 1
+helped the staff	1446
+query: of sports so
+output: 1
+sports so	8639
+query: member in our local
+output: 1
+member of our local	2489
+query: prize of the competition
+output: 1
+prize in the competition	1683
+query: course of one week
+output: 1
+course of one week	3726
+query: because for lots of
+output: 4
+because lots	17107
+because lots of	16285
+because of lots	1402
+because of lots of	1326
+query: off of the majority
+output: 1
+off the majority	3733
+query: bag for to carry
+output: 1
+bag to carry	14979
+query: carry it and
+output: 2
+carry it and	5443
+to carry it and	1862
+query: going on summer to
+output: 1
+going to summer	3686
+query: provided for the organisers
+output: 1
+provided by the organisers	1752
+query: group of the world
+output: 2
+group in the world	30057
+group of the world	4973
+query: you for something else
+output: 2
+you something else	21178
+you about something else	1373
+query: giving to me and
+output: 1
+giving me and	4498
+query: was on the first
+output: 10
+was the first	5854928
+was in the first	62184
+was on the first	24344
+was for the first	23844
+was at the first	8505
+was from the first	6351
+was with the first	2956
+was about the first	2694
+was of the first	2583
+was after the first	2385
+query: start at the
+output: 10
+start the	3660400
+start of the	3330420
+start with the	918543
+start at the	386515
+start in the	350889
+start to the	305226
+start on the	267216
+start from the	255899
+start for the	105650
+start up the	81960
+query: and in the camp
+output: 2
+and the camp	24739
+and from the camp	1593
+query: section of the school
+output: 1
+section of the school	9243
+query: questions of how they
+output: 2
+questions about how they	8430
+questions on how they	1047
+query: studying in the school
+output: 1
+studying at the school	1003
+query: regarding to the accommodation
+output: 1
+regarding the accommodation	12325
+query: jumped into it
+output: 1
+jumped into it	3783
+query: we were told
+output: 10
+we were told	377117
+we were told to	35583
+we were told by	24285
+we were told about	7404
+we were told in	4378
+we were told of	3253
+we were told at	3128
+in we were told	1545
+we were told on	1307
+since we were told	1046
+query: go to backstage and
+output: 1
+go backstage and	2110
+query: surprised for to have
+output: 1
+surprised to have	11692
+query: reference about the date
+output: 1
+reference to the date	8563
+query: to go to camping
+output: 2
+go camping	74573
+to go camping	32594
+query: up at the airport
+output: 9
+at the airport	958287
+up at the airport	55017
+up from the airport	27246
+in at the airport	8251
+up the airport	3232
+up to the airport	2496
+up in the airport	1540
+down at the airport	1475
+on at the airport	1008
+query: they are in stressed
+output: 1
+they are stressed	6084
+query: glad for to receive
+output: 1
+glad to receive	94559
+query: surprise as to
+output: 2
+surprise as	77388
+surprise as to	2574
+query: free for travelling to
+output: 1
+free travelling	2412
+query: in the matter of
+output: 10
+the matter	7687695
+of the matter	1171377
+the matter of	929002
+on the matter	883527
+in the matter	700368
+the matter to	419434
+the matter with	331531
+in the matter of	251452
+the matter in	238142
+to the matter	223855
+query: become better in it
+output: 1
+become better at it	1132
+query: days i have
+output: 1
+days i have	7240
+query: spending to two weeks
+output: 1
+spending two weeks	8427
+query: made of men in
+output: 7
+made men	36005
+made by men	15152
+made for men	8885
+made up of men	7952
+made of men	1117
+made by men of	1082
+made men of	1061
+query: reply of your letter
+output: 1
+reply to your letter	6609
+query: the best of ourselves
+output: 2
+the best of ourselves	2477
+the best in ourselves	1591
+query: know about how many
+output: 2
+know how many	683169
+know about how many	1990
+query: have a to take
+output: 1
+have a take	7701
+query: going to shopping after
+output: 6
+going shopping	57040
+going shopping for	5948
+going shopping with	4733
+going shopping in	2324
+going to shopping	1929
+going shopping at	1645
+query: be shown at first
+output: 1
+be shown first	3578
+query: sure about that the
+output: 1
+sure that the	2876050
+query: finish in the end
+output: 3
+finish at the end	6741
+finish by the end	4450
+finish before the end	1245
+query: but also building
+output: 1
+but also building	2405
+query: all of white people
+output: 1
+all white people	13109
+query: flight to home at
+output: 6
+flight home	98276
+flight home from	5840
+flight home to	5586
+flight home for	1587
+flight home on	1336
+flight home with	1134
+query: to go on summer
+output: 3
+go to summer	8124
+to go to summer	4141
+go on summer	1032
+query: studying at a foreign
+output: 2
+studying a foreign	4288
+studying in a foreign	1716
+query: experience about helping at
+output: 7
+experience helping	57256
+experience in helping	27537
+experience of helping	5543
+experience by helping	1833
+experience helping to	1282
+experience in helping to	1187
+experience with helping	1175
+query: give to students an
+output: 1
+give students an	48861
+query: an interest studying
+output: 1
+an interest in studying	2911
+query: sure of what kind
+output: 2
+sure what kind	37513
+sure about what kind	3763
+query: think it will
+output: 2
+think it will	836949
+to think it will	9358
+query: get at the front
+output: 4
+get to the front	21088
+get the front	11119
+get in the front	3484
+get on the front	3007
+query: to sleep than
+output: 10
+to sleep	4454682
+of sleep	1061719
+sleep in	917244
+sleep with	595215
+sleep on	483100
+sleep at	420061
+to sleep in	323574
+sleep for	276931
+to sleep with	233401
+for sleep	203403
+query: and at on the
+output: 7
+and on the	6216900
+and at the	4989707
+and down on the	39743
+and up on the	8955
+and at about the	6041
+and about on the	4024
+and in on the	1202
+query: filled by people who
+output: 2
+filled with people who	16351
+filled by people who	1604
+query: your letter which
+output: 2
+your letter which	1881
+your letter in which	1541
+query: me for what sort
+output: 1
+me what sort	6429
+query: it but the
+output: 10
+it but the	104131
+it but in the	6976
+of it but the	6704
+on it but the	4947
+about it but the	4798
+to it but the	4789
+it but at the	4779
+in it but the	4597
+for it but the	4138
+it but for the	3607
+query: the usa is
+output: 1
+the usa is	3312
+query: you about the two
+output: 4
+you the two	6955
+you to the two	1898
+you for the two	1808
+you about the two	1408
+query: phone at the shop
+output: 1
+phone the shop	6598
+query: students of all courses
+output: 1
+students in all courses	1650
+query: the circumstances they
+output: 2
+the circumstances they	9426
+for the circumstances they	2885
+query: me for to help
+output: 2
+me to help	160274
+me for help	37459
+query: styles on the world
+output: 1
+styles in the world	1148
+query: forget at that time
+output: 1
+forget that time	1722
+query: much about your letter
+output: 1
+much for your letter	3381
+query: your letter
+output: 10
+your letter	774720
+your letter to	143830
+in your letter	104305
+your letter of	103135
+of your letter	72900
+to your letter	59122
+for your letter	57957
+in your letter to	23017
+for your letter of	20192
+to your letter of	19871
+query: you and the
+output: 10
+you and the	1200808
+between you and the	289827
+to you and the	87817
+for you and the	84724
+with you and the	60936
+of you and the	33219
+by you and the	17770
+you and to the	17700
+about you and the	16554
+from you and the	14402
+query: are and the
+output: 5
+are and the	82740
+are in and the	12046
+are up and the	4011
+are down and the	3935
+are on and the	3443
+query: be interested on them
+output: 1
+be interested in them	8896
+query: me on the letter
+output: 1
+me the letter	9888
+query: from at the end
+output: 10
+at the end	21013179
+from the end	744644
+up at the end	106553
+in at the end	60172
+down at the end	52409
+on at the end	36138
+than at the end	28100
+to at the end	16361
+about at the end	14416
+with at the end	13957
+query: to at the beginning
+output: 10
+at the beginning	5901902
+to the beginning	787399
+in at the beginning	26393
+than at the beginning	21560
+up at the beginning	19671
+to at the beginning	5961
+on at the beginning	5893
+down at the beginning	5325
+of at the beginning	4121
+about at the beginning	3691
+query: parts in our life
+output: 1
+parts of our life	1954
+query: advantages of shopping
+output: 1
+advantages of shopping	1174
+query: shopping which
+output: 1
+shopping which	4475
+query: interested about the law
+output: 1
+interested in the law	2737
+query: kind with me and
+output: 1
+kind to me and	5397
+query: the of the world
+output: 4
+the the world	22668
+the from the world	1931
+the in the world	1397
+the of the world	1393
+query: to start with climbing
+output: 2
+start climbing	16500
+to start climbing	4160
+query: have participated some
+output: 1
+have participated in some	3082
+query: to go but
+output: 2
+go but	218284
+to go but	119769
+query: for the accommodation
+output: 10
+the accommodation	596910
+of the accommodation	96535
+for the accommodation	51083
+to the accommodation	37779
+in the accommodation	30516
+on the accommodation	20376
+from the accommodation	18026
+with the accommodation	12824
+about the accommodation	10380
+at the accommodation	4327
+query: tell you the
+output: 10
+tell you the	791055
+tell you about the	188026
+to tell you the	181811
+to tell you about the	51339
+tell you of the	17984
+tell you in the	12903
+tell you at the	6186
+tell you on the	5412
+to tell you of the	5004
+tell you from the	4020
+query: on your letter
+output: 10
+your letter	774720
+in your letter	104305
+of your letter	72900
+to your letter	59122
+for your letter	57957
+with your letter	18672
+from your letter	7481
+on your letter	6660
+by your letter	5418
+about your letter	1602
+query: furthermore for the
+output: 1
+furthermore the	28450
+query: prize of the competition
+output: 1
+prize in the competition	1683
+query: you for last time
+output: 1
+you last time	9244
+query: concerning to accommodation
+output: 1
+concerning accommodation	2224
+query: different than the other
+output: 4
+different from the other	85781
+different than the other	20198
+different to the other	8745
+different on the other	1089
+query: job for singing at
+output: 2
+job singing	4159
+job of singing	1207
+query: it was in lunchtime
+output: 1
+it was lunchtime	2868
+query: tell to the people
+output: 1
+tell the people	62868
+query: me in last week
+output: 1
+me last week	46706
+query: help in one of
+output: 10
+help one	180401
+help of one	17700
+help one to	13046
+help one of	12438
+help with one	11819
+help of one of	10122
+help from one	9935
+help from one of	6157
+help in one	5705
+help with one of	5083
+query: words for to describe
+output: 1
+words to describe	161771
+query: go back at university
+output: 1
+go back to university	2785
+query: month in my life
+output: 1
+month of my life	2601
+query: pay for to get
+output: 1
+pay to get	67136
+query: that in the concert
+output: 1
+that the concert	11934
+query: winning of the first
+output: 2
+winning the first	36689
+winning for the first	1801
+query: you about the information
+output: 7
+you the information	141211
+you with the information	88245
+you for the information	31226
+you to the information	8254
+you about the information	1793
+you from the information	1341
+you of the information	1266
+query: of june and
+output: 3
+june and	13101
+in june and	4233
+of june and	1426
+query: part of the lesson
+output: 2
+part of the lesson	19405
+part in the lesson	1104
+query: told from the teacher
+output: 1
+told the teacher	6822
+query: hesitate about to write
+output: 1
+hesitate to write	129766
+query: guy in a party
+output: 1
+guy at a party	2541
+query: was in the second
+output: 5
+was the second	557685
+was in the second	22591
+was on the second	15877
+was at the second	1826
+was for the second	1697
+query: work in a big
+output: 5
+work for a big	6399
+work in a big	3402
+work on a big	1959
+work with a big	1473
+work at a big	1128
+query: it in a little
+output: 9
+it a little	605919
+it up a little	52040
+it for a little	28366
+it with a little	23633
+it in a little	17412
+it down a little	16949
+it on a little	4029
+it to a little	2139
+it from a little	1081
+query: you on the next
+output: 10
+you the next	75389
+you to the next	68269
+you in the next	33125
+you at the next	26073
+you for the next	15157
+you on the next	14440
+you by the next	4733
+you with the next	3029
+you of the next	1826
+you from the next	1576
+query: than on last time
+output: 2
+than last time	33717
+on last time	3929
+query: concert on last month
+output: 1
+concert last month	1145
+query: lot of easier to
+output: 9
+lot easier	767607
+lot easier to	244271
+lot easier than	69259
+lot easier for	55057
+lot easier on	13235
+lot easier with	9841
+lot easier in	6051
+lot easier by	3234
+lot easier since	1350
+query: because of your children
+output: 1
+because your children	1650
+query: came the first day
+output: 1
+came on the first day	1257
+query: provided to us and
+output: 3
+provided to us and	4600
+provided by us and	2123
+provided us and	1240
+query: annual leave that
+output: 1
+annual leave that	2808
+query: member in the council
+output: 1
+member of the council	42273
+query: out to the concert
+output: 2
+out the concert	3014
+out of the concert	1981
+query: and to the songs
+output: 1
+and the songs	77280
+query: days in my life
+output: 2
+days of my life	65055
+days in my life	4615
+query: participate at this activity
+output: 1
+participate in this activity	9915
+query: like you know
+output: 4
+like you know	69773
+like you to know	32431
+like you to know about	2047
+like for you to know	1765
+query: you know last
+output: 1
+you know last	1334
+query: made in the background
+output: 1
+made the background	2697
+query: on your letter you
+output: 1
+your letter you	8352
+query: on your letter you
+output: 1
+your letter you	8352
+query: something good to me
+output: 1
+something good for me	1225
+query: than in a tent
+output: 3
+in a tent	103275
+than a tent	2034
+up in a tent	1581
+query: opportunity for to give
+output: 1
+opportunity to give	117744
+query: nice for to do
+output: 1
+nice to do	33428
+query: regarding to the accommodation
+output: 1
+regarding the accommodation	12325
+query: the activities that you
+output: 2
+the activities that you	7212
+of the activities that you	1825
+query: of confidence in it
+output: 4
+confidence in it	17029
+confidence it	14258
+of confidence it	1104
+of confidence in it	1062
+query: think it is
+output: 10
+think it is	3488852
+to think it is	48814
+think it is in	24779
+think it is about	22706
+think it is for	12556
+think it is to	12344
+think about it is	10058
+think of it is	7327
+think it is at	6335
+think it is of	5423
+query: minutes for just to
+output: 9
+minutes just	41045
+minutes just to	18342
+minutes to just	3272
+minutes with just	1955
+minutes of just	1709
+minutes just before	1631
+minutes just for	1393
+minutes for just	1345
+minutes just by	1325
+query: letter in this morning
+output: 1
+letter this morning	6010
+query: experience about a recent
+output: 1
+experience at a recent	1548
+query: first one can
+output: 1
+first one can	4714
+query: second one can
+output: 1
+second one can	3957
+query: idea of how much
+output: 4
+idea how much	111429
+idea of how much	52738
+idea on how much	2867
+idea about how much	2735
+query: need to bring
+output: 2
+need to bring	395413
+need bring	3201
+query: reply on your letter
+output: 1
+reply to your letter	6609
+query: hesitate on to write
+output: 1
+hesitate to write	129766
+query: to write me
+output: 2
+write me	327894
+to write me	70436
+query: video will become
+output: 1
+video will become	1154
+query: interested on knowing more
+output: 1
+interested in knowing more	48546
+query: the school because
+output: 7
+the school because	16521
+the school because of	4802
+to the school because	2413
+at the school because	1612
+of the school because	1588
+in the school because	1535
+from the school because	1054
+query: because for those who
+output: 2
+because those who	64656
+because of those who	11980
+query: hesitate on to ask
+output: 1
+hesitate to ask	171364
+query: experience with helping at
+output: 7
+experience helping	57256
+experience in helping	27537
+experience of helping	5543
+experience by helping	1833
+experience helping to	1282
+experience in helping to	1187
+experience with helping	1175
+query: put in a website
+output: 3
+put up a website	9946
+put on a website	2171
+put a website	1810
+query: day in two weeks
+output: 3
+day for two weeks	13506
+day to two weeks	2041
+day two weeks	1581
+query: responsible of the sound
+output: 1
+responsible for the sound	1989
+query: time of their life
+output: 2
+time in their life	21068
+time of their life	8601
+query: than shopping like
+output: 2
+shopping like	6249
+by shopping like	1369
+query: something for to help
+output: 1
+something to help	111269
+query: go to shopping and
+output: 1
+go shopping and	18195
+query: camp and one
+output: 1
+camp and one	1676
+query: ranked in the most
+output: 1
+ranked the most	3290
+query: advice of going to
+output: 1
+advice going	1081
+query: single with the same
+output: 1
+single of the same	2504
+query: available during that time
+output: 1
+available during that time	2009
+query: like at the village
+output: 1
+like the village	4511
+query: money for to spend
+output: 1
+money to spend	164375
+query: a girl you
+output: 1
+with a girl you	1432
+query: ready for to spend
+output: 1
+ready to spend	32437
+query: had by helping at
+output: 1
+had in helping	1225
+query: because in the rest
+output: 1
+because the rest	32644
+query: because in the end
+output: 5
+because at the end	27351
+because in the end	26682
+because the end	19899
+because of the end	3838
+because by the end	3307
+query: experience in helping at
+output: 7
+experience helping	57256
+experience in helping	27537
+experience of helping	5543
+experience by helping	1833
+experience helping to	1282
+experience in helping to	1187
+experience with helping	1175
+query: to reply for it
+output: 4
+reply to it	79829
+reply it	12964
+to reply to it	7520
+to reply it	1019
+query: idea of the background
+output: 1
+idea of the background	1075
+query: appreciate all about this
+output: 1
+appreciate all this	1732
+query: some information of them
+output: 2
+some information about them	4037
+some information on them	1158
+query: them to the party
+output: 2
+them to the party	2787
+them at the party	1000
+query: so kind to
+output: 4
+so kind	282228
+so kind to	65127
+so kind of	10171
+so kind in	2105
+query: experience in surfing
+output: 1
+experience surfing	1038
+query: look at it as
+output: 4
+look at it as	91104
+look on it as	5867
+look to it as	2064
+look for it as	1665
+query: look at it as
+output: 4
+look at it as	91104
+look on it as	5867
+look to it as	2064
+look for it as	1665
+query: going to this trip
+output: 1
+going on this trip	4353
+query: buyer and for
+output: 2
+buyer and	535028
+buyer and to	1865
+query: wait for the queue
+output: 2
+wait in the queue	4849
+wait the queue	1228
+query: you for your excellent
+output: 2
+you for your excellent	25490
+you on your excellent	6876
+query: wanted to go
+output: 2
+wanted to go	820040
+wanted go	2176
+query: there for to help
+output: 2
+there to help	381052
+there for help	2736
+query: student in a particular
+output: 1
+student in a particular	1506
+query: share it to anyone
+output: 1
+share it with anyone	14297
+query: and in photography with
+output: 10
+and photography	666526
+and photography to	25086
+and photography by	16728
+and photography of	11777
+and photography in	11467
+and photography for	7388
+and photography on	5902
+and photography from	5770
+and photography at	4601
+and photography with	2612
+query: relationships to other people
+output: 1
+relationships with other people	17607
+query: of my town
+output: 9
+my town	177920
+in my town	89564
+to my town	11838
+of my town	11623
+from my town	5722
+for my town	2911
+about my town	1526
+on my town	1146
+near my town	1107
+query: in mid of july
+output: 1
+mid july	2252
+query: called from one of
+output: 10
+called one	102203
+called one of	55356
+called in one	9323
+called for one	6325
+called with one	5840
+called by one	5833
+called to one	5004
+called by one of	2293
+called on one	2290
+called up one	2147
+query: am writing you
+output: 10
+am writing to you	50418
+am writing you	23553
+am writing to you to	8334
+am writing to you in	4575
+am writing you to	4409
+am writing to you on	3829
+am writing to you from	3051
+am writing to you about	2992
+am writing you in	1857
+am writing to you with	1637
+query: some information from me
+output: 1
+some information about me	3351
+query: at school which
+output: 5
+school which	172565
+at school which	3240
+to school which	2453
+in school which	2401
+of school which	1889
+query: to in log cabins
+output: 1
+in log cabins	2937
+query: writing for to tell
+output: 1
+writing to tell	16094
+query: time for working to
+output: 10
+time working	340990
+time working on	83968
+time working with	56531
+time working in	28555
+time working for	12878
+time working at	10425
+time for working	6738
+time working to	6701
+time to working	5108
+time in working	3692
+query: job at behind the
+output: 1
+job behind the	3484
+query: was at very near
+output: 10
+was very	11641665
+was in very	27877
+was very near	19815
+was of very	17186
+was very near to	3257
+was very in	3162
+was on very	3114
+was very down	3079
+was very up	2725
+was very of	1837
+query: near from the stage
+output: 3
+from the stage	146626
+near the stage	15910
+down from the stage	3433
+query: each other so
+output: 9
+each other so	122617
+with each other so	17442
+to each other so	17078
+from each other so	6816
+of each other so	5031
+for each other so	3662
+each other for so	3537
+on each other so	1714
+each other in so	1649
+query: more stories of this
+output: 3
+more stories on this	28573
+more stories in this	4723
+more stories by this	2605
+query: only in the end
+output: 9
+only at the end	53325
+only the end	17145
+only to the end	4277
+only in the end	3521
+only after the end	3305
+only by the end	2260
+only near the end	2087
+only on the end	1115
+only from the end	1105
+query: men of the world
+output: 3
+men in the world	45365
+men of the world	17457
+men the world	3721
+query: looking for my mother
+output: 1
+looking for my mother	1815
+query: looking in a huge
+output: 2
+looking for a huge	2773
+looking at a huge	2316
+query: especially on special
+output: 2
+especially special	3095
+especially for special	1556
+query: like on a sale
+output: 1
+like a sale	1353
+query: asked to me to
+output: 10
+asked me	2801579
+asked me to	1004111
+asked me for	100772
+asked me about	95753
+asked of me	25001
+asked me in	17472
+asked for me	9315
+asked me on	6363
+asked me at	6111
+asked me before	4496
+query: been in this country
+output: 1
+been in this country	10288
+query: out about if there
+output: 1
+out if there	142165
+query: been in a concert
+output: 2
+been to a concert	6119
+been a concert	1070
+query: because this situation
+output: 2
+because of this situation	2736
+because this situation	1900
+query: sleep on a tent
+output: 1
+sleep in a tent	3676
+query: price on the end
+output: 2
+price at the end	9442
+price in the end	1052
+query: with reply on
+output: 10
+reply to	18804889
+to reply	3219936
+in reply	2980996
+in reply to	2740787
+to reply to	2350390
+reply from	370814
+reply with	321377
+reply in	274329
+reply by	242664
+reply on	237865
+query: reply on your letter
+output: 1
+reply to your letter	6609
+query: shown at the video
+output: 3
+shown in the video	7613
+shown on the video	3098
+shown the video	1674
+query: students about the subject
+output: 5
+students of the subject	2863
+students in the subject	2345
+students on the subject	1301
+students for the subject	1104
+students to the subject	1072
+query: came in a good
+output: 5
+came from a good	2574
+came at a good	2131
+came to a good	1325
+came a good	1064
+came with a good	1034
+query: know about what kind
+output: 1
+know what kind	233443
+query: to go to shopping
+output: 6
+go shopping	1274521
+to go shopping	137249
+go to shopping	3911
+go for shopping	1967
+go on shopping	1521
+up to go shopping	1167
+query: go to shopping when
+output: 1
+go shopping when	2602
+query: information for the trip
+output: 2
+information about the trip	3427
+information on the trip	1248
+query: character of the story
+output: 3
+character in the story	15368
+character of the story	4696
+character from the story	1041
+query: in response of it
+output: 6
+response to it	75825
+response it	30629
+in response to it	9913
+response from it	2353
+of response it	1452
+response before it	1425
+query: singing in both of
+output: 1
+singing both	2304
+query: and in the same
+output: 10
+and the same	1692039
+and at the same	1397527
+and in the same	255079
+and with the same	83177
+and on the same	66236
+and for the same	65485
+and to the same	49724
+and about the same	39154
+and of the same	30891
+and by the same	29843
+query: was in a sports
+output: 1
+was a sports	9347
+query: all from the staff
+output: 2
+all the staff	122580
+all of the staff	24008
+query: school and once
+output: 1
+school and once	1593
+query: got to the top
+output: 3
+got to the top	31285
+got the top	12636
+got up to the top	1357
+query: up to the stage
+output: 7
+to the stage	456175
+up on the stage	23158
+up the stage	22712
+up to the stage	21331
+on to the stage	15960
+down to the stage	3200
+up at the stage	1692
+query: tents which
+output: 1
+tents which	4304
+query: more comfortable and
+output: 1
+more comfortable and	128277
+query: reply for your letter
+output: 1
+reply to your letter	6609
+query: which suits to you
+output: 1
+which suits you	8629
+query: sure of what part
+output: 1
+sure what part	4064
+query: to hearing for you
+output: 10
+hearing from you	592564
+to hearing from you	470675
+hearing you	60239
+in hearing from you	34435
+to hearing you	6162
+of hearing you	4657
+of hearing from you	2814
+hearing about you	2778
+in hearing you	2744
+after hearing you	1419
+query: new for me and
+output: 2
+new to me and	15561
+new for me and	1683
+query: products by the internet
+output: 1
+products on the internet	11502
+query: been with the university
+output: 2
+been at the university	1324
+been with the university	1104
+query: off in the beginning
+output: 4
+off at the beginning	5946
+off the beginning	4860
+off in the beginning	1631
+off from the beginning	1213
+query: experience in helping at
+output: 7
+experience helping	57256
+experience in helping	27537
+experience of helping	5543
+experience by helping	1833
+experience helping to	1282
+experience in helping to	1187
+experience with helping	1175
+query: up to the stage
+output: 7
+to the stage	456175
+up on the stage	23158
+up the stage	22712
+up to the stage	21331
+on to the stage	15960
+down to the stage	3200
+up at the stage	1692
+query: on holiday but
+output: 2
+holiday but	101649
+on holiday but	3783
+query: to go on swimming
+output: 2
+go swimming	103339
+to go swimming	38134
+query: dangerous for the two
+output: 1
+dangerous of the two	1198
+query: each other in ages
+output: 1
+each other for ages	1537
+query: school on the other
+output: 2
+school the other	4521
+school on the other	2144
+query: for accommodation at this
+output: 8
+accommodation in this	16742
+accommodation on this	9740
+accommodation this	6416
+accommodation at this	5156
+accommodation for this	4612
+accommodation of this	3030
+for accommodation in this	2670
+accommodation with this	1077
+query: happy with the experience
+output: 1
+happy with the experience	2243
+query: person for to put
+output: 1
+person to put	10515
+query: join in the camp
+output: 1
+join the camp	1749
+query: happy for to have
+output: 1
+happy to have	402916
+query: in a company
+output: 10
+of a company	1042523
+for a company	555168
+to a company	360789
+in a company	290275
+by a company	289878
+with a company	275320
+from a company	220001
+on a company	156376
+at a company	78796
+about a company	66970
+query: important for me and
+output: 2
+important to me and	31541
+important for me and	2811
+query: experience for my
+output: 10
+experience of my	56246
+experience with my	27691
+experience in my	26751
+experience my	19718
+experience for my	10807
+experience on my	5454
+experience under my	5220
+experience from my	3830
+experience to my	3822
+experience at my	2329
+query: except from looking at
+output: 1
+except looking	1415
+query: go for shopping with
+output: 10
+go shopping	1274521
+go shopping for	44080
+go shopping in	20552
+go shopping with	20097
+go shopping at	12433
+go shopping on	5776
+go to shopping	3911
+go shopping to	3298
+go for shopping	1967
+go shopping without	1718
+query: reply for your letter
+output: 1
+reply to your letter	6609
+query: as to the list
+output: 3
+as the list	49806
+as in the list	1349
+as to the list	1173
+query: reply for my questions
+output: 1
+reply to my questions	2688
+query: money on our bank
+output: 1
+money to our bank	1336
+query: knowledge about these subjects
+output: 1
+knowledge of these subjects	1450
+query: special services such
+output: 2
+special services such	8579
+about special services such	2125
+query: order with post or
+output: 2
+order to post or	1558
+order by post or	1528
+query: answer to another of
+output: 4
+answer another	10512
+answer to another	6784
+answer in another	1718
+answer from another	1056
+query: or on a sleeping
+output: 1
+or a sleeping	2864
+query: interested on the possibility
+output: 1
+interested in the possibility	11025
+query: needed of to hunt
+output: 1
+needed to hunt	1586
+query: say that we
+output: 6
+say that we	668646
+to say that we	281883
+on to say that we	4240
+than to say that we	1668
+say that since we	1618
+say that we in	1524
+query: for example when
+output: 3
+example when	177587
+for example when	111302
+by example when	1035
+query: hear for about my
+output: 1
+hear about my	19237
+query: to pay the
+output: 8
+pay the	5846755
+to pay the	2834554
+than pay the	7733
+of pay the	2450
+than to pay the	2306
+up to pay the	1674
+in to pay the	1388
+about to pay the	1223
+query: have to the chance
+output: 1
+have the chance	562844
+query: spent for three hours
+output: 2
+spent three hours	16894
+spent about three hours	3468
+query: wasting of their time
+output: 1
+wasting their time	45812
+query: out from the toy
+output: 2
+out of the toy	2203
+out the toy	1460
+query: suggestions of what should
+output: 1
+suggestions on what should	1240
+query: happy for to receive
+output: 1
+happy to receive	71681
+query: answer at your letter
+output: 2
+answer your letter	3537
+answer to your letter	1598
+query: chance for to choose
+output: 1
+chance to choose	20685
+query: to shop in
+output: 10
+to shop	3798083
+shop for	3270135
+shop in	1610544
+shop at	967602
+shop on	648935
+shop with	626928
+shop by	580919
+to shop for	551887
+shop to	422429
+up shop	273425
+query: effect in our lives
+output: 2
+effect on our lives	4182
+effect our lives	1885
+query: just for a commercial
+output: 1
+just a commercial	3930
+query: in different areas
+output: 10
+different areas	869457
+in different areas	206247
+of different areas	48472
+from different areas	42630
+to different areas	32057
+for different areas	22865
+on different areas	14280
+between different areas	12083
+with different areas	6925
+at different areas	4151
+query: of students should
+output: 5
+students should	1205326
+of students should	7539
+for students should	2821
+to students should	2410
+by students should	1589
+query: me on the class
+output: 1
+me in the class	1207
+query: time to helping them
+output: 1
+time helping them	2168
+query: chance about to do
+output: 1
+chance to do	257074
+query: some questions to you
+output: 4
+some questions you	22192
+some questions for you	11006
+some questions about you	1159
+some questions to you	1009
+query: wanted to the next
+output: 1
+wanted the next	1698
+query: wait at a long
+output: 3
+wait a long	36077
+wait for a long	8062
+wait in a long	3516
+query: daily exercise and
+output: 1
+daily exercise and	4674
+query: clothing and money
+output: 1
+clothing and money	1631
+query: answers of my questions
+output: 2
+answers to my questions	26434
+answers my questions	3808
+query: hope i was
+output: 1
+hope i was	2546
+query: morning on the place
+output: 1
+morning to the place	1007
+query: so good in it
+output: 4
+so good it	39214
+so good at it	13561
+so good about it	6325
+so good in it	1075
+query: life of today is
+output: 1
+life today is	4920
+query: or after according
+output: 2
+or according	83085
+or down according	2756
+query: things at your home
+output: 2
+things in your home	2636
+things for your home	1336
+query: concerning to the date
+output: 1
+concerning the date	5079
+query: money for to enjoy
+output: 1
+money to enjoy	5099
+query: go to shopping with
+output: 10
+go shopping	1274521
+go shopping for	44080
+go shopping in	20552
+go shopping with	20097
+go shopping at	12433
+go shopping on	5776
+go to shopping	3911
+go shopping to	3298
+go for shopping	1967
+go shopping without	1718
+query: are crying because
+output: 1
+are crying because	1352
+query: for the question you
+output: 5
+the question you	69863
+to the question you	9138
+of the question you	3654
+on the question you	2529
+for the question you	1074
+query: happening with their lives
+output: 1
+happening in their lives	5533
+query: letter for the first
+output: 3
+letter of the first	11518
+letter in the first	2861
+letter for the first	1881
+query: prize of the competition
+output: 1
+prize in the competition	1683
+query: being in a concert
+output: 1
+being a concert	1022
+query: think i could
+output: 1
+think i could	34089
+query: ticket after that
+output: 5
+ticket that	57422
+ticket for that	6935
+ticket to that	2392
+ticket in that	1316
+ticket with that	1193
+query: signed for a contract
+output: 2
+signed a contract	189116
+signed to a contract	6152
+query: friendly with you
+output: 3
+friendly you	4336
+friendly to you	4202
+friendly with you	1519
+query: reply for your request
+output: 1
+reply to your request	11672
+query: good in i am
+output: 1
+good i am	3836
+query: be in the camp
+output: 3
+be at the camp	1478
+be in the camp	1275
+be the camp	1040
+query: smile to each other
+output: 2
+smile at each other	7383
+smile each other	1951
+query: concerning to the activities
+output: 1
+concerning the activities	14186
+query: good in it because
+output: 1
+good at it because	1362
+query: regarding to the activities
+output: 1
+regarding the activities	15180
+query: we were in school
+output: 2
+we were in school	5263
+we were at school	2921
+query: of helping the
+output: 10
+helping the	1290055
+in helping the	168510
+to helping the	83585
+of helping the	78610
+for helping the	60071
+by helping the	44868
+on helping the	29465
+at helping the	21132
+about helping the	17704
+with helping the	12688
+query: days on setting up
+output: 4
+days setting	2049
+days of setting	1108
+days after setting	1081
+days setting up	1074
+query: were to there to
+output: 10
+were there	2071776
+were there to	172233
+were there for	121588
+were there in	71633
+were there at	34224
+were in there	33073
+were there with	31235
+were there on	24116
+were there before	18142
+were up there	17668
+query: it in anything you
+output: 2
+it anything you	6463
+it to anything you	1351
+query: it in an enjoyable
+output: 1
+it an enjoyable	13522
+query: somewhere on the top
+output: 4
+somewhere near the top	5095
+somewhere on the top	4990
+somewhere in the top	3134
+somewhere at the top	1977
+query: available for to travel
+output: 2
+available for travel	23302
+available to travel	14272
+query: activity by the students
+output: 2
+activity the students	2014
+activity for the students	1193
+query: in the accommodation at
+output: 10
+the accommodation	596910
+of the accommodation	96535
+the accommodation of	62007
+for the accommodation	51083
+to the accommodation	37779
+in the accommodation	30516
+for the accommodation of	29758
+on the accommodation	20376
+from the accommodation	18026
+with the accommodation	12824
+query: see in the list
+output: 4
+see the list	241517
+see from the list	5148
+see on the list	2891
+see in the list	2273
+query: help in the event
+output: 3
+help in the event	5610
+help with the event	2598
+help the event	1133
+query: possible to me to
+output: 4
+possible for me	138680
+possible for me to	117662
+possible to me	6565
+possible with me	1075
+query: me for any more
+output: 3
+me any more	67081
+me for any more	1199
+me with any more	1016
+query: in the other you
+output: 4
+the other you	20351
+on the other you	5330
+in the other you	1652
+to the other you	1217
+query: of dragon which
+output: 1
+dragon which	6274
+query: tied up this
+output: 6
+tied to this	17723
+tied this	5423
+tied up in this	3925
+tied in this	1425
+tied up with this	1249
+tied up this	1024
+query: the library which
+output: 8
+the library which	11293
+the library in which	3027
+in the library which	2388
+the library from which	2062
+of the library which	2056
+to the library which	1134
+the library to which	1058
+of the library in which	1043
+query: books of various subjects
+output: 1
+books on various subjects	1880
+query: you about my experience
+output: 3
+you my experience	5954
+you about my experience	3073
+you from my experience	1628
+query: details of the trip
+output: 2
+details of the trip	4978
+details about the trip	1179
+query: going out for shopping
+output: 1
+going out shopping	2094
+query: money for to pay
+output: 2
+money to pay	381456
+money for pay	1206
+query: to pay or
+output: 7
+pay or	366070
+to pay or	100963
+of pay or	25486
+without pay or	16208
+for pay or	13374
+in pay or	4963
+with pay or	3560
+query: solution of many problems
+output: 1
+solution to many problems	2218
+query: have written on it
+output: 3
+have written it	39108
+have written about it	6825
+have written on it	1031
+query: part in a strong
+output: 1
+part of a strong	11348
+query: competition it will
+output: 1
+competition it will	1014
+query: went of
+output: 10
+went to	18000710
+went on	6523796
+went down	1811296
+went up	1611794
+went in	1187953
+went for	1005653
+went from	974816
+went with	947077
+went by	557539
+went about	311904
+query: went of
+output: 10
+went to	18000710
+went on	6523796
+went down	1811296
+went up	1611794
+went in	1187953
+went for	1005653
+went from	974816
+went with	947077
+went by	557539
+went about	311904
+query: rather good in it
+output: 1
+rather good at it	1686
+query: for the best dates
+output: 1
+the best dates	4142
+query: it in the train
+output: 2
+it on the train	6536
+it to the train	1535
+query: teaches at his students
+output: 1
+teaches his students	2498
+query: in the end we
+output: 5
+the end we	157411
+in the end we	64102
+at the end we	13945
+by the end we	3155
+to the end we	2091
+query: forward for your answer
+output: 1
+forward to your answer	2168
+query: you since the last
+output: 8
+you the last	28875
+you in the last	13301
+you for the last	12346
+you to the last	8590
+you at the last	5867
+you on the last	3227
+you about the last	1686
+you with the last	1402
+query: that ok for you
+output: 1
+that ok with you	2198
+query: charge for organising the
+output: 1
+charge of organising the	1198
+query: in town trying
+output: 1
+town trying	6414
+query: up in the hotel
+output: 8
+in the hotel	816614
+up at the hotel	12472
+up to the hotel	11394
+up from the hotel	6217
+up the hotel	4850
+up in the hotel	4330
+on in the hotel	1570
+down in the hotel	1023
+query: asked to some people
+output: 1
+asked some people	3838
+query: situated in the top
+output: 2
+situated at the top	11009
+situated on the top	10863
+query: part on the city
+output: 2
+part of the city	253259
+part in the city	2248
+query: shopping to the city
+output: 1
+shopping in the city	4453
+query: options to choose with
+output: 3
+options to choose	96895
+options to choose from	85864
+options choose	1987
+query: you about all your
+output: 8
+you for all your	132393
+you with all your	99412
+you all your	24115
+you in all your	20911
+you on all your	8274
+you from all your	4257
+you of all your	4257
+you to all your	1879
+query: provide you the
+output: 7
+provide you with the	1151779
+to provide you with the	487756
+provide you the	161316
+to provide you the	48787
+provide for you the	4191
+provide to you the	2316
+to provide to you the	1023
+query: aware of that time
+output: 2
+aware that time	2682
+aware at that time	1524
+query: informed with the news
+output: 1
+informed about the news	1920
+query: reply of your letter
+output: 1
+reply to your letter	6609
+query: walk on the centre
+output: 2
+walk from the centre	20740
+walk to the centre	8491
+query: you on the conference
+output: 2
+you at the conference	5748
+you to the conference	3290
+query: view on the city
+output: 4
+view of the city	110872
+view the city	6696
+view on the city	2118
+view in the city	1071
+query: concerning to the party
+output: 1
+concerning the party	1153
+query: hotel like the
+output: 1
+hotel like the	2920
+query: regarding to what you
+output: 1
+regarding what you	8349
+query: to my personal opinion
+output: 2
+my personal opinion	107417
+in my personal opinion	12246
+query: wait on a bus
+output: 1
+wait for a bus	4363
+query: opposite to the city
+output: 1
+opposite the city	3338
+query: place at the main
+output: 5
+place in the main	7868
+place on the main	3738
+place the main	3081
+place at the main	1569
+place of the main	1003
+query: thinking in selling my
+output: 2
+thinking of selling my	2653
+thinking about selling my	1578
+query: write on it
+output: 9
+write it	970698
+write about it	169301
+write to it	32002
+write on it	16958
+write in it	14604
+write for it	6286
+write with it	2681
+write of it	2281
+write up on it	1240
+query: suggestions of what you
+output: 4
+suggestions on what you	5232
+suggestions for what you	3060
+suggestions about what you	2930
+suggestions of what you	2161
+query: opposite to the hotel
+output: 1
+opposite the hotel	15203
+query: you about a free
+output: 5
+you a free	211325
+you about a free	58097
+you with a free	41925
+you to a free	20039
+you for a free	13363
+query: but to my opinion
+output: 2
+but in my opinion	70810
+but my opinion	9809
+query: mobile phones which
+output: 1
+mobile phones which	4498
+query: in the conference you
+output: 3
+the conference you	9633
+to the conference you	2372
+of the conference you	1708
+query: tours in the city
+output: 2
+tours of the city	9374
+tours the city	1945
+query: ideas of where to
+output: 10
+ideas where	37565
+ideas on where	17505
+ideas of where	10944
+ideas about where	10943
+ideas on where to	10027
+ideas where to	8328
+ideas of where to	5110
+ideas about where to	3469
+ideas for where	2217
+ideas for where to	1092
+query: idea of how popular
+output: 1
+idea how popular	1319
+query: minutes by walking to
+output: 5
+minutes walking	123519
+minutes walking from	19686
+minutes of walking	15929
+minutes walking to	7198
+minutes by walking	1905
+query: report on the group
+output: 5
+report to the group	2399
+report of the group	2280
+report on the group	1423
+report from the group	1342
+report the group	1075
+query: sure that together
+output: 1
+sure that together	1002
+query: back into the old
+output: 1
+back into the old	9577
+query: is that it
+output: 10
+is that it	6002284
+is that without it	15478
+of is that it	9798
+is that since it	6317
+about is that it	5296
+with is that it	3627
+on is that it	3145
+up is that it	3051
+to is that it	2949
+for is that it	2152
+query: culture from other countries
+output: 1
+culture of other countries	1272
+query: help with giving you
+output: 1
+help by giving you	1466
+query: is for fifteen minutes
+output: 1
+is fifteen minutes	3214
+query: takes for five minutes
+output: 2
+takes five minutes	8290
+takes about five minutes	7574
+query: information of the international
+output: 4
+information on the international	4501
+information about the international	2650
+information to the international	1514
+information for the international	1143
+query: goes to there every
+output: 1
+goes there every	13093
+query: is convenient to us
+output: 1
+is convenient for us	1911
+query: located on the town
+output: 3
+located in the town	52571
+located near the town	7237
+located at the town	1048
+query: is to by coach
+output: 1
+is to coach	3062
+query: you go the
+output: 10
+you go to the	477939
+before you go to the	50886
+you go the	42603
+you go with the	33110
+you go on the	29291
+you go in the	28899
+you go for the	27847
+you to go to the	26495
+you go down the	18703
+you go down to the	13483
+query: gifts to your family
+output: 2
+gifts for your family	2993
+gifts to your family	1418
+query: pm on our
+output: 5
+pm our	3721
+pm for our	3680
+pm at our	3580
+pm in our	3526
+pm from our	1894
+query: playing field which
+output: 3
+playing field on which	4293
+playing field which	1750
+playing field in which	1555
+query: on the last day
+output: 10
+the last day	1713446
+on the last day	370465
+in the last day	214551
+of the last day	127149
+from the last day	52548
+after the last day	51118
+to the last day	49665
+before the last day	40859
+at the last day	36976
+by the last day	35821
+query: is after the invention
+output: 1
+is the invention	10445
+query: light on and there
+output: 1
+light and there	6170
+query: do under the light
+output: 3
+do the light	1617
+do in the light	1300
+do with the light	1065
+query: near of the conference
+output: 3
+of the conference	1147090
+near the conference	4073
+up of the conference	1059
+query: provided for the organisation
+output: 1
+provided by the organisation	3654
+query: remember from last year
+output: 2
+remember last year	14421
+remember from last year	1697
+query: experience to you and
+output: 3
+experience for you and	14459
+experience with you and	2170
+experience you and	1139
+query: fine arts or
+output: 1
+fine arts or	5889
+query: answers for your questions
+output: 3
+answers to your questions	277177
+answers your questions	69446
+answers for your questions	3534
+query: held at the cafeteria
+output: 1
+held in the cafeteria	1744
+query: is better all
+output: 6
+is better than all	11947
+is better for all	3841
+is better than all of	2242
+is better all	1623
+is better in all	1141
+is better for all of	1018
+query: come in the college
+output: 1
+come to the college	2371
+query: talk with your friends
+output: 2
+talk to your friends	14236
+talk with your friends	3085
+query: today with the
+output: 10
+today the	874433
+today in the	407710
+today at the	342661
+today for the	271454
+today by the	191896
+today with the	179993
+today on the	177261
+today to the	92908
+today about the	73764
+today from the	66884
+query: of technology have
+output: 3
+technology have	199738
+in technology have	30275
+of technology have	9161
+query: person at the line
+output: 2
+person on the line	3259
+person in the line	2057
+query: to get my
+output: 7
+get my	3878202
+to get my	1529989
+about to get my	4662
+in to get my	3430
+up to get my	3208
+on to get my	2380
+down to get my	1815
+query: access to the internet
+output: 4
+access to the internet	161174
+access the internet	108653
+access on the internet	1756
+access from the internet	1040
+query: computer for to do
+output: 1
+computer to do	35152
+query: but i think
+output: 3
+but i think	440308
+but i think in	2110
+but i think for	1027
+query: is on the other
+output: 10
+is the other	280486
+is on the other	93808
+is in the other	16392
+is at the other	14816
+is for the other	5175
+is with the other	3793
+is from the other	3127
+is to the other	2656
+is about the other	1319
+is of the other	1035
+query: in addition the
+output: 2
+addition the	533311
+in addition the	62236
+query: in mexico for
+output: 10
+in mexico	192338
+from mexico	149663
+to mexico	59488
+of mexico	58426
+for mexico	15204
+mexico to	10296
+mexico by	9346
+about mexico	8747
+on mexico	6465
+mexico of	6278
+query: buildings and have
+output: 1
+buildings and have	3310
+query: though it is
+output: 10
+though it is	1060497
+though it is in	15100
+though it is to	5498
+though it is of	3903
+though it is on	3896
+though it is by	3488
+though it is at	2593
+though it is for	2443
+though it is about	2160
+though it is from	1458
+query: you about the international
+output: 1
+you the international	1231
+query: because in all the
+output: 6
+because of all the	257259
+because all the	208587
+because with all the	3020
+because after all the	2244
+because in all the	2114
+because for all the	1666
+query: be some food
+output: 1
+be some food	1149
+query: tour on the centre
+output: 1
+tour of the centre	1157
+query: free time in home
+output: 1
+free time at home	1625
+query: reference on your letter
+output: 1
+reference to your letter	2041
+query: situated on the centre
+output: 3
+situated in the centre	75618
+situated at the centre	3300
+situated near the centre	3010
+query: tours we have
+output: 1
+tours we have	2056
+query: services to the public
+output: 7
+services to the public	129112
+services for the public	13214
+services in the public	9802
+services from the public	2458
+services of the public	2163
+services the public	1818
+services by the public	1754
+query: to increasing of unemployment
+output: 2
+increasing unemployment	13949
+of increasing unemployment	1375
+query: get at the conference
+output: 2
+get to the conference	3212
+get the conference	2714
+query: answer at this question
+output: 5
+answer to this question	372049
+answer this question	367851
+answer for this question	8917
+answer on this question	1533
+answer of this question	1523
+query: letter of asking for
+output: 3
+letter asking	51447
+letter asking for	17610
+letter asking to	1435
+query: booked into for the
+output: 1
+booked into the	27444
+query: way of the airport
+output: 2
+way to the airport	31628
+way from the airport	4374
+query: receive at your letter
+output: 1
+receive your letter	6927
+query: in for my life
+output: 4
+in my life	3127929
+for my life	127143
+in to my life	2551
+in in my life	1585
+query: with to my friend
+output: 4
+to my friend	282225
+with my friend	220373
+on to my friend	1633
+up to my friend	1589
+query: helpful by to use
+output: 1
+helpful to use	24211
+query: with to foreign countries
+output: 2
+to foreign countries	85541
+with foreign countries	30318
+query: them in a reasonable
+output: 4
+them a reasonable	5892
+them at a reasonable	3243
+them in a reasonable	2680
+them for a reasonable	1484
+query: want in a reasonable
+output: 2
+want a reasonable	2230
+want at a reasonable	1082
+query: spend for three hours
+output: 1
+spend three hours	8818
+query: situations and the
+output: 3
+situations and the	30542
+situations and in the	1770
+of situations and the	1117
+query: used by these purposes
+output: 1
+used for these purposes	15766
+query: bell in the end
+output: 1
+bell at the end	1063
+query: promise to you that
+output: 2
+promise you that	92554
+promise to you that	2253
+query: and after are my
+output: 1
+and are my	5575
+query: my friends who
+output: 7
+my friends who	121214
+of my friends who	50398
+to my friends who	10062
+for my friends who	4751
+with my friends who	4598
+from my friends who	2697
+by my friends who	1014
+query: buses and trains
+output: 6
+buses and trains	33614
+on buses and trains	4322
+buses and trains in	1685
+of buses and trains	1614
+buses and trains to	1389
+for buses and trains	1126
+query: grateful for the people
+output: 2
+grateful to the people	4611
+grateful for the people	1544
+query: stay in is the
+output: 1
+stay is the	6410
+query: attendance of the conference
+output: 1
+attendance at the conference	7754
+query: entrance of the college
+output: 1
+entrance to the college	1609
+query: for your students
+output: 10
+your students	1043129
+for your students	97008
+of your students	82000
+to your students	66817
+with your students	64999
+in your students	8406
+from your students	7755
+on your students	6604
+by your students	5577
+about your students	5532
+query: road in front
+output: 2
+road in front	39949
+road front	2242
+query: wants for all the
+output: 1
+wants all the	12933
+query: just on the bottom
+output: 2
+just the bottom	6734
+just at the bottom	3544
+query: a report which
+output: 4
+in a report which	4353
+of a report which	3849
+to a report which	1550
+with a report which	1228
+query: will describe you
+output: 1
+will describe to you	2069
+query: can learn the
+output: 6
+can learn the	123070
+can learn from the	85275
+can learn about the	59489
+can learn in the	2724
+can learn of the	1972
+can learn on the	1582
+query: possible to our students
+output: 1
+possible for our students	2128
+query: is once you
+output: 1
+is once you	12777
+query: just at two minutes
+output: 2
+just two minutes	53354
+just under two minutes	5068
+query: contact with anyone who
+output: 2
+contact anyone who	6440
+contact with anyone who	5841
+query: whenever you want
+output: 8
+whenever you want	304493
+whenever you want to	57466
+whenever you want on	24549
+whenever you want with	12674
+in whenever you want	3896
+whenever you want without	1906
+up whenever you want	1646
+whenever you want by	1213
+query: in the next page
+output: 9
+the next page	886535
+on the next page	457765
+to the next page	224580
+of the next page	23478
+for the next page	13728
+in the next page	7712
+at the next page	2962
+from the next page	1739
+before the next page	1213
+query: for details look
+output: 1
+details look	5920
+query: look in the map
+output: 2
+look at the map	32080
+look on the map	2748
+query: am replying your
+output: 1
+am replying to your	2391
+query: to get the
+output: 10
+get the	36251993
+to get the	14136653
+up to get the	87007
+in to get the	17024
+on to get the	13185
+down to get the	10612
+of get the	10351
+about to get the	10322
+for get the	4795
+to to get the	4254
+query: blocks to the left
+output: 2
+blocks on the left	6813
+blocks to the left	1209
+query: party in the end
+output: 1
+party at the end	7192
+query: of conference we
+output: 1
+conference we	27844
+query: excuse for visit to
+output: 1
+excuse to visit	6362
+query: work in this kind
+output: 3
+work of this kind	8921
+work in this kind	1315
+work with this kind	1193
+query: your life you
+output: 7
+your life you	61455
+in your life you	24842
+of your life you	17121
+your life for you	3280
+your life before you	2654
+your life than you	1819
+your life with you	1134
+query: and more for it
+output: 3
+and more of it	16922
+and more it	12622
+and more about it	2288
+query: have in stop to
+output: 10
+have to stop	367119
+have to stop at	12591
+have stop	10394
+have to stop for	7980
+have to stop to	7945
+have to stop by	7167
+have to stop in	5593
+have to stop on	2488
+have stop in	1913
+have to stop with	1698
+query: is by the underground
+output: 1
+is the underground	4921
+query: prize to the winner
+output: 2
+prize for the winner	6129
+prize to the winner	3115
+query: want at the rest
+output: 2
+want the rest	15197
+want for the rest	1725
+query: just at the same
+output: 5
+just the same	480480
+just about the same	43444
+just in the same	10393
+just at the same	2330
+just on the same	1088
+query: to go at school
+output: 9
+go to school	667988
+to go to school	264192
+go school	6137
+go after school	5018
+to go after school	3467
+to go school	2828
+go on school	1830
+go in school	1796
+up to go to school	1206
+query: year you will
+output: 1
+year you will	47313
+query: in relation with it
+output: 5
+relation to it	39042
+in relation to it	28871
+relation it	5312
+relation with it	1514
+relation between it	1069
+query: near of the college
+output: 2
+of the college	782737
+near the college	4038
+query: internet by the internet
+output: 2
+internet the internet	1597
+internet on the internet	1205
+query: people of different places
+output: 2
+people in different places	3580
+people from different places	3110
+query: need in the internet
+output: 2
+need the internet	2771
+need on the internet	1627
+query: to get over there
+output: 2
+get over there	27538
+to get over there	10273
+query: climb on the top
+output: 1
+climb to the top	58103
+query: you to go to
+output: 10
+you go	8889243
+you go to	1777159
+you to go	479328
+you go on	244760
+you go about	178210
+you go for	156235
+you go with	151803
+you go in	150082
+you to go to	108803
+you go down	93412
+query: up to the first floor
+output: 4
+to the first floor	56414
+up to the first floor	5303
+down to the first floor	4842
+up the first floor	2490
+query: the world because
+output: 10
+the world because	101246
+in the world because	38582
+the world because of	32197
+of the world because	17161
+in the world because of	10749
+of the world because of	4802
+to the world because	4131
+to the world because of	1601
+from the world because	1251
+for the world because	1099
+query: me for an interesting
+output: 4
+me an interesting	9592
+me to an interesting	3113
+me of an interesting	1340
+me with an interesting	1196
+query: as some other
+output: 4
+as some other	114988
+as in some other	10380
+as with some other	2832
+as for some other	1121
+query: group and from
+output: 10
+group and	3414805
+group and to	41161
+group and in	29617
+group and for	15303
+group and by	12511
+group and with	10931
+group and of	8654
+group and at	6489
+group and from	6316
+group and on	5936
+query: meet at the lobby
+output: 1
+meet in the lobby	4240
+query: voice from the person
+output: 1
+voice of the person	2321
+query: it by the time
+output: 8
+it at the time	179895
+it by the time	17921
+it the time	15180
+it for the time	14927
+it in the time	6276
+it from the time	4193
+it to the time	3540
+it with the time	2005
+query: the time which
+output: 10
+the time at which	168152
+the time in which	82892
+the time which	52624
+the time for which	19958
+at the time at which	14046
+the time by which	12386
+to the time at which	10862
+of the time in which	10394
+at the time which	10080
+the time of which	9189
+query: contact with me anytime
+output: 1
+contact me anytime	16078
+query: conference of human rights
+output: 1
+conference on human rights	2661
+query: to has been
+output: 10
+has been	196769958
+than has been	101624
+up has been	42679
+for has been	36940
+in has been	22453
+to has been	19846
+since has been	18587
+on has been	16000
+with has been	11660
+of has been	11021
+query: hotel in the
+output: 10
+hotel in the	438308
+hotel on the	170515
+hotel for the	117017
+hotel the	115137
+hotel at the	81076
+hotel to the	68654
+hotel from the	58992
+hotel with the	45985
+hotel near the	38587
+hotel of the	26845
+query: pm in the same
+output: 5
+pm the same	8414
+pm on the same	5593
+pm in the same	4730
+pm at the same	2213
+pm of the same	1458
+query: you for the international
+output: 1
+you the international	1231
+query: hotel in which the
+output: 1
+hotel in which the	1074
+query: go in a disco
+output: 1
+go to a disco	1055
+query: at your last
+output: 10
+your last	1984360
+since your last	301267
+from your last	278391
+of your last	112973
+in your last	62409
+to your last	52606
+on your last	46642
+for your last	29714
+with your last	27868
+after your last	26900
+query: work at a bank
+output: 3
+work in a bank	3845
+work for a bank	2644
+work at a bank	2055
+query: interest of looking to
+output: 2
+interest in looking	7114
+interest in looking at	3671
+query: are at two different
+output: 5
+are two different	314000
+are in two different	4110
+are from two different	3089
+are of two different	2186
+are on two different	2059
+query: members of your group
+output: 2
+members of your group	22656
+members in your group	2039
+query: demand of light
+output: 1
+demand for light	2872
+query: light for
+output: 10
+light of	7237914
+light on	2491535
+light in	1205465
+light to	1199333
+light up	693175
+light from	641517
+light at	540915
+light for	538641
+light with	298512
+light by	161792
+query: hard to me not
+output: 1
+hard for me not	5696
+query: to play the
+output: 10
+play the	4813339
+to play the	1895950
+on to play the	7981
+of play the	6520
+up to play the	5812
+in to play the	3719
+than play the	2978
+down play the	2517
+in play the	2315
+down to play the	1852
+query: view on the mountains
+output: 3
+view of the mountains	29227
+view to the mountains	1759
+view on the mountains	1178
+query: stay in all the
+output: 3
+stay all the	3813
+stay on all the	1924
+stay with all the	1106
+query: finally in the last
+output: 1
+finally the last	5364
+query: you on the conference
+output: 2
+you at the conference	5748
+you to the conference	3290
