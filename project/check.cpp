@@ -1,182 +1,33 @@
 #include<bits/stdc++.h>
 
+#define MaxData 50000000
 #define wordLen 40
 #define ll long long 
-using std::string;
+#define VS std::vector<std::string>
 
-#define questionN 20
-char candi[questionN][10]= {"of", "to", "in", "for", "with", "on", "at","by", "from", "up", "about", "than", "after", "before", "down", "between", "under", "since", "without", "near"};
-int hash_cadi[questionN];
+VS prepos = {"of", "to", "in", "for", "with", "on", "at","by", "from", "up", "about", "than", "after", "before", "down", "between", "under", "since", "without", "near"};
+std::set<std::string> prepos_map;
 
-
-struct Sepword
-{
-	int n;
-	char *str[10];// easy for change
-	int h[10],hash;
-	Sepword()
-	{
-		n=0;
-	}
-	~Sepword()
-	{
-		for(int i=0;i<n;++i)
-			delete[] str[i];
-	}
-
-	void print()
-	{
-		for(int i=0;i<n;++i)
-		{
-			if(i)putchar(' ');
-			printf("%s",str[i]);
-		}
-		printf("\n",hash);
-	}
-
-	inline void swap(int a,int b)
-	{
-		std::swap(str[a],str[b]);
-//		std::swap(  h[a],  h[b]);
-	}
-	inline void candi_in(int i,int c)
-	{
-		str[i] = 	 candi[c];
-//		  h[i] = hash_cadi[c];
-	}
-
-	bool operator == (const char *c) const
-	{
-		int k=0;
-		for(int i=0;i<n;++i)
-		{ for(int j=0;str[i][j];++j)
-				if(str[i][j]!=c[k++])
-					return false;
-			if(i!=n-1 && c[k++]!=' ')
-				return false;
-		}
-		return c[k]=='\0';
-	}
-
-	Sepword(const Sepword &s) 
-	{
-		n = s.n;
-		for(int i=0;i<n;++i)
-		{
-			str[i] = new char [220];
-			strcpy(str[i],s.str[i]);
-		}
-		hash = s.hash;
-	}
-	void operator = (const Sepword &s) 
-	{
-		n = s.n;
-		for(int i=0;i<n;++i)
-		{
-			str[i] = new char [220];
-			strcpy(str[i],s.str[i]);
-		}
-		hash = s.hash;
-	}
-
-	void input_sep(char *c)
-	{
-		int j=0;
-		n=0;
-		hash=0;
-		for(int i=0;c[i];++i)
-			if(isalpha(c[i]))
-			{
-				if(j==0)
-					str[n] = new char [220];
-				str[n][j++] = c[i];
-			}
-			else if(j)
-			{
-				str[n++][j++]='\0';
-				j=0;
-			}
-			else if( isdigit(c[i]) )
-				hash = hash*10 + c[i] - '0' ;
-	}
-}*ori_data;
-int ori_n;
+char **ori_data;
+int    ori_n=0;
 
 void Filetohashtable()
 {
 	// hashtable will be initized with 0
 	ori_n = 0;
-	ori_data = new Sepword [50000000];
+	ori_data = new char* [MaxData];
+	for(int i=0;i<MaxData;++i)
+		ori_data[i] = new char [220]; 
+
 	char c[1000];
 	for(int i=2;i<=5;++i)
 	{
 		sprintf(c,"/tmp2/dsa2016_project/%dgm.small.txt",i);
 		FILE *f = fopen(c,"r");
-		char c[220];
-		while( fgets(c,220,f) )
-		{
-			ori_data[ori_n++].input_sep(c);
-		}
+		while( fgets(ori_data[ori_n],220,f)) 
+			ori_n++;
 		fclose(f);
 	}
-}
-
-
-std::vector<Sepword> ans;
-std::set<std::string> prepos;
-
-void makeED(Sepword &s,int ed)
-{
-	if(s.n==0)
-		return ;
-	ans.push_back(s);
-	if(ed==2)
-		return ;
-	int tmp = 9-ed;// don't use same memory
-
-	//delete
-	--s.n;
-	for(int i=s.n;i>=0;--i)
-	{
-		s.swap(i,tmp);
-//		s.print();
-
-		if(prepos.count(s.str[tmp]))
-			makeED(s,ed+1);
-	}
-	for(int i=0;i<=s.n;++i)
-		s.swap(i,tmp);
-	++s.n;
-
-	//substitude
-	for(int i=s.n-1;i>=0;--i)
-	{
-		s.swap(i,tmp);
-		if(prepos.count(s.str[tmp]))
-			for(int j=0;j<questionN;++j)
-			{
-				s.str[i] = candi[j];
-				makeED(s,ed+1);
-			}
-		s.swap(i,tmp);
-	}
-
-	//add
-	++s.n;
-	for(int i=s.n-1;i>=0;--i)
-	{
-		s.swap(i,i+1);
-		for(int j=0;j<questionN;++j)
-		{
-			s.str[i] = candi[j];
-			makeED(s,ed+1);
-		}
-	}
-	for(int i=0;i<s.n;++i)
-		s.swap(i,i+1);
-	--s.n;
-
-//	s.print();
 }
 
 int myrand(int mod)
@@ -184,33 +35,88 @@ int myrand(int mod)
 	return (int)( ((ll)rand()*rand()+rand())%mod);
 }
 
+
+void print(VS &v)
+{
+	if(!v.size())
+		return ;//no size
+	int st=0;
+	for(auto &i:v)
+	{
+		if(st++)
+			putchar(' ');
+		std::cout<< i;
+	}
+	puts("");
+}
+
+
+VS charTovector(char *c)
+{
+	VS v;
+	std::stringstream ss(c);
+	std::string s;
+	while( ss >> s)
+		v.push_back(s);
+	return v;
+}
+
+void add(VS &v)
+{
+	v.insert(v.begin()+myrand(v.size()+1),prepos[myrand(prepos.size())]);
+}
+void del(VS &v)
+{
+	std::vector<int> pv;
+	for(int i=0;i<v.size();++i)
+		if( prepos_map.count(v[i]) )
+			pv.push_back(i);
+	if( pv.size() )
+		v.erase(v.begin()+pv[myrand(pv.size())]);
+}
+void sub(VS &v)
+{
+	std::vector<int> pv;
+	for(int i=0;i<v.size();++i)
+		if( prepos_map.count(v[i]) )
+			pv.push_back(i);
+	if( pv.size() )
+		v[pv[myrand(pv.size())]] = prepos[myrand(prepos.size())];
+}
+
 int main()
 {
+	prepos_map.clear();
+	for(auto &i:prepos)
+		prepos_map.insert(i);
+
+/*
 	char c[1000];
-	/*
 	while( fgets(c,1000,stdin) )
 	{
-		printf("query: %s",c);
-		Sepword s;
-		s.input_sep(c);
-		ans.clear();
-		makeED(s,0);
-		for(auto &i:ans)
-			i.print();
+		VS v = charTovector(c);
+		print(v);
+		sub(v);
+		print(v);
 	}
-	*/
-	Filetohashtable();
+	return 0;
+*/
 
-	for(int i=0;i<questionN;++i)
-		prepos.insert(candi[i]);
+	Filetohashtable();
 	srand(time(NULL));
-//	puts("ok");
 	for(int i=0;i<10000;++i)
 	{
-		ans.clear();
-		makeED(ori_data[myrand(ori_n)],0);
-		for(int j=0;j<5 && j<ans.size();++j)
-			ans[myrand(ans.size())].print();
+		VS v = charTovector(ori_data[ myrand(ori_n) ]);
+		v.resize(v.size()-1);// no digit
+		int n = myrand(7);
+		while(n--)
+			switch( myrand(3) )
+			{
+				case 0:add(v);break;
+				case 1:del(v);break;
+				case 2:sub(v);break;
+			}
+		print(v);
 	}
 	return 0;
 }

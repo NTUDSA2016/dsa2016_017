@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 
 #define DataMax 42000000
+#define StrMax 831000000
 //#define DataMax 500
 #define HashMult 65537
 #define HashMod 99999989
@@ -59,10 +60,11 @@ void preposInit()
 		preposInsert(prepos_c[i]);
 }
 
+char *ori_str = new char[StrMax];
 char stop='\t';
 struct Sentence
 {
-	char str[220];
+	char *str;
 	unsigned int feq;
 
 	int noprep_n,
@@ -191,17 +193,18 @@ void fileTohashtable()
 	{
 		sprintf(filename,"/tmp2/dsa2016_project/%dgm.small.txt",name);
 		FILE *f = fopen(filename,"r");
-		while( fgets(ori_data->str,220,f) )
+		while( fgets(ori_str,220,f) )
 		{
+			ori_data->str = ori_str;
 			int h = ori_data->sentDeal();
 			
 			// get feq
-			char *c=&ori_data->str[ori_data->words_pos[ ori_data->words_n-1 ]+
-					               ori_data->words_len[ ori_data->words_n-1 ]];
-			*(c++) = '\0';
+			ori_str += ori_data->words_pos[ ori_data->words_n-1 ]+
+			           ori_data->words_len[ ori_data->words_n-1 ];
+			*(ori_str++) = '\0';
 			unsigned int dig=0;
-			for(int i=0;c[i]!='\n';++i)
-				dig = dig*10 + c[i]-'0';
+			for(int i=0;ori_str[i]!='\n';++i)
+				dig = dig*10 + ori_str[i]-'0';
 			ori_data->feq = dig;
 			
 			// put into hashtable
@@ -336,7 +339,8 @@ int main()
 //	return 0;
 	stop = '\n';
 	Sentence *s = new Sentence;
-	while( fgets(s->str,220,stdin) )
+	s->str = new char[500];
+	while( fgets(s->str,500,stdin) )
 	{
 		printf("query: %s",s->str);
 		int h = s->sentDeal();
