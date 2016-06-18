@@ -1,4 +1,4 @@
-def defaultDiff(correct_name,ans_name):
+def diff(correct_name,ans_name):
     correct_f,ans_f = open(correct_name,"r"),open(ans_name,"r")
     line = 0
     while True:
