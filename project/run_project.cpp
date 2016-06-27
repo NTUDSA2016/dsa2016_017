@@ -71,17 +71,18 @@ int      hash_len  [HashMax];
 int      hash_start[HashMax];
 int      hash_size [DataMax];
 long int hash_where[DataMax];
+int 	 sentsize =  sizeof(Sentence);
 char *ori_str_old ;
 FILE *file ;
 
-void fileTodata()
+void fileTodata(char *filename)
 {
-	FILE *f = fopen("/tmp/b04611017/prepos.data","rb");
+	FILE *f = fopen(filename,"rb");
 	fseek(f,0,SEEK_SET);
-	int datalen;
-	fread(&datalen,sizeof(int),1,f);
-	fread(hash_len ,1L*HashMax*sizeof(int),HashMax,f);
-	fread(hash_size,1L*datalen*sizeof(int),datalen,f);
+	int sizelen;
+	fread(&sizelen ,sizeof(int),1      ,f);
+	fread(hash_len ,sizeof(int),HashMax,f);
+	fread(hash_size,sizeof(int),sizelen,f);
 
 	//start
 	hash_start[0]=0;
@@ -89,16 +90,20 @@ void fileTodata()
 		hash_start[i] = hash_start[i-1] + hash_len[i-1];
 
 	//where
+	int datalen=hash_size[0];
 	hash_where[0]=ftell(f);
-	for(int i=1;i<datalen;++i)
-		hash_where[i] = hash_where[i-1] + hash_size[i-1];
-	fseek(f,(long)datalen*sizeof(Sentence),SEEK_CUR);
+	for(int i=1;i<sizelen;++i)
+	{
+		hash_where[i] = hash_where[i-1] + (long int)hash_size[i-1]*sentsize;
+		datalen+= hash_size[i];
+	}
+	fseek(f,(long int)datalen*sentsize,SEEK_CUR);
 
 	// read str
-	fread(&ori_str_old,sizeof(char *),1,f);
-	fread(ori_str,1L*StrMax*sizeof(char),StrMax,f);
+	fread(&ori_str_old,sizeof(char*),1     ,f);
+	fread( ori_str    ,sizeof(char ),StrMax,f);
 	fclose(f);
-	file = fopen("/tmp/b04611017/prepos.data","rb");
+	file = fopen(filename,"rb");
 }
 
 int whereFind(int hash,Sentence *s)
@@ -107,7 +112,7 @@ int whereFind(int hash,Sentence *s)
 	{
 		Sentence sent ;
 		fseek(file,hash_where[ hash_start[hash]+i ],SEEK_SET);
-		fread(&sent,sizeof(Sentence),1,file);
+		fread(&sent,sentsize,1,file);
 		sent.str = ori_str + ( sent.str - ori_str_old); 
 		if( sentEq( &sent, s ) ) 
 			return hash_start[hash]+i;
@@ -118,8 +123,8 @@ int whereFind(int hash,Sentence *s)
 void sentFilt(int where,Sentence *s,bool(*check)(Sentence *,Sentence *))
 {
 	int size = hash_size [ where ];
-//	fseek(file,hash_where[ where ],SEEK_SET);
-//	fread(ori_data,(long )size*sentsize,size,file);
+	fseek(file,hash_where[ where ],SEEK_SET);
+	fread(ori_data,sentsize,size,file);
 	for(int i=0;i<size ;++i)
 	{
 		ori_data[i].str = ori_str + ( ori_data[i].str - ori_str_old);
@@ -128,10 +133,12 @@ void sentFilt(int where,Sentence *s,bool(*check)(Sentence *,Sentence *))
 	}
 }
 
-int main()
+int main(int argc,char *argv[])
 {
+	if(argc!=2)
+		puts("arguments error");
 	preposInit();
-	fileTodata();
+	fileTodata(argv[1]);
 	stop = '\n';
 	Sentence *s = new Sentence;
 	s->str = new char[500];

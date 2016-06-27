@@ -4,13 +4,12 @@ struct Link
 {
 	Sentence *sent;
 	Link *next;
-}*nextlk;
-
+} *nextlk   = new Link     [DataMax];
 struct Linkhash
 {
 	Link *lk;
 	Linkhash *next;
-}*nextlkh,*hash_table[HashMax];
+} *nextlkh  = new Linkhash [DataMax],*hash_table[HashMax];
 
 Linkhash* linkFind(int &hash,Sentence *s)
 {
@@ -24,13 +23,9 @@ Linkhash* linkFind(int &hash,Sentence *s)
 	return NULL;
 }
 
-Sentence* ori_data_cst ;
 
 void fileTohashtable()
 {
-	nextlk   = new Link     [DataMax];
-	nextlkh  = new Linkhash [DataMax];
-	ori_data_cst =  ori_data;
 	// hashtable will be initized with 0
 	char filename[220];
 	for(int name=2;name<=5;++name)
@@ -68,19 +63,16 @@ void fileTohashtable()
 	}
 }
 
-void dataTofile()
+void dataTofile(char *filename)
 {
-	FILE *f = fopen("/tmp/b04611017/prepos.data","wb");
+	FILE *f = fopen(filename,"wb");
 
 	Sentence **tmp = new Sentence* [DataMax];
 
-	int datalen = ori_data - ori_data_cst ;
-	fwrite(&datalen,sizeof(int),1,f);
-
 	int *hash_len = new int [HashMax];
-	int *hash_size= new int [datalen];
+	int *hash_size= new int [DataMax];
 
-	int tmplen=0,lenlen=0,sizelen=0;
+	int tmplen=0,sizelen=0;
 	
 	int sentsize = sizeof(Sentence);
 	for(int i=0;i<HashMax;++i)
@@ -101,22 +93,25 @@ void dataTofile()
 			hash_size[sizelen++] = tmplen-start;
 			lkh = lkh->next;
 		}
-		hash_len[lenlen++] = len;
+		hash_len[i] = len;
 	}
-	fwrite(hash_len ,1L*HashMax*sizeof(int),HashMax,f);
-	fwrite(hash_size,1L*datalen*sizeof(int),datalen,f);
-	for(int i=0;i<datalen;++i)
+	fwrite(&sizelen ,sizeof(int),1      ,f);
+	fwrite(hash_len ,sizeof(int),HashMax,f);
+	fwrite(hash_size,sizeof(int),sizelen,f);
+	for(int i=0;i<tmplen;++i)
 		fwrite(tmp[i],sentsize,1,f);
-	fwrite(&ori_str_cst,sizeof(char*),1,f);
-	fwrite(ori_str_cst,1L*StrMax*sizeof(char),StrMax,f);
+	fwrite(&ori_str_cst,sizeof(char*),1     ,f);
+	fwrite( ori_str_cst,sizeof(char ),StrMax,f);
 	fclose(f);
 }
 
 
-int main()
+int main(int argc,char *argv[])
 {
+	if(argc!=2)
+		puts("arguments error");
 	preposInit();
 	fileTohashtable();
-	dataTofile();
+	dataTofile(argv[1]);
 	return 0;
 }

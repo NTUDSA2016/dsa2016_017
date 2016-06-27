@@ -5,7 +5,7 @@ from multiprocessing import Process,Queue
 
 testcasepath = "judge_test/"
 diffpath = "../default_diff.py"
-
+argv = ""
 
 def goTest(name,que):
     arr = [testcasepath+name]
@@ -14,7 +14,7 @@ def goTest(name,que):
     
     run  = subprocess.Popen(
             '/usr/bin/time -f "%Us"  -a '+
-            "make run --silent < "+testcasepath+inname+" > "+outname,
+            "make run --silent "+argv+" < "+testcasepath+inname+" > "+outname,
             stdout = subprocess.PIPE,stderr = subprocess.PIPE,
             shell=True,universal_newlines=True)
     outs, errs = run.communicate()
@@ -32,12 +32,14 @@ def goTest(name,que):
     #return arr
 
 if __name__ == '__main__':
-    if( len(sys.argv) < 2):
+    if( len(sys.argv) < 2):  // argv = self,testcasepath,diff program,runargv
         print( "no test cases")
         sys.exit()
     testcasepath = sys.argv[1]
     if( len(sys.argv) > 2):
         diffpath = sys.argv[2]
+    if( len(sys.argv) > 3):
+        argv     = sys.argv[3]
     testcasepath = os.path.expanduser(testcasepath)
     diffpath     = os.path.expanduser(diffpath    )
     with open(diffpath) as py:
