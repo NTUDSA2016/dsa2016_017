@@ -2,9 +2,9 @@
 
 #define DataMax 42000000
 #define StrMax 831000000
-//#define DataMax 500
 #define HashMult 65537
 #define HashMod 99999989
+#define HashMax 100000000
 #define WordMult 31
 #define WordMod 45677
 
@@ -60,7 +60,7 @@ void preposInit()
 		preposInsert(prepos_c[i]);
 }
 
-char *ori_str = new char[StrMax];
+char *ori_str = new char[StrMax],*ori_str_cst=ori_str;
 char stop='\t';
 struct Sentence
 {
@@ -160,211 +160,9 @@ bool sentComp(const Sentence *a,const Sentence *b)
 	return strcmp( a->str, b->str) < 0 ;
 }
 
-struct Link
-{
-	Sentence *sent;
-	Link *next;
-}*nextlk =new Link[DataMax];
-
-struct Linkhash
-{
-	Link *lk;
-	Linkhash *next;
-}*nextlkh =new Linkhash[DataMax],*hash_table[100000000];
-
-Linkhash* linkFind(int &hash,Sentence *s)
-{
-	Linkhash *lkh = hash_table[hash];
-	while(lkh)
-	{
-		if( sentEq(lkh->lk->sent , s) )
-			return lkh;
-		lkh = lkh->next;
-	}
-	return NULL;
-}
-
-
-void fileTohashtable()
-{
-	// hashtable will be initized with 0
-	char filename[220];
-	for(int name=2;name<=5;++name)
-	{
-		sprintf(filename,"/tmp2/dsa2016_project/%dgm.small.txt",name);
-		FILE *f = fopen(filename,"r");
-		while( fgets(ori_str,220,f) )
-		{
-			ori_data->str = ori_str;
-			int h = ori_data->sentDeal();
-			
-			// get feq
-			ori_str += ori_data->words_pos[ ori_data->words_n-1 ]+
-			           ori_data->words_len[ ori_data->words_n-1 ];
-			*(ori_str++) = '\0';
-			unsigned int dig=0;
-			for(int i=0;ori_str[i]!='\n';++i)
-				dig = dig*10 + ori_str[i]-'0';
-			ori_data->feq = dig;
-			
-			// put into hashtable
-			Linkhash *lkh = linkFind(h,ori_data);
-			if( !lkh )
-			{
-				lkh = nextlkh;
-				nextlkh->next = hash_table[h] ;
-				hash_table[h] = nextlkh++ ;
-			}
-				
-			nextlk->sent  = ori_data++;
-			nextlk->next = lkh->lk ;
-			lkh->lk = nextlk++ ;
-		}
-		fclose(f);
-	}
-}
-
-std::vector< Sentence * > ans;
-
 bool preposSame(Sentence *a,Sentence *b,int na,int nb)
 {
 	return a->words_len[na] == b->words_len[nb] &&
 		a->str[ a->words_pos[na]   ] == b->str[ b->words_pos[nb]   ] &&
 		a->str[ a->words_pos[na]+1 ] == b->str[ b->words_pos[nb]+1 ] ;
 }
-
-bool isEd1(Sentence *a,Sentence *b,int &pa,int &pb,int &num)
-{
-	int lena = a->noprep_num[num] - pa ,
-		lenb = b->noprep_num[num] - pb ;//lenb must > 0 
-	if( std::abs(lena-lenb)> 1 ) return 0;//quick
-
-	int cona=0,conb=0;//from head and from tail
-	while( cona<lena && cona<lenb && preposSame(a,b,pa+cona,pb+cona)) 
-		++cona;
-	if( lena == lenb && cona == lena )// dis = 0
-		return 1; 
-	while( conb<lena && conb<lenb && preposSame(a,b,pa+lena-1-conb,pb+lenb-1-conb)) 
-		++conb;
-	if( lena == lenb && cona+conb == lena-1 ) // dis = 1 sub
-		return 1;
-	if( lena != lenb && cona+conb >= std::min(lena,lenb) ) // dis = 1 add del
-		return 1;  // larger beacuse it can be like  aa aa , aa
-	return 0; 
-}
-
-bool addEd2(Sentence *a,Sentence *b)// b is input
-{
-	if( a->words_n < b->words_n || a->words_n > b->words_n+2)
-		return 0;
-	int nowa=0,nownum=0;
-	int dis=0;
-	for(int nowb=0;nowb<b->words_n && dis>2;++nowb)
-		if( nowb == b->noprep_num[nownum] )// a is more than b
-		{
-			dis += a->noprep_num[nownum] - nowa;
-			nowa = a->noprep_num[nownum]+1;
-			++nownum;
-		}
-		else
-		{
-			// find if b can match to a exclude add one
-			for(nowa ; nowa < a->noprep_num[nownum] ;++nowa)
-				if( preposSame(a,b,nowa,nowb) )
-					break;
-				else 
-					++dis;
-			if( nowa == a->noprep_num[nownum] )
-				return 0; // can't find match one
-			++nowa;
-		}
-
-	return dis<=2 ;
-}
-
-bool allEd1(Sentence *a,Sentence *b)
-{
-	int preva= 0, prevb= 0 ;
-//	a->noprep_num[ a->noprep_n ]= a->words_n;  i add before
-	for(int num=0;num<=b->noprep_n;++num)
-	{
-		if(    prevb == b->noprep_num[num] //no operator between
-			&& preva != a->noprep_num[num] )
-				return 0;
-		if( !isEd1(a,b,preva,prevb,num) )
-			return 0;
-		preva= a->noprep_num[num]+1;
-		prevb= b->noprep_num[num]+1;
-	}
-	return 1;
-}
-
-void sentFilt(Linkhash *lkh,Sentence *s,bool(*check)(Sentence *,Sentence *))
-{
-	if(!lkh)return ;
-	Link *lk = lkh->lk ;
-	while( lk )
-	{
-		if( check( lk->sent, s) )
-			ans.push_back(lk->sent);
-		lk = lk->next;
-	}
-}
-
-void hashCollide()
-{
-	std::map<int,int> map;
-	for(int i=0;i<100000000;++i)
-	{
-		Linkhash *lkh = hash_table[i];
-		int len=0;
-		while( lkh )
-		{
-			++len;
-			lkh = lkh->next;
-		}
-		map[len]++;
-	}
-
-	for(auto &i:map)
-		printf("%d %d\n",i.first,i.second);
-}
-
-
-int main()
-{
-	preposInit();
-	fileTohashtable();
-//	hashCollide(); return 0;
-//	return 0;
-	stop = '\n';
-	Sentence *s = new Sentence;
-	s->str = new char[500];
-	while( fgets(s->str,500,stdin) )
-	{
-		printf("query: %s",s->str);
-		int h = s->sentDeal();
-		if(h==-1)// for too big to array
-		{
-			printf("output: 0\n");
-			continue;
-		}
-		Linkhash *lkh = linkFind(h,s);
-		ans.clear();
-
-		if( s->words_n == s->noprep_n )//no prep  
-			sentFilt( lkh, s, addEd2);
-		else
-			sentFilt( lkh, s, allEd1);
-		
-		std::sort(ans.begin(),ans.end(),sentComp);
-		if(ans.size()>10)
-			ans.resize(10);
-		// query
-		printf("output: %d\n",ans.size());
-		for(int i=0;i<ans.size();++i)
-			printf("%s\t%u\n",ans[i]->str,ans[i]->feq);
-	}
-	return 0;
-}
-
