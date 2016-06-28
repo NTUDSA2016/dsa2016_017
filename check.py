@@ -5,7 +5,7 @@ from multiprocessing import Process,Queue
 
 testcasepath = "judge_test/"
 diffpath = "../default_diff.py"
-argv = ""
+how_to_run = " make run --silent "
 
 def goTest(name,que):
     arr = [testcasepath+name]
@@ -14,7 +14,7 @@ def goTest(name,que):
     
     run  = subprocess.Popen(
             '/usr/bin/time -f "%Us"  -a '+
-            "make run --silent "+argv+" < "+testcasepath+inname+" > "+outname,
+            how_to_run +" < "+testcasepath+inname+" > "+outname,
             stdout = subprocess.PIPE,stderr = subprocess.PIPE,
             shell=True,universal_newlines=True)
     outs, errs = run.communicate()
@@ -32,18 +32,17 @@ def goTest(name,que):
     #return arr
 
 if __name__ == '__main__':
-    if( len(sys.argv) < 2):  // argv = self,testcasepath,diff program,runargv
+    if( len(sys.argv) < 2):  # argv = self,testcasepath,diff program,how to run
         print( "no test cases")
         sys.exit()
-    testcasepath = sys.argv[1]
+    testcasepath =  sys.argv[1]
     if( len(sys.argv) > 2):
-        diffpath = sys.argv[2]
-    if( len(sys.argv) > 3):
-        argv     = sys.argv[3]
+        diffpath =  sys.argv[2]
+    if( len(sys.argv) > 3):# use % to separate
+        how_to_run= sys.argv[3].replace('%',' ')
     testcasepath = os.path.expanduser(testcasepath)
     diffpath     = os.path.expanduser(diffpath    )
-    with open(diffpath) as py:
-        exec( py.read() )
+    exec( open(diffpath).read() )
     diffpath     = os.path.expanduser(diffpath    )
     testcases = [ os.path.splitext(i)[0] for i in os.listdir(testcasepath) if 
                   os.path.splitext(i)[1]=='.in' ]

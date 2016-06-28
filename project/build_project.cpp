@@ -36,6 +36,8 @@ void fileTohashtable()
 		{
 			ori_data->str = ori_str;
 			int h = ori_data->sentDeal();
+			if(h==-1)
+				continue;
 			
 			// get feq
 			ori_str += ori_data->words_pos[ ori_data->words_n-1 ]+
@@ -96,6 +98,7 @@ void dataTofile(char *filename)
 		hash_len[i] = len;
 	}
 	fwrite(&sizelen ,sizeof(int),1      ,f);
+	fwrite(&tmplen  ,sizeof(int),1      ,f);
 	fwrite(hash_len ,sizeof(int),HashMax,f);
 	fwrite(hash_size,sizeof(int),sizelen,f);
 	for(int i=0;i<tmplen;++i)

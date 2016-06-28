@@ -3,8 +3,8 @@
 #define DataMax 42000000
 #define StrMax 831000000
 #define HashMult 65537
-#define HashMod 99999989
-#define HashMax 100000000
+#define HashMod 9999991
+#define HashMax 10000000
 #define WordMult 31
 #define WordMod 45677
 
@@ -68,7 +68,7 @@ struct Sentence
 	unsigned int feq;
 
 	int noprep_n,
-		noprep_num[6];
+		noprep_num[6];// the last one for code easier
 	
 	int words_n,
 		words_pos[11],
@@ -138,9 +138,9 @@ struct Sentence
 				for(int j=0;j<words_len[i];++j)
 					sum = (sum*WordMult+c[j])%WordMod;
 				all =     (all*HashMult+sum )%HashMod;
-				noprep_num[noprep_n++]= i;
-				if( noprep_n>= 6) // the size should no more than 6 
+				if( noprep_n>= 5) // the size should no more than 6 
 					return -1;
+				noprep_num[noprep_n++]= i;
 			}
 			c += words_len[i] + 1;
 		}

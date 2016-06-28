@@ -24,44 +24,40 @@ bool addEd2(Sentence *a,Sentence *b)// b is input
 {
 	if( a->words_n < b->words_n || a->words_n > b->words_n+2)
 		return 0;
-	int nowa=0,nownum=0;
+	int nowa=0,nowb=0;
 	int dis=0;
-	for(int nowb=0;nowb<b->words_n && dis>2;++nowb)
-		if( nowb == b->noprep_num[nownum] )// a is more than b
+	for(int num=0;num<=b->noprep_n && dis>2;++num)
+	{
+		for( nowb;nowb<b->noprep_num[num];++nowb)
 		{
-			dis += a->noprep_num[nownum] - nowa;
-			nowa = a->noprep_num[nownum]+1;
-			++nownum;
-		}
-		else
-		{
-			// find if b can match to a exclude add one
-			for(nowa ; nowa < a->noprep_num[nownum] ;++nowa)
+			for(nowa ; nowa < a->noprep_num[num] ;++nowa)
 				if( preposSame(a,b,nowa,nowb) )
 					break;
 				else 
 					++dis;
-			if( nowa == a->noprep_num[nownum] )
+			if( nowa == a->noprep_num[num] )
 				return 0; // can't find match one
 			++nowa;
 		}
-
+		dis += a->noprep_num[num] - nowa;
+		nowa = a->noprep_num[num] + 1   ;
+		nowb = b->noprep_num[num] + 1   ;
+	}
 	return dis<=2 ;
 }
 
 bool allEd1(Sentence *a,Sentence *b)
 {
-	int preva= 0, prevb= 0 ;
-//	a->noprep_num[ a->noprep_n ]= a->words_n;  i add before
+	int nowa=0,nowb=0;
 	for(int num=0;num<=b->noprep_n;++num)
 	{
-		if(    prevb == b->noprep_num[num] //no operator between
-			&& preva != a->noprep_num[num] )
+		if(    nowb == b->noprep_num[num] //no operator between
+			&& nowa != a->noprep_num[num] )
 				return 0;
-		if( !isEd1(a,b,preva,prevb,num) )
+		if( !isEd1(a,b,nowa,nowb,num) )
 			return 0;
-		preva= a->noprep_num[num]+1;
-		prevb= b->noprep_num[num]+1;
+		nowa = a->noprep_num[num] + 1   ;
+		nowb = b->noprep_num[num] + 1   ;
 	}
 	return 1;
 }
@@ -79,8 +75,9 @@ void fileTodata(char *filename)
 {
 	FILE *f = fopen(filename,"rb");
 	fseek(f,0,SEEK_SET);
-	int sizelen;
+	int sizelen,datalen;
 	fread(&sizelen ,sizeof(int),1      ,f);
+	fread(&datalen ,sizeof(int),1      ,f);
 	fread(hash_len ,sizeof(int),HashMax,f);
 	fread(hash_size,sizeof(int),sizelen,f);
 
@@ -90,13 +87,9 @@ void fileTodata(char *filename)
 		hash_start[i] = hash_start[i-1] + hash_len[i-1];
 
 	//where
-	int datalen=hash_size[0];
 	hash_where[0]=ftell(f);
 	for(int i=1;i<sizelen;++i)
-	{
 		hash_where[i] = hash_where[i-1] + (long int)hash_size[i-1]*sentsize;
-		datalen+= hash_size[i];
-	}
 	fseek(f,(long int)datalen*sentsize,SEEK_CUR);
 
 	// read str
@@ -129,7 +122,11 @@ void sentFilt(int where,Sentence *s,bool(*check)(Sentence *,Sentence *))
 	{
 		ori_data[i].str = ori_str + ( ori_data[i].str - ori_str_old);
 		if( check( ori_data+i , s) )
+		{
 			ans.push_back( ori_data+i );
+			if( ans.size() >= 10)
+				break;
+		}
 	}
 }
 
@@ -159,9 +156,6 @@ int main(int argc,char *argv[])
 		else
 			sentFilt( where, s, allEd1);
 		
-//		std::sort(ans.begin(),ans.end(),sentComp);
-		if(ans.size()>10)
-			ans.resize(10);
 		// query
 		printf("output: %d\n",ans.size());
 		for(int i=0;i<ans.size();++i)

@@ -8,7 +8,7 @@ def diff(correct_name,ans_name):
         if(  correct =='' and ans==''):
             break;
         elif(correct =='' or  ans==''):
-            if():return "ans not enough"
+            if(ans==''):return "ans not enough"
             else:return "ans too more line"
         elif (correct!=ans):
             return "line = "+str(line)+"\ncorrect= "+correct + "yourans= "+ans
