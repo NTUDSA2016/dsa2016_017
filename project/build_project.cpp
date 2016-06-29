@@ -97,12 +97,23 @@ void dataTofile(char *filename)
 		}
 		hash_len[i] = len;
 	}
+
+
+	//write
 	fwrite(&sizelen ,sizeof(int),1      ,f);
 	fwrite(&tmplen  ,sizeof(int),1      ,f);
 	fwrite(hash_len ,sizeof(int),HashMax,f);
 	fwrite(hash_size,sizeof(int),sizelen,f);
+	//where
+	long int *hash_where = new long int [sizelen];
+	hash_where[0] = ftell(f) +(long int)sizelen*sizeof(long int);
+	for(int i=1;i<sizelen;++i)
+		hash_where[i] = hash_where[i-1] + (long int)hash_size[i-1]*sentsize;
+	fwrite(hash_where,sizeof(long int),sizelen,f);
+	//sentence
 	for(int i=0;i<tmplen;++i)
 		fwrite(tmp[i],sentsize,1,f);
+	//string
 	fwrite(&ori_str_cst,sizeof(char*),1     ,f);
 	fwrite( ori_str_cst,sizeof(char ),StrMax,f);
 	fclose(f);

@@ -87,9 +87,7 @@ void fileTodata(char *filename)
 		hash_start[i] = hash_start[i-1] + hash_len[i-1];
 
 	//where
-	hash_where[0]=ftell(f);
-	for(int i=1;i<sizelen;++i)
-		hash_where[i] = hash_where[i-1] + (long int)hash_size[i-1]*sentsize;
+	fread(hash_where,sizeof(long int),sizelen,f);
 	fseek(f,(long int)datalen*sentsize,SEEK_CUR);
 
 	// read str
